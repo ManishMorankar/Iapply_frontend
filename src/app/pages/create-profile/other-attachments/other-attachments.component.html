@@ -1,0 +1,161 @@
+<!-- <section class="widget"> -->
+  <div class="page_head">
+    <h2>MY PROFILE</h2>
+  </div>
+  <app-wizard></app-wizard>
+  <div class="dasboard-cont">
+  <div class="row">
+
+    <div class="d-flex justify-content-between col-md-12"><p class="mb-0">Upload attachments such as Cover Letter, Certificates, Reference Document etc.</p>    <span class="red-txt small-font text-end">Supports only English content</span></div>
+    <div class="col-md-12">
+    <div class="bg-gray-lighter progress progress-xs mt-3 mb-4 ">
+      <div id="bar" class="progress-bar progress-xs progress-bar-gray-light" style="width: 77%;"></div>
+      </div></div>
+      <div class="page_sub_head col-md-12"><p>Upload Additional Documents</p></div>
+
+      <div class="d-flex justify-content-between col-md-12 mb-3"><p >(you can add multiple documents)</p><span class="pull-right" style="color: green;">Optional</span></div>
+
+
+
+      </div>
+
+
+<section>
+
+
+
+
+  <form id="file-upload-form" class="mb-3"  [formGroup]="uploadDocumentForm">
+    <!-- <input id="file-upload" type="file" name="fileUpload"> -->
+
+    <input type="file" class="upload-attach" (change)="selectFile($event)" formControlName="UploadDocument" name="UploadDocument" id="UploadDocument" multiple="multiple">
+
+    <label for="file-upload" id="file-drag">
+        <div class=" w-100">
+          <span class="d-flex align-items-center justify-content-center mb-3 drag-icons">
+             <!-- <img src="../../../../assets/images/dashboard/metro-file-word.svg" class="pe-2 ps-2">
+             <img src="images/dashboard/image_icon.svg" class="pe-2 ps-2">
+            <img src="images/dashboard/metro-file-pdf.svg" class="pe-2 ps-2"> -->
+           <span class="pe-2 ps-2"><i class="far fa-file-word"></i></span>
+           <span class="pe-2 ps-2">  <i class="far fa-file-pdf"></i></span>
+            <span class="pe-2 ps-2">  <i class="far fa-images"></i></span>
+          </span>
+
+          <span id="file-upload-btn" class="submit ripple-theme ">Drag File to attach, or <span class="text-success">browse</span></span>
+          <p class="certificates_upload">You can upload your cover letter, certificates, reference, …)</p>
+          <span class="max_size">Max Size: 15 MB</span>
+        </div>
+    </label>
+
+   </form>
+
+   <div class="inner_box  mt-2" *ngFor="let document of otherAttachments; let i=index;">
+    <i class="{{getFileExtension(document.name)}}" style="color:red;" aria-hidden="true"></i> {{document.name}}
+    <span class="edit_links"><a (click)="deleteModal(document.name, 'remove')" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a></span>
+    </div>
+
+
+    <div class="w-100"   *ngFor="let OtheAttachment of getOtherAttachmentsData; let i=index;">
+    <div class="inner_box mb-2" *ngIf="OtheAttachment.documentType=='Attachment'">
+       <i class="{{getFileExtension(OtheAttachment .documentPath)}}" style="color:red;" aria-hidden="true"></i>
+         <a [href]="OtheAttachment.downloadLink"> {{getFileName(OtheAttachment.documentPath)}}</a>
+    <span class="edit_links"><a [href]="OtheAttachment.downloadLink" class="green-color"><i class="fas fa-download"></i></a><button (click)="deleteModal(OtheAttachment.customerDocumentId, 'delete')" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></button></span>
+      </div>
+      </div>
+
+
+  <!-- <form [formGroup]="uploadDocumentForm">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="UploadDocument">Select File</label>
+         <input type="file" (change)="selectFile($event)" formControlName="UploadDocument" name="UploadDocument" id="UploadDocument" multiple="multiple">
+        </div>
+      </div>
+    </div>
+  </form> -->
+
+
+</section>
+</div>
+
+
+<div class="ResumeSpace">
+
+</div>
+
+<div class="dasboard-cont">
+  <div class="row">
+    <div class="page_sub_head col-md-12"><p>Upload Your Resume</p></div>
+    <div class="d-flex justify-content-between col-md-12 mb-3"><p>This section allows you to upload resume and cover letter as an attachment.</p><span class="pull-right" style="color: green;">Optional</span></div>
+  </div>
+  <section>
+    <form id="file-upload-form" class="mb-3" [formGroup]="uploadDocumentForm">
+      <!-- <input id="file-upload" type="file" name="fileUpload"> -->
+
+      <input type="file" accept="application/pdf,application/msword,
+      application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="upload-attach" (change)="selectResumeFile($event)" formControlName="UploadResumeDocument" name="UploadResumeDocument" id="UploadResumeDocument">
+
+      <label for="file-upload" id="file-drag">
+        <div class=" w-100">
+          <span class="d-flex align-items-center justify-content-center mb-3 drag-icons">
+            <!-- <img src="../../../../assets/images/dashboard/metro-file-word.svg" class="pe-2 ps-2">
+   <img src="images/dashboard/image_icon.svg" class="pe-2 ps-2">
+  <img src="images/dashboard/metro-file-pdf.svg" class="pe-2 ps-2"> -->
+            <span class="pe-2 ps-2"><i class="far fa-file-word"></i></span>
+            <span class="pe-2 ps-2">  <i class="far fa-file-pdf"></i></span>
+            <!--<span class="pe-2 ps-2">  <i class="far fa-images"></i></span>-->
+          </span>
+          <span id="file-upload-btn" class="submit ripple-theme ">Drag File to attach, or <span class="text-success">browse</span></span>
+          <p class="certificates_upload">Only upload your Resume </p>
+          <span class="max_size">Max Size: 15 MB</span>
+        </div>
+      </label>
+    </form>
+
+    <div class="inner_box  mt-2" *ngFor="let resumedocument of resumeAttachments; let i=index;">
+      <i class="{{getFileExtension(resumedocument.name)}}" style="color:red;" aria-hidden="true"></i> {{resumedocument.name}}
+      <span class="edit_links"><a (click)="deleteModal(resumedocument.name, 'resume')" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a></span>
+      </div>
+
+      <div class="w-100"   *ngFor="let OtheAttachment of getResumeAttachmentData; let i=index;">
+        <div class="inner_box mb-2" *ngIf="OtheAttachment.documentType=='Resume'">
+          <i class="{{  getFileExtensionResume(OtheAttachment .documentPath)}}" style="color:red;" aria-hidden="true"></i> <a [href]="OtheAttachment.downloadLink"> {{getFileName(OtheAttachment.documentPath)}}</a>
+        <span class="edit_links"><a [href]="OtheAttachment.downloadLink" class="green-color"><i class="fas fa-download"></i></a><button (click)="deleteModal(OtheAttachment.customerDocumentId, 'delete')" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></button></span>
+          </div>
+          </div>
+
+  </section>
+</div>
+<!-- </section> -->
+<div class="row mt-3"><div class="col-md-12">
+  <button type="button" class="btn btn-success pull-left back" (click)="onBack()"><i class="fa fa-backward"></i>&nbsp;
+      Back
+  </button>
+
+  <button type="submit" class="btn btn-primary pull-right ml-2 continue" (click)="onNext('Continue')" *ngIf="!SubscriptionCancel"><i class="fa fa-forward"></i>&nbsp;
+      Continue
+  </button>
+  <button type="button" class="btn btn-success pull-right ml-3 draft" (click)="onNext('Draft')" *ngIf="!SubscriptionCancel"><i class="fas fa-save"></i>&nbsp;
+    Save as Draft
+  </button>
+
+      </div></div>
+
+      <div class="modal modal_subscription" id="deleteExperince">
+        <div class="modal-dialog modal-dialog-centered ">
+          <div class="modal-content">
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="text-center">
+                <h3>Are you sure want to delete ?</h3>
+                <button class="yes btn-sm btn-success m-1" (click)="deleteItemFunc()">Yes</button>
+                <button class="no btn-sm btn-danger m-1" data-bs-dismiss="modal">No</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>

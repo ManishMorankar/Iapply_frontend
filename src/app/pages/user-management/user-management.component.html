@@ -1,0 +1,158 @@
+
+    <div class="page_head">
+      <h2>USER MANAGEMENT</h2>
+   </div>
+
+   <div class="row mt-4">
+      <div class="col-md-12 mb-3 ">
+        <div class="subhead">
+           <h4 class="d-md-flex align-items-center justify-content-between">INTERNAL USER </h4>
+           <p>Below Screen shows list of all registered users. Admin can find the users using below mentions fields combination and updated it required.</p>
+        </div>
+     </div>
+
+     <div class="col-md-12">
+      <form [formGroup]="USERMANAGEMENTform">
+      <div class="row filter_6_col">
+         <div class="col-md-2 form-holder">
+            <label class="relative-label blue-color ">From Date:</label>
+            <div class="form-holder1 w-100 p-0 mb-4">
+               <div class="input-group">
+                <input type="date" formControlName="FromDate" name="FromDate" id="FromDate" placeholder="Enter From Date" class="form-control" data-parsley-trigger="change">
+               </div>
+            </div>
+         </div>
+
+         <div class="col-md-2 form-holder">
+            <label class="relative-label blue-color ">To Date:</label>
+        <div class="form-holder1 w-100 p-0 mb-4">
+               <div class="input-group">
+                <input type="date" formControlName="ToDate" name="ToDate" id="ToDate" placeholder="Enter To Date" class="form-control" data-parsley-trigger="change">
+               </div>
+            </div>
+         </div>
+         <div class="col-md-2 form-holder">
+            <label class="relative-label blue-color ">Email Address</label>
+            <div class="form-holder1 w-100 p-0 mb-4">
+               <div class="input-group">
+                  <input type="email" formControlName="Email" name="Email" id="Email" placeholder="Enter Email" class="form-control" data-parsley-trigger="change">
+               </div>
+            </div>
+         </div>
+
+         <div class="col-md-2 form-holder">
+            <label class="relative-label blue-color ">User Status:</label>
+            <div class="form-holder1 w-100 p-0 mb-4">
+               <div class="input-group">
+                  <select formControlName="UserStatus" name="UserStatus" id="UserStatus" placeholder="Select User Status" class="custom-select form-control" data-parsley-trigger="change">
+                    <option selected>All</option>
+                    <option *ngFor="let p of UserStatusList" value="{{p}}">
+
+                      <span class="text-success" *ngIf="p == 1 || p == '1'">Active</span>
+                      <span class="text-danger" *ngIf="p == 0 || p == '0'">In-Active</span>
+                    </option>
+                  </select>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-2 form-holder">
+            <label class="relative-label blue-color ">User Type:</label>
+            <div class="form-holder1 w-100 p-0 mb-4">
+               <div class="input-group">
+                <select formControlName="UserType" name="UserType" id="UserType" placeholder="Select User Type" class="custom-select form-control" data-parsley-trigger="change">
+                  <option selected>All</option>
+                  <option *ngFor="let p of UserTypeList" value="{{p}}">
+                    {{p}}
+                  </option>
+                </select>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-md-2 form-holder">
+            <label class="relative-label blue-color ">Full Name</label>
+             <div class="form-holder1 w-100 p-0 mb-4">
+                <div class="input-group">
+                  <input type="text" formControlName="FullName" name="FullName" id="FullName" placeholder="Enter FullName" class="form-control" data-parsley-trigger="change">
+                </div>
+             </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="btm_btn">
+            <div class="d-flex justify-content-between">
+                   <button type="button" class="draft me-3" (click)="addInternalUser()">ADD NEW USER</button>
+
+                   <div class="d-flex">
+                 <!-- <a type="button" class="continue pe-4 ps-4 ms-3">SEARCH</a>
+                  <a type="button" class="back ps-4 pe-4 ms-3">RESET FILTER</a>-->
+                  <button type="button" (click)="searchFilter()" class="btn btn-primary continue mr-3">SEARCH</button>
+                  <button type="button" (click)="clearFilter()" class="btn btn-success  back">RESET FILTER</button>
+                  </div>
+               </div>
+         </div>
+         </div>
+      </div>
+      </form>
+   </div>
+
+<div class="col-md-12 mb-3 mt-4">
+      <div class="subhead">
+        <h4 class="d-md-flex align-items-center justify-content-between">User List <span><a (click)="exportData()">Export <i class="fas fa-file-export"></i></a> </span></h4>
+       </div>
+   </div>
+ </div>
+<ngx-datatable class="table table-striped table-hover"
+                   [rows]="TempInternalUserDetails"
+                  [columnMode]="'force'"
+                  [headerHeight]="60"
+                  [footerHeight]="50"
+                  [rowHeight]="'auto'"
+                  [limit]="10">
+
+
+       <ngx-datatable-column name="User Name" [width]="280">
+       <ng-template let-row="row" ngx-datatable-cell-template>
+         {{ row.firstName }} {{ row.lastName}}
+       </ng-template>
+      </ngx-datatable-column>
+
+     <ngx-datatable-column name="Email Address" prop="emailId" [width]="280" >
+       <ng-template let-value="value" ngx-datatable-cell-template>
+         {{value}}
+       </ng-template>
+     </ngx-datatable-column>
+
+     <ngx-datatable-column name="User Type" prop="userType" [width]="280" >
+       <ng-template let-value="value" ngx-datatable-cell-template>
+         {{value}}
+       </ng-template>
+     </ngx-datatable-column>
+
+     <ngx-datatable-column name="Created On" prop="addedOn" [width]="280">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+
+       {{ value | date: 'dd-MM-yyyy' }}
+      </ng-template>
+    </ngx-datatable-column>
+
+     <ngx-datatable-column name="User Status"  prop="status" [width]="280">
+       <ng-template let-value="value" ngx-datatable-cell-template>
+         <span class="text-success" *ngIf="value == 1 || value == '1'">Active</span>
+         <span class="text-danger" *ngIf="value == 0 || value == '0'">In-Active</span>
+       </ng-template>
+     </ngx-datatable-column>
+
+
+     <ngx-datatable-column name="Action">
+       <ng-template let-row="row" ngx-datatable-cell-template>
+         <div class="btn-toolbar">
+          <!-- <button class="btn btn-xs btn-info">
+             <span class="d-none d-md-inline-block"(click)="updateInternalUser(row)">Update</span>
+             <span class="d-md-none"><i class='la la-edit'></i></span>
+           </button>-->
+           <a class="view_btn"  (click)="updateInternalUser(row)">Update</a>
+
+         </div>
+       </ng-template>
+    </ngx-datatable-column>

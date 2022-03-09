@@ -1,0 +1,224 @@
+<!-- <app-wizard></app-wizard> -->
+<div class="container package_cont">
+  <div class="col-lg-12 col-md-12 p-0">
+    <h5 class="modal-title mb-3" >Select Your Plan</h5>
+    <div class="row">
+
+      <div class="col-md-6 mt-3" *ngFor="let package of packageSectionData?.packageContent let i=index">
+
+        <div class=" price_box fr_box">
+          <div class="price_details text-center mb-3">
+
+             <h4>{{packageContent[i]?.packageName}}</h4>
+            <h4 class="d-flex align-items-center justify-content-center flex-column">
+              <p class="mb-0 price_main">{{packageContent[i]?.packagePrice}}<span></span></p>
+
+            </h4>
+            <p class="price_month">Billed Monthly</p>
+          </div>
+          <P [innerHTML]="packageContent[i]?.htmlContent"></P>
+          <!-- <div class="d-flex align-items-center justify-content-center"  style="margin-top: auto;">
+           <button type="button" (click)="onStart(packageContent[i])"
+        class="btn btn-primary  continue" >GET STARTED</button> -->
+        <div class="d-flex align-items-center justify-content-center"  style="margin-top: auto;">
+          <button type="button" (click)="onStart(packageContent[i])"
+       class="btn btn-primary  continue" *ngIf="packageContent[i]?.packageName!=SubscrptionPlan" >GET STARTED</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-lg-4 col-md-4 mt-4">
+
+        <div class=" price_box fr_box">
+
+              <div class="price_details text-center mb-5">
+                <h5>{{packageContent[1]?.packageName}}</h5>
+                <h4 class="d-flex align-items-center justify-content-center flex-column">
+                  <p class="mb-0 price_main">{{packageContent[1]?.packagePrice}}<span></span> </p></h4>
+              </div>
+              <div>
+                <P [innerHTML]="packageContent[1]?.htmlContent"></P>
+
+              <div class="d-flex align-items-center justify-content-center">
+              <a   (click)="onStart($event)"  class="get_started d-flex align-items-center justify-content-center">Start</a>
+              </div>
+
+      </div>
+    </div>
+      <div class="col-md-2">
+
+      </div>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+       <div class="container payment_wrpr dasboard-cont hide h-100vh">
+        <p *ngIf="SubscrptionPlan=='Standard'">Are you sure you want to downgrade the package?</p>
+        <h4>Make Payment</h4>
+        <div class="row">
+          <div class="col-lg-7">
+                <div class="payment_left">
+                   <p *ngIf="this.renInfo != 'PackageRenew'"> Please make a payment as per the selected plan.</p>
+                   <p *ngIf="this.renInfo == 'PackageRenew'"> Are you sure you want to renew your package?</p>
+                  <div class="payment_tabs">
+                     <ul class="nav nav-tabs" id="myTab" role="tablist">
+                       <li class="nav-item" role="presentation">
+                         <button (click)="online()" class=" active" id="home-tab" data-bs-toggle="tab" data-bs-target="#Card" type="submit" role="tab" aria-controls="home" aria-selected="true">Add Card</button>
+                       </li>
+                       <li class="nav-item" role="presentation">
+                         <button (click)="offline()"  class="" id="profile-tab" data-bs-toggle="tab" data-bs-target="#Apple" type="button" role="tab" aria-controls="profile" aria-selected="false">Apple Pay</button>
+                       </li>
+                       <li class="nav-item" role="presentation">
+                         <button (click)="offline()"  class="" id="contact-tab" data-bs-toggle="tab" data-bs-target="#Samsung" type="button" role="tab" aria-controls="contact" aria-selected="false">Samsung Pay</button>
+                       </li>
+                        <li class="nav-item" role="presentation">
+                         <button (click)="offline()" class="" id="contact-tab" data-bs-toggle="tab" data-bs-target="#Bank" type="submit" role="tab" aria-controls="contact" aria-selected="true">Bank Transfer</button>
+                       </li>
+                     </ul>
+                     <div class="tab-content" id="myTabContent">
+                       <div class="tab-pane fade show active" id="Card" role="tabpanel" aria-labelledby="home-tab">
+
+                            <iframe width="100%" height="350" scrolling="no" frameborder="0" id="paymentFrame" [src]="urlSafe"></iframe>
+
+                       </div>
+                       <div class="tab-pane fade" id="Apple" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+
+                          <div class="col-md-12">
+                              <label>Bank Name : First Abu Dhabi Bank (FAB)</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>Account Name : IApply E-Commerce Online Services</label>
+                          </div>
+                          <div class="col-md-12">
+                          <label>Account No : 4031004699504002</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>IBAN No : AE680354031004699504002</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>Swift Code : NBADAEAAXXX</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>Currency : USD</label>
+                          </div>
+                       </div></div>
+                       <div class="tab-pane fade" id="Samsung" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="row">
+
+                          <div class="col-md-12">
+                              <label>Bank Name : First Abu Dhabi Bank (FAB)</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>Account Name : IApply E-Commerce Online Services</label>
+                          </div>
+                          <div class="col-md-12">
+                          <label>Account No : 4031004699504002</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>IBAN No : AE680354031004699504002</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>Swift Code : NBADAEAAXXX</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>Currency : USD</label>
+                          </div>
+                       </div></div>
+                       <div class="tab-pane fade" id="Bank" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="row">
+
+                          <div class="col-md-12">
+                              <label>Bank Name : First Abu Dhabi Bank (FAB)</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>Account Name : IApply E-Commerce Online Services</label>
+                          </div>
+                          <div class="col-md-12">
+                          <label>Account No : 4031004699504002</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>IBAN No : AE680354031004699504002</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>Swift Code : NBADAEAAXXX</label>
+                          </div>
+                          <div class="col-md-12">
+                            <label>Currency : USD</label>
+                          </div>
+                       </div>
+                       </div>
+                     </div>
+                  </div>
+
+                </div>
+          </div>
+           <div class="col-lg-5 payment_dtl_right">
+           <div class="d-flex justify-content-between">
+            <div>
+              <h5 >Your selected Plan (1 Month):</h5>
+               <p>We Will Remind You 7 Days Before Your Subscription Period Ends.</p>
+            </div>
+            <div class="price_pln">
+              <span>{{packagePrice}}</span>
+            </div>
+            </div>
+
+            <div class="total_plan_vl d-flex mb-4 mt-4 align-items-center justify-content-between">
+               <h5>Total Billed Now:</h5>
+               <div class="price_pln">
+                <span>{{packagePrice}}</span>
+            </div>
+            </div>
+            <!-- <button (click)="subscribe()" class="continue" type="submit">Subscribe</button> -->
+            <a (click)="subscribe()" class="continue" *ngIf="PymentMethod == 'Offline'">Subscribe</a>
+
+          </div>
+          </div>
+       </div>
+
+
+
+
+<!-- <div class="modal fade" id="payment" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered modal-xl">
+    <div class="modal-content pt-4 pb-4 m">
+      <div class="modal-header text-center p-0 mb-4">
+        <h5 class="modal-title" id="staticBackdropLabel">Make Payment</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row payment_wrpr">
+          <div class="col-lg-6 payment_dtl_right">
+            <form [formGroup]="personalProfileForm">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <h5>Your selected Plan (1 Month):</h5>
+                  <p>We Will Remind You 7 Days Before Your Subscriptions Period Ends.</p>
+                </div>
+                <div class="price_pln">
+                  <span>{{packagePrice}}</span>
+                </div>
+              </div>
+
+              <div class="total_plan_vl d-flex mb-4 mt-4 align-items-center  justify-content-between">
+                <h5>Total Billed Now:</h5>
+                <div class="price_pln">
+                  <span>{{packagePrice}}</span>
+                </div>
+              </div>
+              <button (click)="subscribe()" class="continue" type="submit">Subscribe</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,101 @@
+<div class="container">
+  <button (click)="exportToExcel()" class="btn btn-success float-right mb-3 ml-2">Export To Excel</button>
+  <button (click)="largeModal.show(); resetSubscriptionForm()" class="btn btn-success float-right mb-3">Add Subscription</button>
+
+  <input type="text" class="form-control" style="padding:8px;width:20%;" placeholder="Type to filter..." />
+  <ngx-datatable class="table table-striped table-hover"
+              [rows]="subscriptionsData"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="10">
+      <ngx-datatable-column name="Action">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+              <button (click)="largeModal.show();editSubscription(row)" class="btn btn-success">Edit</button>
+          </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Package Name">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row?.packageName }}
+          </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Description" width=200>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+              {{row?.description}}
+          </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Price">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+              {{row?.price}}
+          </ng-template>
+      </ngx-datatable-column>
+  </ngx-datatable>
+
+
+  <div class="modal fade" bsModal #largeModal="bs-modal" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Subscription</h4>
+          <button type="button" class="close pull-right" (click)="largeModal.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="subscriptionForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">PackageName</label>
+                  <input type="text" formControlName="PackageName" class="form-control"
+                          autocomplete="off">
+                  <div *ngIf="submitted && cuf.PackageName.errors" class="invalid-feedback">
+                    <div *ngIf="cuf.PackageName.errors.required">Package Name is required</div>
+                    <div *ngIf="cuf.PackageName.errors.pattern">Please enter valid Package Name</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Price</label>
+                  <input type="text" formControlName="Price" class="form-control"
+                          autocomplete="off">
+                  <div *ngIf="submitted && cuf.Price.errors" class="invalid-feedback">
+                    <div *ngIf="cuf.Price.errors.required">Price is required</div>
+                    <div *ngIf="cuf.Price.errors.pattern">Please enter valid price</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Description</label>
+                  <textarea formControlName="Description" class="form-control" rows="2"></textarea>
+                  <div *ngIf="submitted && cuf.Description.errors" class="invalid-feedback">
+                    <div *ngIf="cuf.Description.errors.required">Description is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="btn-toolbar">
+              <button *ngIf="!SubscriptionId" type="submit" class="btn btn-success">
+                Submit
+              </button>
+              <button *ngIf="SubscriptionId" type="submit" class="btn btn-success">
+                Update
+              </button>
+              <button type="button" class="btn btn-success" (click)="largeModal.hide()">
+                Cancel
+              </button>
+            </div>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

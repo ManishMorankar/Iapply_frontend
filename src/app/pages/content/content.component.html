@@ -1,0 +1,419 @@
+<div class="container">
+  <div class="content content-option">
+      <div class="row content-option-list">
+          <div class="content-option-item" (click)="onContentOptionSelected('video')" [ngClass]="{'active': selectedContentOption === 'video'}">
+              <span class="icon">
+                  <i class="la la-fast-forward la-lg"></i>
+              </span>
+              <h5>Upload Video</h5>
+          </div>
+          <div class="content-option-item" (click)="onContentOptionSelected('content')" [ngClass]="{'active': selectedContentOption === 'content'}">
+              <span class="icon">
+                  <i class="la la-fast-forward la-lg"></i>
+              </span>
+              <h5>Create Content</h5>
+          </div>
+          <!-- <div class="content-option-item" (click)="onContentOptionSelected('association')" [ngClass]="{'active': selectedContentOption === 'association'}">
+              <span class="icon">
+                  <i class="la la-fast-forward la-lg"></i>
+              </span>
+              <h5>Upload Associations</h5>
+          </div> -->
+      </div>
+  </div>
+
+  <div class="content option-card" *ngIf="selectedContentOption === 'video'">
+      <div class="row">
+          <div class="col-12 col-sm-6 col-md-4">
+              <div class="card border-0 mb-xlg">
+                  <div class="card-body">
+                    <button (click)="addVideoModal.show()" type="button" class="btn">
+                          <i class="fa fa-upload fa-4x"></i><br>
+                          Upload New Video
+                      </button>
+                  </div>
+              </div>
+          </div>
+        <div class="col-12 col-sm-6 col-md-4"  *ngFor="let video of videosData; let i=index;">
+
+          <div class="card border-0 mb-3">
+            <div class="card-body">
+                 <iframe width="270" height="250" [src]="getSanitizedVideoUrl(video?.videoUrl)"></iframe>
+                 <p>Name : {{video.title }}</p>
+                 <p>Description : {{video.description }}</p>
+                </div>
+                <!--<button type="button" class="btn float-right" (click)="updatevideo(row)" *ngIf="VideoId">Edit</button>-->
+
+                <div class="col-md-6">
+                  <button type="button" (click)="deleteVideos(video.videoId)" class="btn float-right ml-2"><i class="fa fa-trash" style="color: red; "></i></button>
+                <!-- <button type="button" (click)="addVideoModal.show();updateVideo(video);" class="btn float-right"><i class="fa fa-edit" style="color: green; "></i></button>-->
+              </div>
+              </div>
+            </div>
+          </div>
+
+
+      </div>
+      <!--Video Upload Form Code-->
+      <div class="modal fade" bsModal #addVideoModal="bs-modal" [config]="{backdrop: 'static'}">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title pull-left" *ngIf="!VideoId">Add Video</h4>
+              <h4 class="modal-title pull-left" *ngIf="VideoId">Update Video</h4>
+              <button type="button" class="close pull-right" (click)="addVideoModal.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]= "UploadVideoForm" (ngSubmit)="onSubmitVideo()">
+                <div class="container">
+                  <div class="form-group row">
+                    <label>Video Url</label>
+                    <input type="url" formControlName="VideoUrl" name="VideoUrl" id="videoUrl" placeholder="Add VideoUrl" class="form-control">
+                    <div *ngIf="submitted && cuf.Name.errors" class="invalid-feedback">
+                        <div *ngIf="cuf.VideoUrl.errors.required">VideoUrl is required</div>
+                        <div *ngIf="cuf.VideoUrl.errors.pattern">Please enter valid VideoUrl</div>
+                    </div>
+              </div>
+
+              <div class="form-group row">
+                <label>Video Title</label>
+                <input type="text" formControlName="VideoTitle" name="VideoTitle" id="title" placeholder="Add VideoTitle" class="form-control">
+                <div *ngIf="submitted && cuf.Name.errors" class="invalid-feedback">
+                    <div *ngIf="cuf.title.errors.required">VideoTitle is required</div>
+                    <div *ngIf="cuf.title.errors.pattern">Please enter valid VideoTitle</div>
+                </div>
+          </div>
+          <div class="form-group row">
+            <label>Description</label>
+            <input type="text" formControlName="Description" name="Description" id="description" placeholder="Add Description" class="form-control">
+            <div *ngIf="submitted && cuf.description.errors" class="invalid-feedback">
+                <div *ngIf="cuf.description.errors.required">description is required</div>
+                <div *ngIf="cuf.description.errors.pattern">Please enter valid description</div>
+            </div>
+      </div>
+
+                </div>
+                <!-- <div class="row"> -->
+                  <button (click)="addVideoModal.hide()" class="btn btn-success mb-3 ml-2 float-right" type="reset">Cancel</button>
+                  <button class="btn btn-success mb-3 float-right" *ngIf="!VideoId" type="submit">Add</button>
+                 <button class="btn btn-success mb-3 float-right" *ngIf="VideoId" type="submit">Update</button>
+                <!-- </div> -->
+            </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  <div class="content option-card" *ngIf="selectedContentOption === 'content'">
+      <div class="row content-item">
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-lablel-box">
+                  <span>About Us</span>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <button (click)="aboutUsModal.show()" class="btn btn-success content-btn">Edit</button>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <!-- <button (click)="updateAboutUs()" class="btn btn-success content-btn">Update</button> -->
+              </div>
+          </div>
+      </div>
+      <div class="row content-item">
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-lablel-box">
+                  <span>Vision Mission</span>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <button (click)="visionMissionModal.show()" class="btn btn-success content-btn">Edit</button>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <!-- <button (click)="updateVisionMission()" class="btn btn-success content-btn">Update</button> -->
+              </div>
+          </div>
+      </div>
+      <div class="row content-item">
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-lablel-box">
+                  <span>Subscriptions</span>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <button (click)="subscriptionsModal.show()" class="btn btn-success content-btn">Edit</button>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <!-- <button (click)="updateSubscriptions()" class="btn btn-success content-btn">Update</button> -->
+              </div>
+          </div>
+      </div>
+      <div class="row content-item">
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-lablel-box">
+                  <span>Platform Information</span>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <button (click)="editPlatformInformation()" class="btn btn-success content-btn">Edit</button>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <!-- <button (click)="updatePlatformInformation()" class="btn btn-success content-btn">Update</button> -->
+              </div>
+          </div>
+      </div>
+      <div class="row content-item">
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-lablel-box">
+                  <span>Testimonial</span>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <button (click)="editTestimonial()" class="btn btn-success content-btn">Edit</button>
+              </div>
+          </div>
+          <div class="col-md-4 align-center">
+              <div class="content-item-box content-btn-box">
+                  <!-- <button (click)="updateTestimonial()" class="btn btn-success content-btn">Update</button> -->
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="content option-card" *ngIf="selectedContentOption === 'association'">
+      <div class="row">
+          <div class="col-12 col-sm-6 col-md-4">
+              <div class="card border-0 mb-xlg">
+                  <div class="card-body">
+                      <button (click)="addAssociationModal.show()" type="button" class="btn">
+                          <i class="fa fa-upload fa-4x"></i><br>
+                          Upload New Image
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4"  *ngFor="let association of AssocitionData; let i=index;">
+
+              <div class="card border-0 mb-xlg">
+                  <img [src]="'data:image/jpg;base64,'+association?.imageResult" alt="Image" class="card-img-top card-img" [width]="75" [height]="100">
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <h5 class="card-title">
+                                  {{ association.title }}
+                              </h5>
+                          </div>
+                          <div class="col-md-6">
+                              <button type="button" (click)="deleteAssociation(association.associationId)" class="btn float-right ml-2"><i class="fa fa-trash" style="color: red; "></i></button>
+                              <button type="button" (click)="addAssociationModal.show();updateAssociation(association);" class="btn float-right"><i class="fa fa-edit" style="color: green; "></i></button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+  <div class="modal fade" bsModal #addAssociationModal="bs-modal" [config]="{backdrop: 'static'}">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left" *ngIf="!association_id">Add Association</h4>
+            <h4 class="modal-title pull-left" *ngIf="association_id">Update Association</h4>
+            <button type="button" class="close pull-right" (click)="addAssociationModal.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                  <form [formGroup]="associationForm" (ngSubmit)="onSubmit()">
+                      <div class="container">
+                        <div class="form-group row">
+                          <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                              <img alt="..." [src]="getImage()">
+                              <label>Image</label>
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                            <div>
+                              <span class="btn btn-default btn-file">
+                                <span class="fileinput-new">Select image</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input type="file" name="logo_image" accept="image/jpeg,image/x-png" (change)="onFileChange($event)">
+                              </span>
+                              <a (click)="removeFile()" id="removeImage" #removeImageButton class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label>Priority</label>
+                          <input type="number" formControlName="Priority" name="Priority" id="Priority" placeholder="Add Priority Number" class="form-control" min="1" oninput="this.value = !!this.value && Math.abs(this.value) >= 1 ? Math.abs(this.value) : null">
+                          <div *ngIf="submitted && cuf.Priority.errors" class="invalid-feedback">
+                              <div *ngIf="cuf.Priority.errors.required">Priority is required</div>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                              <label>Company Name (Title)</label>
+                              <input type="text" formControlName="CompanyName" name="CompanyName" id="CompanyName" placeholder="Add Company Name" class="form-control">
+                              <div *ngIf="submitted && cuf.Name.errors" class="invalid-feedback">
+                                  <div *ngIf="cuf.Name.errors.required">Company Name is required</div>
+                                  <div *ngIf="cuf.Name.errors.pattern">Please enter valid Company name</div>
+                              </div>
+                        </div>
+
+                        <!-- <div class="form-group row">
+                          <label>Description</label>
+                          <textarea rows="4" formControlName="description" name="description" id="description" placeholder="Description" class="form-control"></textarea>
+                        </div> -->
+                      </div>
+              <button (click)="addAssociationModal.hide()" class="btn btn-success mb-3 ml-2 float-right" type="reset">Cancel</button>
+              <button class="btn btn-success mb-3 float-right" *ngIf="!association_id" type="submit">Add</button>
+              <button class="btn btn-success mb-3 float-right" *ngIf="association_id" type="submit">Update</button>
+          </form>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="modal fade" bsModal #aboutUsModal="bs-modal" [config]="{backdrop: 'static'}">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Edit About Us</h4>
+            <button type="button" class="close pull-right" (click)="aboutUsModal.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <ckeditor [(ngModel)]="aboutUsDesc" [editor]="Editor"
+              (change)="onChange($event)" (ready)="onReady($event)"></ckeditor>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Comment</label>
+                    <textarea formControlName="Comment" class="form-control" rows="5"></textarea>
+                    <div *ngIf="submitted && cuf.Comment.errors" class="invalid-feedback">
+                      <div *ngIf="cuf.Comment.errors.required">Comment is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button (click)="updateAboutUs()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button> -->
+
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="modal fade" bsModal #visionMissionModal="bs-modal" [config]="{backdrop: 'static'}">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Edit Vision Mission</h4>
+            <button type="button" class="close pull-right" (click)="visionMissionModal.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div style="margin-bottom: 4rem;">
+                  <h4 class="modal-title pull-left">Vision</h4>
+              </div>
+              <div class="mb-3">
+                  <ckeditor [(ngModel)]="visionDesc" [editor]="Editor" (ready)="onReady($event)"></ckeditor>
+                  <!-- <textarea type="text" rows="5" class="form-control" [(ngModel)]="visionDesc" ></textarea> -->
+              </div>
+              <div style="margin-bottom: 4rem;">
+                  <h4 class="modal-title pull-left">Mission</h4>
+              </div>
+              <div class="mb-3">
+                  <ckeditor [(ngModel)]="missionDesc" [editor]="Editor" (ready)="onReady($event)"></ckeditor>
+                  <!-- <textarea type="text" rows="5" class="form-control" [(ngModel)]="missionDesc" ></textarea> -->
+              </div>
+              <button (click)="updateVisionMission()" class="btn btn-success float-right mb-3">Update</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="modal fade" bsModal #subscriptionsModal="bs-modal" [config]="{backdrop: 'static'}">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Edit Subscriptions</h4>
+            <button type="button" class="close pull-right" (click)="subscriptionsModal.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <button (click)="exportToExcel()" class="btn btn-success float-right mb-3 ml-2">Export To Excel</button>
+              <button (click)="addUpdateSubscriptionsModal.show()" class="btn btn-success float-right mb-3">Add Subscription</button>
+
+              <input type="text" class="form-control" style="padding:8px;width:20%;" placeholder="Type to filter..." />
+              <ngx-datatable class="table table-striped table-hover"
+                          [rows]="subscriptionsData"
+                          [columnMode]="'force'"
+                          [headerHeight]="50"
+                          [footerHeight]="50"
+                          [rowHeight]="'auto'"
+                          [limit]="10">
+                  <ngx-datatable-column name="Action">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                          <button (click)="addInternalUser()" class="btn btn-success">Update</button>
+                      </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Package Name">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                          {{ row?.packageName }}
+                      </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Description" width=200>
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                          {{row?.description}}
+                      </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Price">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                          {{row?.price}}
+                      </ng-template>
+                  </ngx-datatable-column>
+              </ngx-datatable>
+              <button (click)="subscriptionsModal.hide()" class="btn btn-success mb-3">OK</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="modal fade" bsModal #addUpdateSubscriptionsModal="bs-modal" [config]="{backdrop: 'static'}">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Add Subscriptions</h4>
+            <button type="button" class="close pull-right" (click)="addUpdateSubscriptionsModal.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+

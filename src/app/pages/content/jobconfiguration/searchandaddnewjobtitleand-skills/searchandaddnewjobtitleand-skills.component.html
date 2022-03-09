@@ -1,0 +1,138 @@
+<div class="middle_content">
+  <div class="page_head">
+     <h2>SEARCH AND ADD NEW JOB TITLE & SKILLS</h2>
+  </div>
+  <div class="row mt-4">
+
+     <div class="col-md-12">
+       <div class="round_brdr_box bg-white no_radius">
+        <span class="back_btn" (click)="Return()">&nbsp;&nbsp;<i class="fa fa-arrow-left"></i>back</span>
+
+        <div class="d-flex justify-content-between"  >
+           <div class="col-md-6 add_usr" *ngIf="this.Type=='Job Title'">
+               <div class="subhead mt-3">
+            <h4 class="d-md-flex align-items-center justify-content-between">Verify And Add New Job Title</h4>
+           </div>
+           <div class="inr_border_box  mt-4 ">
+              <div class="col-md-12">
+                <form [formGroup]="">
+                <div class="row filter_5_col">
+
+                  <div class="subhead "><h4>SEARCH THE EXISTING Title:<b class="red-color">*</b></h4></div>
+                  <div class="input-group"> <select class="custom-select" formControlName="JobTitleId" name="JobTitleId" id="JobTitleId" placeholder="Check Job Title"  data-parsley-trigger="change" required="required">
+                       <option value=0>--Select--</option>
+                       <option *ngFor="let p of preferredJobTitleAllList">
+                        {{p.jobTitle}}
+                       </option>
+                   </select>
+
+                 </div>
+
+                </div>
+                </form>
+                <br>
+                <br>
+                <form  [formGroup]="JobTitleForm" (ngSubmit)="onSubmit()">
+                <div class="row filter_5_col">
+                    <div class="">
+                 <div class="subhead "><h4>New Job Title:</h4> </div>
+                  <div class="form-holder1 w-100 p-0 mb-2" >
+                    <div class="input-group">
+                      <input type="text" formControlName="Title" [(ngModel)]='this.Content'  value="{{this.Content}}" class="form-control">
+                      <!-- <span class="text-danger" *ngIf="pSubmitted && JobTitleForm.controls['Title'].hasError('required')">JobTitle is required</span>
+                      <span class="text-danger" *ngIf="pSubmitted && JobTitleForm.controls['Title'].hasError('pattern')">Please enter JobTitle</span> -->
+
+
+                  </div>
+                 </div>
+              </div>
+
+
+
+                 <div class="d-flex  align-items-center mt-2">
+                    <div class="btm_btn ">
+                       <div class="d-flex ">
+
+                        <button type="submit" class="draft pe-4 ps-4 me-3">ADD NEW JOB TITLE</button>
+                        <button type="button" class="cancle" (click)="onReject()">IGNORE</button>
+                       </div>
+                    </div>
+                 </div>
+
+
+              </div>
+            </form>
+           </div>
+        </div>
+       </div>
+        <div class="col-md-6 add_usr" *ngIf="this.Type=='Skill'">
+           <div class="subhead mt-3">
+            <h4 class="d-md-flex align-items-center justify-content-between">Verify And Add New Skills</h4>
+           </div>
+        <div class="inr_border_box   mt-4 ">
+           <div class="col-md-12">
+
+            <form [formGroup]="">
+              <div class="row filter_5_col">
+
+                <div class="subhead "><h4>SEARCH THE EXISTING Skills:<b class="red-color">*</b></h4></div>
+                <div class="input-group"> <select class="custom-select" formControlName="JobSkillsId" name="JobSkillsId" id="JobSkillsId" placeholder="Check Job Title"  data-parsley-trigger="change" required="required">
+                     <option value=0>--Select--</option>
+                     <option *ngFor="let p of preferredSkillAllList">
+                      {{p.skillName}}
+                     </option>
+                 </select>
+
+               </div>
+
+              </div>
+              </form>
+              <br>
+              <br>
+                <form  [formGroup]="JobSkillsForm" (ngSubmit)="onSkillsSubmit()">
+                  <div class="row filter_5_col">
+                      <div class="">
+                   <div class="subhead "><h4>New Job Skills:</h4> </div>
+                    <div class="form-holder1 w-100 p-0 mb-2"  >
+                      <div class="input-group">
+                        <input type="text" formControlName="Skills" [(ngModel)]='this.Content'  value="{{this.Content}}" class="form-control" >
+                        <!-- <span class="text-danger" *ngIf="pSubmitted && JobTitleForm.controls['Title'].hasError('required')">JobTitle is required</span>
+                        <span class="text-danger" *ngIf="pSubmitted && JobTitleForm.controls['Title'].hasError('pattern')">Please enter JobTitle</span> -->
+
+                    </div>
+                   </div>
+                </div>
+
+
+
+                   <div class="d-flex  align-items-center mt-2">
+                      <div class="btm_btn ">
+                         <div class="d-flex ">
+
+                          <button type="submit" class="draft pe-4 ps-4 me-3">ADD NEW Skills</button>
+                          <button type="button" class="cancle" (click)=" onSkillsReject()">IGNORE</button>
+                         </div>
+                      </div>
+                   </div>
+
+
+                </div>
+              </form>
+
+        </div>
+     </div>
+  </div>
+  </div>
+
+</div>
+
+</div>
+
+<div class="alert alert-danger alert-dismissible fade " role="alert">
+<i class="fas fa-exclamation-circle"></i> Your Payment Has Been Unsuccessful, Please Try To Make Payment Again
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+</div>
+</div>

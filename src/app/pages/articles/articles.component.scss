@@ -1,0 +1,23 @@
+
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+  color: white;
+}
+a.tm-readmore
+{
+  margin-top: 10px;
+  padding-bottom: 20px;
+  color:black;
+}
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+  color: white;
+}
+.tm-blog:hover  p.tm-readmore{color: #FFFFFF;}
+.main_wrapper.fixed .menu_wrpr ul li img {
+  filter: none;
+}

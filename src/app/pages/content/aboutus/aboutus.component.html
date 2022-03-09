@@ -1,0 +1,22 @@
+<div class="container">
+    <ckeditor [(ngModel)]="aboutUsDesc" [editor]="Editor"
+      (change)="onChange($event)" (ready)="onReady($event)"></ckeditor>
+      <div *ngIf="submitted && !aboutUsDesc" class="invalid-feedback">
+        <div *ngIf="!aboutUsDesc">Data is required</div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="bmd-label-floating">Comment</label>
+            <textarea [(ngModel)]="Comment" class="form-control" rows="5"></textarea>
+            <div *ngIf="submitted && !Comment" class="invalid-feedback">
+              <div *ngIf="!Comment">Comment is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button *ngIf="!AboutUsId" (click)="updateAboutUs()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+      <button *ngIf="AboutUsId" (click)="gotoContentUpdatePage()" class="btn btn-success mb-3">Back</button>
+
+</div>

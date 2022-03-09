@@ -1,0 +1,53 @@
+<a routerLink='dashboard' class="mobile_logo mobile_show"><img class="img-responsive img-rounded" src="../../../assets/images/dashboard/logo.svg" alt=""></a>
+
+<ul class="navbar-nav flex-row desktop_hide" (click)="$event.preventDefault()">
+  <li class="nav-item">
+    <ng-template #sidebarToggleTooltip>
+      Turn on/off <br> sidebar <br>collapsing
+    </ng-template>
+    <a (click)="toggleSidebar('static')"  class="nav-link d-none ml-3 d-lg-flex" [tooltip]="sidebarToggleTooltip"
+      placement="bottom">
+      <i class="la la-bars la-lg"></i>
+      <div class="menu_icon_toggle">
+  <div class="menubar1"></div>
+  <div class="menubar2"></div>
+  <div class="menubar3"></div>
+</div>
+    </a>
+    <a (click)="toggleSidebar('collapse')" class="d-lg-none nav-link" href="#" data-html="true" title="Show/hide<br>sidebar" data-placement="bottom">
+      <span class="rounded rounded-lg text-gray d-md-none"><i class="la la-bars la-lg"></i></span>
+      <i class="ml-3 la la-bars la-lg d-none d-md-block d-lg-none"></i>
+    </a>
+  </li>
+</ul>
+<ul class="navbar-nav flex-row d-md-none float-right">
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <span class="rounded rounded-lg text-gray"><i class="la la-globe la-lg"></i></span>
+    </a>
+  </li>
+</ul>
+<ul class="navbar-nav mr-3 d-none d-md-flex flex-row float-right profile_drop" (click)="$event.preventDefault()">
+    <li class="nav-item dropdown" dropdown placement="bottom right" [autoClose]="true">
+      <a href="#" dropdownToggle class="nav-link dropdown-toggle user_dropdown"
+         id="notifications-dropdown-toggle">
+        <span class="avatar rounded-circle ">
+          <img width="86" height="86" src="./assets/images/user.svg">
+        </span>
+        <span>{{currentUser?.firstName}} {{currentUser?.lastName}}</span>
+      </a>
+      <ul *dropdownMenu class="dropdown-menu user_nv_list dropdown-menu-right">
+        <!-- <li><a class="dropdown-item" href="#"><i class="glyphicon glyphicon-user"></i> &nbsp; My Account</a></li>
+        <li class="dropdown-divider"></li> -->
+        <li><a class="dropdown-item" (click)="logout()"><i class="la la-sign-out"></i> &nbsp; Log Out</a></li>
+      </ul>
+    </li>
+  </ul>
+  <span class="mobile_menu mobile_show">
+    <!-- <i class="la la-bars la-lg"></i> -->
+    <div class="menu_icon_toggle">
+  <div class="dmenubar1"></div>
+  <div class="dmenubar2"></div>
+  <div class="dmenubar3"></div>
+</div>
+  </span>

@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="heading">
+    <h3><strong>Contact Us Section </strong></h3>
+  </div>
+
+  <section class="widget" widget>
+    <form [formGroup]="ContactUsSectionForm">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="bmd-label-floating">Title</label>
+            <input type="text" formControlName="Title" class="form-control" placeholder="Enter Title" autocomplete="off">
+            <div *ngIf="submitted && cuf.Title.errors" class="invalid-feedback">
+              <div *ngIf="cuf.Title.errors.required">Title is required</div>
+              <div *ngIf="cuf.Title.errors.pattern">Please enter valid Title</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="bmd-label-floating">Description</label>
+            <textarea rows="4" formControlName="Description" class="form-control" placeholder="Enter Description" autocomplete="off"></textarea>
+            <div *ngIf="submitted && cuf.Description.errors" class="invalid-feedback">
+              <div *ngIf="cuf.Description.errors.required">Description is required</div>
+              <div *ngIf="cuf.Description.errors.pattern">Please enter valid Description</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="bmd-label-floating">Comment</label>
+            <textarea rows="4" formControlName="Comment" class="form-control" placeholder="Enter Comment" autocomplete="off"></textarea>
+            <div *ngIf="submitted && cuf.Comment.errors" class="invalid-feedback">
+              <div *ngIf="cuf.Comment.errors.required">Comment is required</div>
+              <div *ngIf="cuf.Comment.errors.pattern">Please enter valid Comment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button (click)="updateContactUsSection()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+      <button (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button>
+
+    </form>
+  </section>
+</div>
+

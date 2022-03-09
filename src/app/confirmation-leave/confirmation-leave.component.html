@@ -1,0 +1,14 @@
+<div class="modal-header modal-block-primary">
+  <button type="button" class="close" (click)="action(false)">
+    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+  </button>
+  <h4 class="modal-title">Are you sure?</h4>
+</div>
+<!-- Modal body -->
+<div class="modal-body">
+  <div class="text-center">
+    <h4>Before you close the Tab, please ensure that you have saved your data by clicking on Save As Draft. Are you sure you want to exit with out saving?</h4>
+    <button class="btn btn-sm yes btn-success m-1" (click)="action(true)">Yes</button>
+    <button class="btn btn-sm no btn-danger m-1" data-bs-dismiss="modal" (click)="action(false)">No</button>
+  </div>
+</div>

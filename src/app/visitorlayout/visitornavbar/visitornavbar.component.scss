@@ -1,0 +1,88 @@
+#nav-toggle:focus {
+  outline: none;
+}
+
+#nav-toggle {
+  /* background-color: #6CCA98; */
+}
+
+.btn-primary
+{
+width: 100px;
+margin-left: 38px;
+}
+li[_ngcontent-vvn-c58] a[_ngcontent-vvn-c58] {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+.commissions-navbar {
+  background-color: #b3b3b3 !important;
+  height: 70px;
+  top: 0;
+  color: rgba(230, 11, 11, 0.76);
+  position: fixed;
+  left: 0;
+  z-index: 9;
+  right: 0;
+}
+
+.header-link {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.flex-row {
+  flex-direction: row !important;
+  background-color: #b3b3b3;
+  height :55px;
+  color :white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color:black;
+  text-align: center;
+  padding-top: 22px;
+  padding-right: 25px;
+  padding-bottom: 20px;
+  padding-left: 25px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: white;
+}
+
+.logo {
+  width: 5rem;
+  padding-top: 5px;
+  margin: 0 0 35px;
+  height : 45px;
+  width : 100px;
+}
+
+.logo-link {
+  padding: 0px 2px 0px 4px !important;
+}
+
+.brand-logo {
+  margin-right: 2rem;
+}
+.nav-item {
+  cursor: pointer;
+  font-size: 0.8rem;
+}

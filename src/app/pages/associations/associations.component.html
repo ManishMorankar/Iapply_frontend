@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="association-us">
+  <div class="association-us-title">
+      <div class="row">
+          <h2>Associations</h2>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4"  *ngFor="let association of AssocitionData; let i=index;">
+          <div class="card border-0 mb-xlg">
+            <img [src]="'data:image/jpg;base64,'+association?.imageResult" alt="Image" class="card-img-top card-img" [width]="75" [height]="100">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h3 style="text-align: center;">Find the Job you Love with  <a routerLinkActive="active" [routerLink]=" ['about-us']">IApply</a></h3>
+    </div>
+  </div>
+
+</div>

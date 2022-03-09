@@ -1,0 +1,64 @@
+.invalid-feedback {
+  display: block;
+}
+
+.widget-auth .auth-btn {
+width: 100px;
+}
+.btn btn-inverse auth-btn mb-8
+{
+position: relative;
+padding: 5px 20px;
+text-align: center;
+color: var(--white);
+display: flex;
+align-items: center;
+font-weight: 600;
+justify-content: center;
+transition: all 1s ease;
+width: 398px;
+height: 64px;
+background: #2CBF8C 0% 0% no-repeat padding-box;
+border-radius: 8px;
+font: normal normal normal 16px/44px Poppins;
+text-transform: uppercase;
+}
+.space
+{
+padding-top:20px;
+}
+
+.login_btns a.active {
+background: #FFFFFF 0% 0% no-repeat padding-box;
+font: normal normal 600 20px/25px Poppins;
+letter-spacing: 0px;
+color: #2CBF8C;position: relative;
+}
+.login_btns a.active:before {    content: "";
+position: absolute;
+right: -2px;
+background: url(/assets/images/button_bg.svg);
+width: 30px;
+height: 112px;
+background-repeat: no-repeat;
+}
+
+.login_btns a {position: relative;
+display: flex;
+align-items: center;justify-content: center;
+background: transparent;
+border-radius: 16px;
+width: 147px;
+height: 65px;
+text-align: center;
+font: normal normal 500 20px/25px Poppins;
+letter-spacing: 0px;
+color: #FFFFFF;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.desc
+{
+  color:black;
+}

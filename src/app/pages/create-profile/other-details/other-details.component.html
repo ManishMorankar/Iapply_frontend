@@ -1,0 +1,461 @@
+<!-- <section class="widget"> -->
+  <div class="page_head">
+    <h2>MY PROFILE</h2>
+  </div>
+  <app-wizard></app-wizard>
+
+  <div class="dasboard-cont">
+    <div class="row">
+
+      <div class="d-flex justify-content-between col-md-12"><p class="mb-0">Add/update other details like projects, patents, languages and any other information.</p>    <span class="red-txt small-font text-end">Supports only English content</span></div>
+      <div class="col-md-12">
+      <div class="bg-gray-lighter progress progress-xs mt-3 mb-4 ">
+        <div id="bar" class="progress-bar progress-xs progress-bar-gray-light" style="width: 50%;"></div>
+        </div></div>
+
+
+
+        </div>
+
+
+    <div class="row profile">
+        <!-- Add your Project Details Widget Start -->
+        <div class="col-lg-6 col-12" [class.highlightDiv]="editProject==true">
+
+          <div class="page_sub_head"><p>Add your Project Details</p></div>
+
+          <div class="d-flex justify-content-between w-100 mb-3"><p >(You can add multiple Project Details)</p><span class="pull-right" style="color: green;">Optional</span></div>
+
+
+
+
+        <section class="w-100 float-left" >
+          <form [formGroup]="projectForm">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                      <label for="ProjectTitle">Project Title<b class="red-color"></b></label>
+                   <div class="input-group">   <input type="text" formControlName="ProjectTitle" name="ProjectTitle" id="ProjectTitle" placeholder="Project Title" class="form-control" data-parsley-trigger="change" required="required">
+                      <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['ProjectTitle'].hasError('required')">Project Title is required</span>
+                      <span class="text-danger" *ngIf="pSubmitted && !profileForm.controls['ProjectTitle'].hasError('required') && profileForm.controls['ProjectTitle'].hasError('pattern')">Please enter valid Project Title</span> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+
+                        <label for="ProjectUrl">Project URL<b class="red-color"></b></label>
+                    <div class="input-group">    <input type="url" formControlName="ProjectUrl" name="ProjectUrl" id="ProjectUrl" placeholder="Project URL" class="form-control" data-parsley-trigger="change" required="required">
+                        <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['ProjectUrl'].hasError('required')">Project URL is required</span> -->
+                    </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="ProjectDescription">Project Description<b class="red-color"></b></label>
+                   <div class="input-group">    <textarea rows="4" formControlName="ProjectDescription" name="ProjectDescription" id="ProjectDescription" placeholder="Project Description" class="form-control" data-parsley-trigger="change" required="required">
+                      </textarea>
+                      <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['ProjectDescription'].hasError('required')">Description is required</span> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-right">
+                <button _ngcontent-dth-c304="" *ngIf="editProject" type="button" class="btn btn-success btn-small   draft " (click)="resetProject()">Cancel</button>
+
+                <button type="submit" *ngIf="!editProject" (click)="addProjectDetails()" class="btn btn-success ml-3 btn-small float-right">
+                  Add
+                </button>
+                <button type="submit" *ngIf="editProject" (click)="addProjectDetails()" class="btn btn-success ml-3 btn-small float-right">
+                  Update
+                </button>
+                <!-- <button class="btn btn-default float-right" type="button">
+                  Clear
+                </button> -->
+              </div></div>
+              <!-- <div class="row"> -->
+
+            <!-- </div> -->
+          </form>
+        </section>
+          </div>
+          <!-- Add your Project Details Widget End -->
+
+          <!-- Your Project Details Widget Start -->
+          <div class="col-lg-6 col-12 flex-container project_details_height">
+            <div class="page_sub_head"><p>Project Details Review</p></div>
+            <p class="">You can edit and delete from here</p>
+
+             <section class="round_brdr_box mt-3">
+              <div *ngFor="let project of projectList; let i=index">
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h5><span class="blue-color">{{ project.ProjectTitle }}</span> <span class="edit_links">
+                      <button  class="blue-color" title="Edit" (click)="editProjectDetailsData(project,i, project)"><i class="far fa-edit"></i></button>
+                      <button   class="red-color" (click)="deleteModal(project,i,'projectDetails')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h5>
+
+                  </div>
+
+                </div>
+
+
+
+
+                  <p class="mb-0"><i class="fas fa-globe blue-color"></i> {{ project.ProjectUrl }}</p>
+
+                   <p> {{ project.ProjectDescription }}</p>
+
+                <hr>
+
+              </div>
+        </section>
+          </div>
+          <!-- Your Project Details Widget End -->
+        </div>
+
+        <div class="row profile pt-4">
+        <!-- Add your Patent Details Widget Start -->
+            <div class="col-lg-6 col-12" [class.highlightDiv]="editPatent==true">
+
+              <div class="page_sub_head"><p>Add Your Patent Details</p></div>
+
+              <div class="d-flex justify-content-between w-100 mb-3"><p >(You can add multiple Patent Details)</p><span class="pull-right" style="color: green;">Optional</span></div>
+
+
+
+
+
+            <section class="w-100 float-left" >
+              <form [formGroup]="patentForm">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-holder w-100 p-0 mb-4">
+
+                          <label for="PatentName">Patent Name<b class="red-color"></b></label>
+                        <div class="input-group">    <input type="text" formControlName="PatentName" name="PatentName" id="PatentName" placeholder="Patent Name" class="form-control" data-parsley-trigger="change" required="required">
+                          <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['PatentName'].hasError('required')">Patent Name is required</span>
+                          <span class="text-danger" *ngIf="pSubmitted && !profileForm.controls['PatentName'].hasError('required') && profileForm.controls['PatentName'].hasError('pattern')">Please enter valid Patent Name</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-holder w-100 p-0 mb-4">
+
+
+                            <label for="PatentNumber">Patent Number<b class="red-color"></b></label>
+                        <div class="input-group">    <input type="text" formControlName="PatentNumber" name="PatentNumber" id="PatentNumber" placeholder="Patent Number" class="form-control" data-parsley-trigger="change" required="required">
+                            <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['CompanyName'].hasError('required')">Patent Number is required</span> -->
+                        </div>
+
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-holder w-100 p-0 mb-4">
+
+                          <label for="DateAwarded">Date Awarded<b class="red-color"></b></label>
+                       <div class="input-group">   <input type="date" (change)="setStatus()" formControlName="DateAwarded" name="DateAwarded" id="DateAwarded" placeholder="Date Awarded" class="form-control" data-parsley-trigger="change" required="required">
+                          <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['DateAwarded'].hasError('required')">Date Awarded is required</span>
+                          <span class="text-danger" *ngIf="pSubmitted && !profileForm.controls['DateAwarded'].hasError('required') && profileForm.controls['DateAwarded'].hasError('pattern')">Please enter valid Date Awarded</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-holder w-100 p-0 mb-4">
+
+
+                            <label for="PatentUrl">Patent URL<b class="red-color"></b></label>
+                       <div class="input-group">     <input type="url" formControlName="PatentUrl" name="PatentUrl" id="PatentUrl" placeholder="Patent URL" class="form-control" data-parsley-trigger="change" required="required">
+                            <!-- <span class="text-danger" *ngIf="rf && patentForm.controls['PatentUrl'].hasError('required')">Patent URL is required</span> -->
+                        </div>
+
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-right">
+
+                    <button _ngcontent-dth-c304="" *ngIf="editPatent" type="button" class="btn btn-success btn-small   draft " (click)="resetPatent()">Cancel</button>
+
+                    <button type="submit" *ngIf="!editPatent" (click)="addPatentDetails()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!patentForm.valid" >
+                      Add
+                    </button>
+                    <button type="submit" *ngIf="editPatent" (click)="addPatentDetails()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!patentForm.valid" >
+                      Update
+                    </button>
+                    <!-- <button class="btn btn-default float-right" type="button">
+                      Clear
+                    </button> -->
+                  </div></div>
+                  <!-- <div class="row"> -->
+
+                <!-- </div> -->
+              </form>
+            </section>
+              </div>
+              <!-- Add your Patent Details Widget End -->
+
+              <!-- Your Patent Details Widget Start -->
+              <div class="col-lg-6 col-12 flex-container">
+                <div class="page_sub_head"><p>Patent Details Review</p></div>
+                <p class="">You can edit and delete from here</p>
+
+
+                 <section class="round_brdr_box mt-3 patent_details_review">
+                  <div *ngFor="let patent of patentList; let i=index">
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h5><span class="blue-color">{{ patent.PatentName }}</span> <span class="edit_links">
+                          <button  class="blue-color" title="Edit" (click)="editPatentDetailsData(patent,i, patent.CustomerPatentDetailsId)"><i class="far fa-edit"></i></button>
+                          <button   class="red-color" (click)="deleteModal(patent,i, 'patentDetails')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h5>
+
+                      </div>
+
+                    </div>
+
+
+
+
+                      <p class="mb-2">
+                        <i class="fas fa-globe blue-color"></i> {{ patent.PatentUrl }}
+                      </p>
+
+
+
+                      <p class="mb-2">
+                        Patent Number - {{ patent.PatentNumber }}
+                      </p>
+                      <div class="d-flex justify-content-between   mb-2 ">
+
+                        <span>
+                          <i class="fas fa-square-full small-icon"></i> <span class="gray-color">Date Awarded - </span> {{ patent.DateAwarded | date: 'dd-MMM-yyyy' }}
+                        </span>
+                      </div>
+<hr>
+
+
+                  </div>
+            </section>
+              </div>
+              <!-- Your Patent Details Widget End -->
+            </div>
+
+            <div class="row profile pt-4">
+            <!-- Add Languages you know Widget Start -->
+                <div class="col-lg-6 col-12" [class.highlightDiv]="editLanguage==true">
+
+                  <div class="page_sub_head"><p>Add the Languages You Know</p></div>
+
+                  <div class="d-flex justify-content-between w-100"><p >(You can add multiple Languages)</p></div>
+
+
+
+
+                    <section class="w-100 float-left" >
+                  <form [formGroup]="languageForm">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-holder w-100 p-0 mb-4">
+
+                              <label for="Language">Type your Language<b class="red-color">*</b></label>
+                             <div class="input-group">  <input type="text" formControlName="Language" name="Language" id="Language" placeholder="Language" class="form-control" data-parsley-trigger="change"  maxlength="45" required="required">
+                              <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['Language'].hasError('required')">Language is required</span>
+                              <span class="text-danger" *ngIf="pSubmitted && !profileForm.controls['Language'].hasError('required') && profileForm.controls['Language'].hasError('pattern')">Please enter valid Language</span> -->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-holder w-100 p-0 mb-4">
+
+
+                                <label for="Proficiency">Select Proficiency<b class="red-color">*</b></label>
+                            <div class="input-group">       <select formControlName="ProficiencyId" name="ProficiencyId" id="ProficiencyId" placeholder="Company Name" class="custom-select" data-parsley-trigger="change" required="required">
+                              <option value=0>--Select--</option>
+                              <option *ngFor="let p of proficencyList" value="{{p.id}}">
+                                {{p.name}}
+                              </option>
+                            </select>
+                                <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['Proficiency'].hasError('required')">Proficiency is required</span> -->
+                            </div>
+
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 text-right">
+
+                        <button _ngcontent-dth-c304="" *ngIf="editLanguage" type="button" class="btn btn-success btn-small   draft " (click)="resetLanguage()">Cancel</button>
+
+                        <button type="submit" *ngIf="!editLanguage" (click)="addLanguageDetails()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!languageForm.valid">
+                          Add
+                        </button>
+                        <button type="submit" *ngIf="editLanguage" (click)="addLanguageDetails()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!languageForm.valid">
+                          Update
+                        </button>
+                        <!-- <button class="btn btn-default float-right" type="button">
+                          Clear
+                        </button> -->
+                      </div></div>
+
+                  </form>
+                </section>
+                  </div>
+                  <!-- Add Languages you know Widget End -->
+
+                  <!-- Your Languages Widget Start -->
+                  <div class="col-lg-6 col-12 flex-container">
+                    <div class="page_sub_head"><p>Languages Review</p></div>
+                    <p>You can edit and delete from here</p>
+
+
+                     <section class="round_brdr_box max_height_115">
+                      <div *ngFor="let language of languageList; let i=index">
+
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h6><span >{{ language.Language }} -  {{findProficiency(language.ProficiencyId)}}</span> <span class="edit_links">
+                              <button  class="blue-color" title="Edit" (click)="editLanguagesData(language,i, language.CustomerLanguageId)"><i class="far fa-edit"></i></button>
+                              <button   class="red-color" (click)="deleteModal(language,i, 'language')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h6>
+
+                          </div>
+
+                        </div>
+
+
+
+
+                      </div>
+                </section>
+                  </div>
+                  <!-- Your Languages Widget End -->
+                </div>
+
+                <div class="row profile pt-4">
+                <!-- Add Additional Information Widget Start -->
+                    <div class="col-lg-6 col-12" [class.highlightDiv]="editAdditionalInformation==true">
+
+                      <div class="page_sub_head"><p>Add Additional Information</p></div>
+
+                      <div class="d-flex justify-content-between w-100 "><p >(You can add additional Informaion)</p><span class="pull-right" style="color: green;">Optional</span></div>
+
+
+
+                        <section class="w-100 float-left" >
+                      <form [formGroup]="additionalInformationForm">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-holder w-100 p-0 mb-4">
+
+                                 <label for="AdditionalInformation">Description</label>
+                               <div class="input-group">   <textarea rows="4" formControlName="AdditionalInfo" name="AdditionalInfo" id="AdditionalInfo" placeholder="Additional Information" class="form-control" data-parsley-trigger="change" required="required"></textarea>
+                                  <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['AdditionalInfo'].hasError('required')">Additional Information is required</span> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12 text-right">
+                            <button _ngcontent-dth-c304="" *ngIf="editAdditionalInformation" type="button" class="btn btn-success btn-small   draft " (click)="resetAdditionalInformation()">Cancel</button>
+
+                            <button type="submit" *ngIf="!editAdditionalInformation" (click)="addAdditionalInformation()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!additionalInformationForm.valid">
+                              Add
+                            </button>
+                            <button type="submit" *ngIf="editAdditionalInformation" (click)="addAdditionalInformation()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!additionalInformationForm.valid">
+                              Update
+                            </button>
+                            <!-- <button class="btn btn-default float-right" type="button">
+                              Clear
+                            </button> -->
+                          </div></div>
+                          <!-- <div class="row"> -->
+
+                        <!-- </div> -->
+                      </form>
+                    </section>
+                      </div>
+                      <!-- Add Additional Information Widget End -->
+
+
+
+                      <!-- Your Additional Information Widget Start -->
+                      <div class="col-lg-6 col-12 flex-container">
+
+                        <div class="page_sub_head"><p>Additional Information Review</p></div>
+                      <p>You can edit and delete from here</p>
+
+                         <section class="round_brdr_box max_height_165">
+                          <div *ngFor="let additionalInformation of additionalInformationList; let i=index">
+
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <h5><span class="blue-color">Description</span> <span class="edit_links">
+                                  <button  class="blue-color" title="Edit" (click)="editAdditionalInformationData(additionalInformation,i, additionalInformation.additionalInformationId)"><i class="far fa-edit"></i></button>
+                                  <button   class="red-color" (click)="deleteModal(additionalInformation,i,'additionalData')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h5>
+
+                              </div>
+
+                            </div>
+
+                          <p>
+                                {{ additionalInformation.AdditionalInfo }}</p>
+
+                            <hr>
+
+                          </div>
+                    </section>
+                      </div>
+                      <!-- Your Additional Information Widget End -->
+                    </div>
+
+
+
+
+
+                  </div>
+                  <div class="row mt-3"><div class="col-md-12">
+                    <button type="button" class="btn btn-success pull-left back" (click)="onBack()"><i class="fa fa-backward"></i>&nbsp;
+                        Back
+                    </button>
+
+                    <button type="submit" class="btn btn-primary pull-right ml-2 continue" (click)="onNext('Continue')" *ngIf="!SubscriptionCancel"><i class="fa fa-forward"></i>&nbsp;
+                      Continue
+                    </button>
+                    <button type="button" class="btn btn-success pull-right ml-3 draft" (click)="onNext('Draft')" *ngIf="!SubscriptionCancel"><i class="fas fa-save"></i>&nbsp;
+                      Save as Draft
+                    </button>
+                    <!-- <button type="button" class="btn btn-default pull-right" (click)="onCancel()"><i class="fa fa-close"></i>&nbsp;
+                        Cancel
+                    </button> -->
+                      <!-- </section> -->
+                    </div></div>
+        <!-- <button type="button" class="btn btn-default pull-right" (click)="onCancel()"><i class="fa fa-close"></i>&nbsp;
+            Cancel
+        </button> -->
+          <!-- </section> -->
+          <div class="modal modal_subscription" id="deleteOtherDetails">
+            <div class="modal-dialog modal-dialog-centered ">
+              <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="text-center">
+                    <h3>Are you sure want to delete ?</h3>
+                    <button class="yes btn-sm btn-success m-1" (click)="deleteItemFunc()">Yes</button>
+                    <button class="no btn-sm btn-danger m-1" data-bs-dismiss="modal">No</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>

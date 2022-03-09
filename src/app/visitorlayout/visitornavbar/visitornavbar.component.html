@@ -1,0 +1,42 @@
+
+  <ul class="navbar-nav d-none d-md-flex flex-row">
+      <li class="brand-logo">
+        <a href="#visitor/home" class="logo-link">
+          <img class="logo" src="../../../assets/icon/iApply - Logo 3.3.png">
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="home" routerLinkActive="router-link-active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['who-we-are']" routerLinkActive="active">Who we are</a>
+       </li>
+      <!-- <li class="nav-item">
+       <a [routerLink]="['about-us']" routerLinkActive="active">About Us </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['vision-mission']" routerLinkActive="active">Vision & Mission</a>
+      </li> -->
+      <li class="nav-item">
+        <a [routerLink]="['subscription']" routerLinkActive="active">Subscription</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['marketing-videos']" routerLinkActive="active">Videos</a>
+      </li>
+      <li class="nav-item">
+        <a  [routerLink]="['testimonials']" routerLinkActive="active">Testimonials</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a  [routerLink]="['associations']" routerLinkActive="active">Associations</a>
+      </li> -->
+      <li class="nav-item">
+        <a  [routerLink]="['contact-us']" routerLinkActive="active">Contact Us</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link btn-primary" *ngIf="!currentUser" (click)="gotoLogin()">Login</a>
+        <a class="nav-link btn-primary" *ngIf="currentUser" (click)="onLogout()">Logout</a>
+      </li>
+  </ul>
+

@@ -1,0 +1,143 @@
+<div class="page_head">
+  <h2>MY PROFILE</h2>
+</div>
+<app-wizard></app-wizard>
+<section class="dasboard-cont">
+
+    <div class="row">
+
+        <div class="d-flex justify-content-between col-md-12"><p>Please Read The Consent Form, Terms & Conditions and Privacy Policies.</p> </div>
+
+
+
+
+          </div>
+
+          <div class="page_sub_head"><p>Give Consent</p></div>
+
+    <form [formGroup]="consentForm" (ngSubmit)="onSubmit()">
+
+   <!-- <div class="content option-card"> -->
+       <div class="round_brdr_box mb-4 constent_box_height">
+   <!-- <textarea rows="5" class="boxsizingBorder" [ngModel]="consentData" formControlName="Consent" name="Consent" id="Consent"></textarea>-->
+        <!-- <p>{{consentData}}</p> -->
+        <p>The following conditions will apply to all of the subscribers, related to all and any kind of subscription packages which we offer on our website.</p>
+        <ul class="bullet">
+          <li>I give the rights/permission to iApply E-Commerce Online Services to apply for jobs on behalf of me, wherever the jobs are available, like Internet, Professional Job Sites, Companies Websites, Job Portals, Recruitment Sites and others if applicable. </li>
+          <li>I give the consent/rights/permission to iApply E-Commerce Online Services to share my (personal details, contact details, my picture, complete resume/cv, my social profile links, portfolio and other details) provided me on iApply E-Commerce Online Services portal with the recruiters, Job Posters, HR Managers, Company Owners, Job Portals or wherever the Jobs are available or wherever iApply E-Commerce Online Services intend to apply for me on my behalf.</li>
+          <li>I give agree that I will not hold iApply E-Commerce Online Services accountable for sharing my my (personal details, contact details, my picture, complete resume/cv, my social profile links, portfolio and other details) provided me on iApply E-Commerce Online Services portal with the recruiters, Job Posters, HR Managers, Company Owners, Job Portals or wherever the Jobs.</li>
+          <li>I agree that iApply E-Commerce Online Services will only apply for the real time available jobs on my behalf and does not guarantees/promises that I will get a job or an interview or get my desired salary. </li>
+          <li>I agree that if I subscribe to Standard Package and if the real time jobs are not available in my selected country or countries, then iApply E-Commerce Online Services can distribute my resume/cv to the recruiters/HR managers and owners email ID’s.</li>
+          <li>I agree that if I subscribe to the basic package then iApply E-Commerce Online Services will only distribute my resume/cv to the recruiters/HR managers and owners email ID’s and will not apply for real time jobs. </li>
+          <li>I Agree that I will not hold iApply E-Commerce Online Services accountable, if I get a job or an interview call and the interviewer or that employer misbehaves with me or does not provides me the desired salary or does not pays me on time or terminates me without any reason or any other issues which I might face.</li>
+          <li>I agree that iApply E-Commerce Online Services can keep/store my data into their database and can contact me, and share my details with recruiters, Job Posters, HR Managers, Company Owners, Job Portals or wherever the Jobs are available or wherever iApply E-Commerce Online Services intend to apply for me on my behalf. </li>
+        </ul>
+          <p>iApply E-Commerce Online Services has no control over the quality, safety, or legality of jobs applied to or resumes submitted on behalf of its users/customers/clients and makes no representations about any jobs, resumes, or content. You acknowledge and agree that you are solely responsible for the accuracy, form, and substance of any of your generated content. You further acknowledge that iApply E-Commerce Online Services shall not be responsible for your career decisions. You are solely responsible for the information, opinions, messages, comments, photos, videos, graphics, sounds, and other content or material that you submit, upload, post or otherwise make available on or through the website and/or the services. You may not upload, post or otherwise make available on the website any material protected by copyright, trademark, or any other proprietary right without the express permission of the owner of such copyright, trademark or other proprietary right owned by a third party, and the burden of determining whether any material is protected by any such right is on you. You shall be solely liable for any damage resulting from any infringement of copyrights, trademarks, proprietary rights, violation of contract, privacy or publicity rights or any other harm resulting from any content that you provide or make. You have full responsibility for all content you create and submit, including its legality, reliability, and appropriateness. Unless otherwise explicitly stated herein or in our Privacy Policy, you agree that any Client Content submitted, uploaded, posted, or otherwise made available by you in connection with your use of the Site and/or Services is provided on a non-proprietary and non-confidential basis. You hereby grant to iApply E-Commerce Online Services a non-exclusive, perpetual, irrevocable, royalty-free, fully paid-up, worldwide license (including the right to sublicense through multiple tiers) to use, reproduce, process, adapt, publicly perform, publicly display, modify, prepare compilations and derivative works of, publish, transmit and distribute your Client Content, or any portion thereof, and to publish, transmit, distribute and sell compilations and derivative works of your Client Content, in any form, medium or distribution method now known or hereafter existing, known or developed. iApply E-Commerce Online Services may modify or adapt your Client Content in order to transmit, display or distribute them over computer networks and in various media and/or make changes to your Client Content as necessary to conform and adapt them to any requirements or limitations of any networks, devices, services or media. You agree to pay all royalties, fees, damages and any other monies owing any person by reason of any Client Content posted by you to or through the website</p>
+    </div>
+   <!-- </div> -->
+   <!-- <div class="form-check abc-checkbox abc-checkbox-primary">
+    <input type="checkbox" [(ngModel)]="TermsCondition" formControlName="TermsCondition" name="TermsCondition" id="TermsCondition" class="form-check-input" (change)="toggleChecboxValue($event)">
+    <label class="form-check-label"  for="TermsCondition">
+      consent
+    </label>
+</div>
+<div class="form-check abc-checkbox abc-checkbox-primary">
+  <input type="checkbox" [(ngModel)]="TermsCondition" formControlName="TermsCondition" name="TermsCondition" id="TermsCondition" class="form-check-input" (change)="toggleChecboxValue($event)">
+  <label class="form-check-label" for="TermsCondition">
+    Data Protection
+  </label>
+</div> -->
+<p>I agree to ;</p>
+<div class="col-md-12">
+    <div class="form-check abc-checkbox abc-checkbox-primary">
+    <input type="checkbox" [(ngModel)]="Consent" [checked]="myModel" formControlName="Consent" name="Consent" id="Consent" class="form-check-input" (change)="toggleChecboxValue($event)">
+    <label class="form-check-label green-color" for="Consent"  data-bs-toggle="modal">
+        *Consent
+    </label></div>
+    <div class="form-check abc-checkbox abc-checkbox-primary">
+  <input type="checkbox" [(ngModel)]="TermsCondition" [checked]="termsConditionModel" formControlName="TermsCondition" name="TermsCondition" id="TermsCondition" class="form-check-input" (change)="toggleTermsCondition($event)">
+      <!-- <label class="form-check-label" for="TermsCondition"  data-bs-toggle="modal" data-bs-target="#TermsAndConditions">
+          I agree on the terms and conditions
+     </label> -->
+      <label class="form-check-label green-color" for="TermsCondition"  data-bs-toggle="modal" data-bs-target="#TermsAndConditions">
+        *Terms and Conditions
+    </label>
+    </div>
+    <div class="form-check abc-checkbox abc-checkbox-primary">
+      <input type="checkbox" [(ngModel)]="DataProtection" [checked]="dataProtectionModel" formControlName="DataProtection"  name="DataProtection" id="DataProtection" class="form-check-input" (change)="toggleDataProtectione($event)">
+     <label class="form-check-label green-color" for="DataProtection"  data-bs-toggle="modal" data-bs-target="#DataProtectionPop"  >
+      *Privacy Policy
+  </label>
+  </div>
+   </div>
+    </form>
+
+<div class="row"><div class="col-md-12">
+
+    <button type="submit" class="btn btn-primary pull-right ml-2 continue" (click)=" onSubmit()"  [disabled]="!consentForm.valid">
+      Accept & Continue
+    </button>
+    <!-- <button type="button" class="btn btn-default pull-right" (click)="onCancel()"><i class="fa fa-close"></i>&nbsp;
+        Cancel
+    </button> -->
+      <!-- </section> -->
+    </div></div>
+
+
+</section>
+
+
+<div class="modal fade" id="SelectPlanCont" >
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+
+  <div class="modal-dialog  modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+
+      </div>
+      <!-- <div class="modal-body">
+       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,</p>
+        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,</p>
+        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </div> -->
+      <div class="modal-body"><app-selectplan></app-selectplan></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="TermsAndConditions" tabindex="-1"   aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Terms and Conditions</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+        </div>
+        <!-- <div class="modal-body">
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,</p>
+          <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,</p>
+          <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div> -->
+        <div class="modal-body constent_box_height"  [innerHTML]="termsAndConditionsData?.htmlContent"></div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="DataProtectionPop" tabindex="-1"   aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Privacy Policy</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <!-- <div class="modal-body">
+             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,</p>
+            <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,</p>
+              <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>-->
+         <div class="modal-body constent_box_height"  [innerHTML]="privacyPolicyData?.description">
+          </div>
+      </div>
+      </div>

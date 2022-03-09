@@ -1,0 +1,40 @@
+.invalid-feedback {
+  display: block;
+}
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+  color: white;
+}
+.main_wrapper.fixed .menu_wrpr ul li img {
+  filter: none;
+}
+.AddressSpace
+{
+  padding-top: 20px;
+}
+.SendEnquiry:hover:before {opacity: 1; -webkit-transform: scale(1,1); transform: scale(1,1); }
+.SendEnquiry {
+  position: relative;
+    padding: 5px 20px;
+    text-align: center;
+    color: var(--white) !important;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    justify-content: center;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    width: 213px;
+    height: 68px;
+    background: #2CBF8C 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    font: normal normal normal 18px/44px Poppins;
+    text-transform: uppercase;
+    float:right;
+}
+.SendEnquiry:before ,.common_btn1:before{content: ''; position: absolute;  border-radius: 8px;top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0; background-color: rgba(255,255,255,0.3); -webkit-transition: all .4s; -moz-transition: all .4s; -o-transition: all .4s; transition: all .4s; -webkit-transform: scale(0.2,1); transform: scale(0.2,1); }
+.SendEnquiry:hover{color: var(--white);}

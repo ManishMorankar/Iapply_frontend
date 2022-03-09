@@ -1,0 +1,479 @@
+<div class="page_head mb-4 pb-4">
+  <h2>ACCOUNT SETTINGS</h2>
+</div>
+
+
+
+    <div class="row mt-3">
+       <div class="col-md-6 mb-4 flex-container">
+             <div class="subhead mb-4">
+                <h4>PAYMENT DETAILS </h4>
+             </div>
+
+
+                <div class="round_brdr_box border-0 bg-white">
+                   <h5>My Saved Cards</h5>
+                   <div class="saved_cards mb-4" *ngFor="let data of CardData;let i = index;">
+
+                    <label class="form-check-label" for="SavedCard01">
+                      <i class="{{CardData.cardType}}"></i>XXXX-XXXX-XXXX- {{CardData[i].last4Digits.substring(16, 6)}}
+                      <input type="radio" id="SavedCard01" checked="checked" name="radio">
+                      <span class="checkmark"></span>
+                   </label>
+                   <span class="edit_links"><a (click)="DeleteCardDetails()" class="remove_crd_btn cancel_btn w-auto d-inline-flex pe-2 ps-2"> <i class="far fa-times-circle"></i></a></span>
+                 </div>
+
+
+
+                <div class="w-100 text-end mb-2 mt-3">
+                   <a [routerLink]="['../add-card']" class="continue w-auto d-inline-flex">ADD NEW CARD DETAILS</a>
+                </div>
+
+
+
+             </div>
+          </div>
+
+       <div class="col-md-6 mb-4 flex-container">
+         <div class="subhead mb-4">
+            <h4>UPDATE PASSWORD</h4>
+         </div>
+         <div class="round_brdr_box border-0 bg-white">
+         <form [formGroup]="updatePasswordForm">
+
+              <div class="row">
+                 <div class="col-md-12 pt-3">
+                    <div class="form-holder w-100 p-0 mb-4">
+                    <label>Current Password</label>
+                    <div class="input-group">
+                       <span>
+                         <img src="./assets/images/user_lock.svg">
+                       </span>
+                      <!-- <input name="pippin_user_pass" id="pippin_user_pass" class="required form-control" type="password" placeholder="6+ Strong Character"> -->
+                      <input name="OldPassword" id="OldPassword" class="required form-control" type="password" formControlName="OldPassword" placeholder="6+ Strong Character" required="required">
+                      <div *ngIf="submitted && rf.OldPassword.errors" class="invalid-feedback">
+                       <div *ngIf="rf.OldPassword.errors.required">Current Password is required</div>
+                       <!-- <div *ngIf="rf.OldPassword.errors.pattern">Please enter correct Old Password</div> -->
+                     </div>
+                   </div>
+                </div>
+                </div>
+                <div class="col-md-6 ">
+                 <div class="form-holder w-100 p-0 mb-4">
+                 <label>New Password</label>
+                 <div class="input-group">
+                    <span>
+                     <img src="./assets/images/user_lock.svg">
+                   </span>
+                      <!-- <input name="pippin_user_pass" id="pippin_user_pass" class="required form-control" type="password" placeholder="6+ Strong Character"> -->
+                      <input type="password" placeholder="Enter the Password" formControlName="Password" [(ngModel)]="account.password"  class="required form-control" autocomplete="off" required="required">
+                       <div *ngIf="submitted && rf.Password.errors" class="invalid-feedback">
+                          <div *ngIf="rf.Password.errors.required">New Password is required</div>
+                          <div *ngIf="rf.Password.errors.pattern">A minimum 8 characters password contains a combination of uppercase and lowercase letter and number</div>
+                         </div>
+                         <app-password-strength-bar [passwordToCheck]="account.password" [barLabel]="barLabel">  </app-password-strength-bar>
+                       </div>
+                    </div>
+                    </div>
+                    <div class="col-md-6 ">
+                     <div class="form-holder w-100 p-0 mb-4">
+                     <label>Retype Password</label>
+                     <div class="input-group">
+                        <span>
+                         <img src="./assets/images/user_lock.svg">
+                       </span>
+                      <!-- <input name="pippin_user_pass" id="pippin_user_pass" class="required form-control" type="password" placeholder="6+ Strong Character"> -->
+                      <input type="password" placeholder="Enter the Password"
+                                   formControlName="ConfirmPassword" class="form-control" autocomplete="off"
+                                   (keyup.enter)="sendOTP()" required="required">
+                      <div *ngIf="submitted && (rf?.ConfirmPassword?.errors || !isPasswordMatch())" class="invalid-feedback">
+                          <div *ngIf="rf?.ConfirmPassword?.errors?.required">Confirm password is required</div>
+                          <div *ngIf="!rf?.ConfirmPassword?.errors?.required && !isPasswordMatch()">Password mismatched</div>
+                         </div>
+                       </div>
+                    </div>
+                    </div>
+                    <div class="col-md-12 text-end mb-2">
+                   <!-- <button data-bs-toggle="modal"  [disabled]="!updatePasswordForm.valid" data-bs-target="#otp" class="continue w-auto d-inline-flex" (click)="sendOTP()" type="submit" id="UpdatePasswordOTPSubmitButton" >UPDATE PASSWORD</button> -->
+                   <button class="continue w-auto d-inline-flex" id="LoginSubmitButton" type="submit" (click)="sendOTP()">Update Password</button>
+                </div>
+
+                <div class="row show_otp" [hidden]="!showOTP">
+                 <div class="col-md-12">
+                   <div class="form-group">
+                     <h4 class="text-center mt-3">Enter OTP</h4>
+
+                     <div id="otp" class="otp inputs d-flex flex-row justify-content-center mt-2 mb-2">
+                       <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" placeholder="0" (paste)="onPaste($event)"/>
+                       <input class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" placeholder="0" (paste)="onPaste($event)"  />
+                       <input class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" placeholder="0" (paste)="onPaste($event)" />
+                       <input class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" placeholder="0" (paste)="onPaste($event)" />
+
+
+                     </div>
+
+
+
+                     <!-- <input type="text" formControlName="otp" class="form-control" autocomplete="off"> -->
+                     <div *ngIf="otpSubmitted && rf.otp.errors" >
+                       <div *ngIf="rf.otp.errors.required"></div>
+                       <div *ngIf="rf.otp.errors.pattern">Please enter valid OTP</div>
+                     </div>
+                   </div>
+                   <div class="row justify-content-center mt-2">
+                     <div class="col-md-12">
+                       <button id="pippin_login_submit" class="common_btn text-white border-0 w-100" type="button"
+                         (click)="updatePassword()">ChangePassword</button>
+                     </div>
+                     <h5 class="mt-3 text-right countdown_timer">Resend OTP <span id="time" class="countdown red-color">00:00</span></h5>
+                     <div class="col-md-12 mt-3">
+                       <button class="common_btn resend_otp_btn text-white border-0 w-100 back" type="submit"
+                         (click)="sendOTP()">Resend OTP</button>
+                     </div>
+                   </div>
+                   </div>
+                   </div>
+             </div>
+          <!-- </div> -->
+          </form>
+       </div>
+
+       <!-- <div class="col-md-6 mb-4 ">
+         <div class="subhead mb-4">
+            <h4>MANAGE SUBSCRIPTIONS</h4>
+         </div>
+      <div class="round_brdr_box border-0 bg-white">
+         <div class="row">
+            <div class="col-md-12 pt-3">
+                <div class="d-flex justify-content-between">
+                 <h5 class="w-100">My currently subscribed plan <span class="float-right green-color">{{SubscrptionPlan}}</span></h5>
+
+                      </div>
+                </div>
+            <div class="col-md-12 text-right mb-2 mt-3">
+               <a href="" data-bs-toggle="modal" data-bs-target="#select_plan" class="continue w-auto d-inline-flex pe-2 ps-2 me-2">CHANGE SUBSCRIPTION PLAN</a>
+              <a [routerLink]="['../selectPlan']" class="continue w-auto d-inline-flex pe-2 ps-2 me-2">RENEW PLAN</a>
+              <a (click)="changeSubscription()" style="color: white;" class="continue w-auto d-inline-flex pe-2 ps-2 me-2">CHANGE SUBSCRIPTION PLAN</a>
+              <h5 class="w-100" *ngIf="originalSubscriptionStatus=='Cancel'">Your subscription will be canceled on {{subscriptionEndDate | date:"d MMM y"}}</h5>
+                <a href="" data-bs-toggle="modal" data-bs-target="#cancel_subscription_survey" class="cancel_btn w-auto d-inline-flex pe-2 ps-2" *ngIf="originalSubscriptionStatus!='Cancel'">CANCEL SUBSCRIPTION</a>
+            </div>
+             </div>
+          </div>
+       </div> -->
+</div><div class="row mt-3">
+
+
+
+       <!-- <div class="col-md-6 mb-4 " *ngIf="paymentMethod=='Offline'"> -->
+        <div class="col-md-6 mb-4 ">
+         <div class="subhead mb-4">
+            <h4>OFFLINE PAYMENT RECEIPT</h4>
+         </div>
+      <div class="round_brdr_box border-0 bg-white">
+         <div class="row">
+            <form id="file-upload-form" action="#">
+               <input id="file-upload" type="file" name="fileUpload" type="file" (change)="selectFile($event)" multiple="multiple">
+               <label for="file-upload" class="settings_upload" id="file-drag">
+                 <div class=" w-100">
+                  <span class="d-flex align-items-center blue-color justify-content-center mb-3" style="font-size:30px;">
+                   <i class="fas fa-cloud-upload-alt"></i></span>
+
+                     <span id="file-upload-btn" class="submit ripple-theme small">Drag File to attach, or <span class="text-success">browse</span></span>
+                     <p class="certificates_upload text-center mt-0 text-center">PDF, JPG, PNG, GIF (Max 15 mb)</p>
+                  </div>
+               </label>
+               <progress id="file-progress" value="0">
+                <span>0</span>%
+             </progress>
+             <output for="file-upload" id="messages"></output>
+          </form>
+          <div class="col-md-12">
+         <table class="table detail_table wth_round">
+           <thead>
+              <tr>
+                 <th>File name</th>
+                 <th>Uploaded date</th>
+                 <th>Status</th>
+
+              </tr>
+           </thead>
+           <tbody>
+              <!-- <tr>
+                 <td>File name 1</td>
+                 <td>20-feb-2021</td>
+                 <td>Accepted</td>
+              </tr>
+              <tr>
+                 <td>File name 1</td>
+                 <td>20-feb-2021</td>
+                 <td>Accepted</td>
+              </tr> -->
+              <tr *ngFor="let offlinePaymentReceipt of offlinePaymentReceiptData; let i=index">
+                 <!-- {{getFileName(OtheAttachment.documentPath)}} -->
+               <td><a [href]="offlinePaymentReceipt?.downloadLink">{{ getFileName(offlinePaymentReceipt?.recepitPath) }}</a></td>
+               <td>{{ offlinePaymentReceipt?.addedOn | date:"d-MMM-y"  }}</td>
+               <td>{{ offlinePaymentReceipt?.status }}</td>
+            </tr>
+           </tbody>
+         </table>
+         <!-- <h6 class="mt-4">Please upload your payment receipt here. It will take 3 to 5 working days to Validate your payment.</h6> -->
+       </div>
+
+         </div>
+      </div>
+   </div>
+   <div class="col-md-6 mb-4 ">
+     <div class="subhead mb-4">
+        <h4>MANAGE SUBSCRIPTION</h4>
+     </div>
+  <div class="round_brdr_box border-0 bg-white">
+     <div class="row">
+        <div class="col-md-12 pt-3">
+            <div class="d-flex justify-content-between">
+             <h5 class="w-100">My currently subscribed plan <span class="float-right green-color mbl_pull_left1">{{SubscrptionPlan}}</span></h5>
+
+                  </div>
+            </div>
+        <div class="col-md-12 text-right mb-2 mt-3">
+          <!-- <a href="" data-bs-toggle="modal" data-bs-target="#select_plan" class="continue w-auto d-inline-flex pe-2 ps-2 me-2">CHANGE SUBSCRIPTION PLAN</a>  -->
+          <!-- <a [routerLink]="['../selectPlan']" class="continue w-auto d-inline-flex pe-2 ps-2 me-2">RENEW PLAN</a> -->
+          <a  href=""  data-bs-toggle="modal"   data-bs-target="#changeSubscriptionPop" *ngIf="notEligibleForPlanChange== false" class="continue w-auto d-inline-flex pe-2 ps-2 me-2 change_plan">CHANGE SUBSCRIPTION PLAN</a>
+          <a href="" data-bs-toggle="modal" data-bs-target="#confirmationcanclesubcribtion" class="cancel_btn w-auto d-inline-flex pe-2 ps-2" *ngIf="originalSubscriptionStatus!='Cancel'">CANCEL SUBSCRIPTION</a>
+          <h5 class="w-100" *ngIf="originalSubscriptionStatus=='Cancel'">Your subscription will be cancelled on {{subscriptionEndDate | date:"d MMM y"}}</h5>
+
+        </div>
+         </div>
+      </div>
+   </div>
+
+    </div>
+    <!-- <div class="btm_btn mt-4">
+       <div class="d-flex justify-content-between"> -->
+          <!-- <div>
+             <a class="back" (click)="onBack()">BACK</a>
+          </div> -->
+          <!-- <div class="d-flex justify-content-end">
+             <a href="" class="draft me-3">SAVE AS DRAFT</a>
+             <a href="" class="continue">CONTINUE</a>
+          </div> -->
+       <!-- </div>
+    </div> -->
+ <!-- </div>
+</div> -->
+
+
+<div class="modal fade" id="confirmationcanclesubcribtion" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+
+ <div class="modal-dialog  modal-dialog-centered ">
+   <div class="modal-content">
+     <div class="modal-body" id="data">
+        <h5 class="text-center mt-3 mb-3">Are you Sure you want to cancel your subscription?<br><br>
+
+
+
+If yes, then please note that you will keep on getting the services till the last day of your subscription period. Once your subscription expires, your account will be deactivated.
+<br><br>
+
+
+We wish to see you again in the future. Best of Luck!</h5>
+        <div class="col-md-12 text-center mb-2 mt-3">
+           <!-- <a href="" data-bs-toggle="modal" data-bs-target="#select_plan" class="continue btn-small d-inline-flex pe-2 ps-2 me-2">Yes</a>  -->
+           <!-- <a [routerLink]="['../selectPlan']" class="continue w-auto d-inline-flex pe-2 ps-2 me-2">RENEW PLAN</a> -->
+           <a href=""  data-bs-toggle="modal" id="YesCancle" data-bs-target="#cancel_subscription_survey" class="continue btn-small d-inline-flex pe-2 ps-2 me-2">Yes</a>
+           <a href=""  data-bs-dismiss="modal" id="NoCancle" aria-label="Close" class="cancel_btn btn-small d-inline-flex pe-2 ps-2">No</a>
+
+         </div>
+     </div>
+
+   </div>
+ </div>
+
+</div>
+<div class="modal fade" id="changeSubscriptionPop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+
+ <div class="modal-dialog  modal-dialog-centered ">
+   <div class="modal-content">
+     <div class="modal-body confirm_msg_wrpr">
+        <h5 class="text-center mt-3 mb-3 confirm_msg">Are you sure, want to change Subscription?</h5>
+        <div class="col-md-12 text-center mb-2 mt-3 ">
+           <!-- <a href="" data-bs-toggle="modal" data-bs-target="#select_plan" class="continue btn-small d-inline-flex pe-2 ps-2 me-2">Yes</a>  -->
+           <!-- <a [routerLink]="['../selectPlan']" class="continue w-auto d-inline-flex pe-2 ps-2 me-2">RENEW PLAN</a> -->
+           <button type="button" id="ChangePlan" type="submit" (click)="ChangeSubscriptionOTP()" class="continue btn-small d-inline-flex pe-2 ps-2 me-2">Yes</button>
+           <button type="button" id="ChangeNoPlan" data-bs-dismiss="modal" aria-label="Close" class="cancel_btn btn-small d-inline-flex pe-2 ps-2">No</button>
+
+         </div>
+         <div class="row show_otp" [hidden]="!showOTP1">
+           <div class="col-md-12">
+             <div class="form-group">
+               <h4 class="text-center mt-3">Enter OTP</h4>
+
+               <div id="otp1" class="otp inputs d-flex flex-row justify-content-center mt-2 mb-2">
+                 <input class="m-2 text-center form-control rounded" type="text" id="Five" maxlength="1" placeholder="0" (paste)="onPaste1($event)"/>
+                 <input class="m-2 text-center form-control rounded" type="text" id="Six" maxlength="1" placeholder="0" (paste)="onPaste1($event)"  />
+                 <input class="m-2 text-center form-control rounded" type="text" id="Seven" maxlength="1" placeholder="0" (paste)="onPaste1($event)" />
+                 <input class="m-2 text-center form-control rounded" type="text" id="Eight" maxlength="1" placeholder="0" (paste)="onPaste1($event)" />
+
+
+               </div>
+
+
+
+               <!-- <input type="text" formControlName="otp" class="form-control" autocomplete="off"> -->
+               <div *ngIf="otpSubmitted && rf.otp.errors" >
+                 <div *ngIf="rf.otp.errors.required"></div>
+                 <div *ngIf="rf.otp.errors.pattern">Please enter valid OTP</div>
+               </div>
+             </div>
+             <div class="row justify-content-center mt-2">
+               <div class="col-md-12">
+                 <button id="" class="common_btn text-white border-0 w-100" type="button"
+                   (click)="ChangeSubscriptionLastOTP()">Change Subscription</button>
+               </div>
+               <h5 class="mt-3 text-right countdown_timer">Resend OTP <span id="time3" class="countdown red-color">00:00</span></h5>
+               <div class="col-md-12 mt-3">
+                 <button class="common_btn resend_otp_text-white border-0 w-100 back" type="submit" id="ResendOtp"
+                   (click)="ChangeSubscriptionOTP()">Resend OTP</button>
+               </div>
+             </div>
+             </div>
+             </div>
+     </div>
+
+   </div>
+ </div>
+
+</div>
+
+
+<div class="modal fade" id="cancel_subscription_survey" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <form [formGroup]="FeedbackForm">
+ <div class="modal-dialog  modal-dialog-centered ">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="staticBackdropLabel">Cancel Subscription Survey</h5>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+     </div>
+     <div class="modal-body">
+      <p>Mandatory To Select Any One Option, If Other Is Selected Then Comment Section In Mandatory.</p>
+      <div class="form-check pl-0">
+        <input type="radio"  name="FeedbackTitle" id="FacingTechnical" value="Facing Technical Issue" formControlName="FeedbackTitle">
+        <label class="form-check-label pl-2" for="FacingTechnical">
+           Facing Technical Issue
+        </label>
+      </div>
+      <div class="form-check pl-0">
+        <input type="radio" name="FeedbackTitle" id="TooExpensive"  value="Too Expensive" formControlName="FeedbackTitle">
+        <label class="form-check-label pl-2" for="TooExpensive">
+           Too Expensive
+        </label>
+      </div>
+      <div class="form-check pl-0">
+        <input type="radio" name="FeedbackTitle" id="SwitchingToAnother" value="Switching to Another Product" formControlName="FeedbackTitle">
+        <label class="form-check-label pl-2" for="SwitchingToAnother">
+           Switching to Another Product
+        </label>
+      </div>
+      <div class="form-check pl-0">
+        <input type="radio" name="FeedbackTitle" id="GotTheJobiApply" value="Got the Job from iApply" formControlName="FeedbackTitle">
+        <label class="form-check-label pl-2" for="GotTheJobiApply">
+           Got the Job from iApply
+        </label>
+      </div>
+      <div class="form-check pl-0">
+        <input type="radio" name="FeedbackTitle" id="GotTheJobAnother" value="Got the Job from another Job Portal" formControlName="FeedbackTitle">
+        <label class="form-check-label pl-2" for="GotTheJobAnother">
+           Got the Job from another Job Portal
+        </label>
+      </div>
+      <div class="form-check pl-0">
+        <input type="radio" name="FeedbackTitle" id="Other" value="Other" formControlName="FeedbackTitle">
+        <label class="form-check-label pl-2" for="Other">
+           Other
+        </label>
+      </div>
+
+
+
+
+
+
+           <div class="mb-4 mt-4">
+                             <textarea formControlName="Description" class="form-control"></textarea>
+                          </div>
+                          <div class="text-center">
+                          <button class="continue w-auto d-inline-flex me-2" (click)="cancelSubscription()" data-bs-dismiss="modal" aria-label="Close" type="submit">SUBMIT</button>
+                          <button class="cancle w-auto d-inline-flex " data-bs-dismiss="modal" aria-label="Close" type="button">CANCEL</button>
+                       </div>
+
+     </div>
+
+   </div>
+ </div>
+</form>
+</div>
+
+<div class="modal fade" id="select_plan" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+           <div class="modal-content">
+              <div class="modal-body">
+                 <h4 class="slect_head modal-title text-center">Select Your Plan</h4>
+                 <div class="row align-items-center">
+                    <div class="col-lg-6 mt-4">
+                     <div class="">
+                     <div class=" price_box fr_box">
+                           <div class="price_details text-center mb-3">
+                           <h5>Basic </h5>
+                             <h4 class="d-flex align-items-center justify-content-center flex-column">
+                               <p class="mb-0 price_main">$30<span></span></p></h4>
+                               <p class="price_month">Billed Monthly</p>
+                           </div>
+                           <ul>
+                             <!-- <li>AI Will Distribute CV to 2,000 Authentic HR Managers & Recruiters</li> -->
+                             <li>Artificial Intelligence powered automated CV Distribution to 2,000 Authentic HR Managers &amp; Recruiters Email.</li>
+                             <li>Upon the package renewal, 2,000 CV Distribution will be done to new and different authentic emails.</li>
+                             <li>Select 1 Preferred Country </li>
+                             <li>Select 1 Preferred Job Title</li>
+                             <li>One Click Resume Submission</li>
+                             <li>No Spam Emails</li>
+                             <li>User Dashboard &amp; Analytics</li>
+                             <li>Cancel Subscription at Any time</li>
+                           </ul>
+                           <div class="d-flex align-items-center justify-content-center">
+                           <a href="" class="coming_soon d-flex align-items-center justify-content-center">Get Started</a>
+                         </div>
+                       </div>
+                       </div>
+                     </div>
+                     <div class="col-lg-6 col-md-6 mt-4">
+                        <div class="">
+                       <div class=" price_box fr_box">
+                             <div class="price_details text-center mb-3">
+                             <h5>Standard</h5>
+                               <h4 class="d-flex align-items-center justify-content-center flex-column">
+                                 <p class="mb-0 price_main">$45<span></span> </p></h4>
+                               <p class="price_month">Billed Monthly</p>
+                             </div>
+                             <ul>
+                               <li>Automated Applying Jobs by Artificial Intelligence</li>
+                               <li>Applying Upto 4,000 Realtime Available Jobs</li>
+                               <li>Select Upto 3 Preferred Countrie</li>
+                               <li>Select Upto 3 Preferred Job Titles</li>
+                               <li>User Dashboard &amp; Analytics</li>
+                               <li>Jobs Submission Analytics &amp; Notifications</li>
+                               <li>Unlimited CV distribution, In case of the non-availability of the Realtime Job in the preferred country</li>
+                               <li>Cancel Subscription at Anytime</li>
+                               <!-- li>Automated Applying Realtime Jobs by Artificial Intelligence</li>
+                               <li>Upto 4,000 Realtime Available Jobs</li>
+                               <li>Applying on all the channels, where Jobs are Posted</li> -->
+                             </ul>
+                             <div class="d-flex align-items-center justify-content-center">
+                             <a href="" class="coming_soon d-flex align-items-center justify-content-center">Get Started</a>
+                             </div>
+                         </div>
+                     </div>
+                     </div>
+                  </div>
+              </div>
+           </div>
+        </div>
+     </div>

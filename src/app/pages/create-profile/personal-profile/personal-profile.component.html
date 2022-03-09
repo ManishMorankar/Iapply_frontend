@@ -1,0 +1,401 @@
+
+<!-- <section class="widget"> -->
+  <div class="page_head">
+    <h2>MY PROFILE</h2>
+  </div>
+  <app-wizard></app-wizard>
+  <div class="dasboard-cont">
+    <div class="row">
+
+      <div class="d-flex justify-content-between col-md-12"><p class="mb-0">Add/Update your personal & contact information.</p>    <span class="red-txt small-font text-end">Supports only English content</span></div>
+      <div class="col-md-12">
+      <div class="bg-gray-lighter progress progress-xs mt-3 mb-4 ">
+        <div id="bar" class="progress-bar progress-xs progress-bar-gray-light" style="width: 20%;"></div>
+        </div></div>
+
+
+
+        </div>
+
+      <div class="row profile">
+
+        <!-- Personal Information Widget Start -->
+        <div class="col-lg-6 col-12">
+            <div class="page_sub_head mb-4"><p>Personal Information</p></div>
+            <div class="w-100 float-left">
+          <form [formGroup]="personalProfileForm">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group"><div class="row">
+                  <div class="col-md-6">
+                  <div class="fileinput fileinput-new" data-provides="fileinput" style="position: relative;">
+                    <div class="fileinput-new thumbnail" data-trigger="fileinput" style="height: 120x;" >
+                      <img alt="profile image" width="120" height="120" fixed [src]="getProfileImage()">
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 120x; max-height: 120x;"></div>
+                    <div  style="width:0; height:0;">
+                      <span class="btn btn-default btn-file btn-image-file blue-color">
+                        <span class="fileinput-new delete-image blue-color"><i class="fas fa-upload"></i></span>
+                        <span class="fileinput-exists delete-image blue-color"><i class="far fa-edit"></i></span>
+                        <input type="file" name="..." accept="image/jpeg,image/x-png" (change)="onFileChange($event)"  >
+                      </span>
+                      <a (click)="removeFile()" class="fileinput-exists delete-image" data-dismiss="fileinput"><i class="far fa-trash-alt" title="Delete"></i></a>
+                    </div>
+                  </div>
+                  </div> </div>
+                </div>
+                <div class="w-100">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="BirthDate">Date of Birth<b class="red-color">*</b></label>
+                   <div class="input-group">
+                     <input type="date" formControlName="BirthDate" name="BirthDate" id="BirthDate" data-date="" data-date-format="DD MMMM YYYY" value="2015-08-09" (change)="setStatus()"  placeholder="dd-mm-yyyy" class="form-control" data-parsley-trigger="change" required="required">
+
+                    <div *ngIf="submitted && personalInfo.BirthDate.errors" class="invalid-feedback">
+                      <div *ngIf="personalInfo.BirthDate.errors.required">Birth Date is required</div>
+                      <div *ngIf="personalInfo.BirthDate.errors.pattern">Please enter valid Birth Date</div>
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+
+                <div class="form-holder w-100 p-0 mb-4">
+                  <label for="FirstName">First Name<b class="red-color">*</b></label>
+                  <div class="input-group">
+                    <input type="text" formControlName="FirstName" name="FirstName" id="FirstName" placeholder="First Name"  class="form-control" maxlength="45" data-parsley-trigger="change" required="required" >
+
+                    <div *ngIf="submitted && personalInfo.FirstName.errors" class="invalid-feedback">
+                      <div *ngIf="personalInfo.FirstName.errors.required">First Name is required</div>
+                      <div *ngIf="personalInfo.FirstName.errors.pattern">Please enter valid First Name</div>
+                    </div>
+                      </div>
+               </div>
+
+
+
+                  <div class="form-holder w-100 p-0 mb-4">
+
+
+                    <label for="FirstName">Middle Name</label>
+                   <div class="input-group">
+                     <input type="text" formControlName="MiddleName" name="MiddleName" id="MiddleName" placeholder=" Middle Name" class="form-control" maxlength="45" data-parsley-trigger="change">
+
+                    <!-- <div *ngIf="submitted && personalInfo.MiddleName.errors" class="invalid-feedback">
+                      <div *ngIf="personalInfo.MiddleName.errors.required">Middle Name is required</div>
+                      <div *ngIf="personalInfo.MiddleName.errors.pattern">Please enter valid Middle Name</div>
+                    </div> -->
+
+                  </div>
+
+                  </div>
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="LastName">Last Name<b class="red-color">*</b></label>
+                    <div class="input-group">
+                    <input type="text" formControlName="LastName" name="LastName" id="LastName" placeholder=" Last Name" class="form-control" data-parsley-trigger="change" maxlength="45" required="required">
+
+                    <div *ngIf="submitted && personalInfo.LastName.errors" class="invalid-feedback">
+                      <div *ngIf="personalInfo.LastName.errors.required">Last Name is required</div>
+                      <div *ngIf="personalInfo.LastName.errors.pattern">Please enter valid Last Name</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+
+                      <label for="NationalityId">Current Nationality<b class="red-color">*</b></label>
+                     <div class="input-group"> <select class="custom-select" formControlName="NationalityId" name="NationalityId" id="NationalityId" placeholder="Select Current Nationality"  data-parsley-trigger="change" required="required">
+                          <option value=0>--Select--</option>
+                          <option *ngFor="let p of nationalityList" value="{{p.id}}">
+                            {{p.name}}
+                          </option>
+                      </select>
+
+                      <div *ngIf="submitted && personalInfo.NationalityId.errors" class="invalid-feedback">
+                        <div *ngIf="personalInfo.NationalityId.errors.required">Current Nationality is required</div>
+                      </div>
+
+                    </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                        <label for="OtherNationalityId">Other Nationality</label>
+                     <div class="input-group">
+                        <select formControlName="OtherNationalityId" name="OtherNationalityId" id="OtherNationalityId" placeholder="Select Other Nationality"    data-parsley-trigger="change">
+                          <option value=0>--Select--</option>
+                          <option *ngFor="let p of nationalityList" value="{{p.id}}">
+                            {{p.name}}
+                          </option>
+                      </select>
+
+
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+
+                        <label for="VisaStatus">Current Visa Status</label>
+                     <div class="input-group">   <input type="text" formControlName="VisaStatus" name="VisaStatus" id="VisaStatus" placeholder=" Current Visa Status" class="form-control" maxlength="45" data-parsley-trigger="change">
+
+                      <!-- <div *ngIf="submitted && personalInfo.VisaStatus.errors" class="invalid-feedback">
+                          <div *ngIf="personalInfo.VisaStatus.errors.required">Current Visa Status is required</div>
+                          <div *ngIf="personalInfo.VisaStatus.errors.pattern">Please enter valid Current Visa Status</div>
+                        </div> -->
+
+                    </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                        <label for="Gender">Gender<b class="red-color">*</b></label>
+                    <div class="input-group">
+                      <select formControlName="Gender" name="Gender" id="Gender" placeholder="Select Gender" class="custom-select" data-parsley-trigger="change" required="required">
+                            <option value="">--Select--</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+
+                        <div *ngIf="submitted && personalInfo.Gender.errors" class="invalid-feedback">
+                          <div *ngIf="personalInfo.Gender.errors.required">Gender is required</div>
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                        <label></label>
+                        <div class="form-check abc-checkbox abc-checkbox-primary">
+                            <input type="checkbox"  formControlName="DisabilityOption"  (click)="toggleDisabilityDetails($event)" name="DisabilityOption" id="DisabilityOption" class="form-check-input" required="required">
+                            <label class="form-check-label" for="DisabilityOption">
+                                Disability
+                            </label>
+                          </div>
+
+                    </div>
+                    <div class="form-holder w-100 p-0 mb-4"  *ngIf="isDisabilityYes==true">
+
+                            <label for="Disability">Disability Details</label>
+                            <div class="input-group"><input type="text" formControlName="Disability" name="Disability" id="Disability" placeholder=" Disability Details" class="form-control" data-parsley-trigger="change">
+                        </div>
+                        </div>
+
+                </div>
+              </div>
+
+
+          </form>
+        </div>
+          </div>
+          <!-- Personal Information Widget End -->
+
+          <!-- Contact Information Widget Start -->
+          <div class="col-lg-6 col-md-12">
+
+            <div class="page_sub_head mb-4"><p>Contact Information</p></div>
+
+             <div class="w-100 float-left">
+          <form [formGroup]="contactInformationForm">
+            <div class="row">
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="PrimaryEmailId">Primary Email Address<b class="red-color">*</b></label>
+                    <div class="input-group"><input type="email" formControlName="PrimaryEmailId" name="PrimaryEmailId" id="PrimaryEmailId" placeholder="Primary Email Address" class="form-control" data-parsley-trigger="change" required="required">
+
+                     <div *ngIf="submitted && contactInfo.PrimaryEmailId.errors" class="invalid-feedback">
+                      <div *ngIf="contactInfo.PrimaryEmailId.errors.required">Primary Email Address is required</div>
+                      <div *ngIf="contactInfo.PrimaryEmailId.errors.pattern">Please enter valid Primary Email Address</div>
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <div class="input-group">
+                      <label for="SecondaryEmailId">Secondary Email Address</label>
+                      <input type="email" formControlName="SecondaryEmailId" name="SecondaryEmailId" id="SecondaryEmailId" placeholder="Secondary Email Address" class="form-control" data-parsley-trigger="change">
+
+                      <!-- <div *ngIf="submitted && contactInfo.SecondaryEmailId.errors" class="invalid-feedback">
+                        <div *ngIf="contactInfo.SecondaryEmailId.errors.required">Secondary Email Address is required</div>
+                        <div *ngIf="contactInfo.SecondaryEmailId.errors.pattern">Please enter valid Secondary Email Address</div>
+                      </div> -->
+
+                    </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="PrimaryPhoneNumber">Primary Phone Number<b class="red-color">*</b></label>
+                    <div class="input-group"> <input type="tel" formControlName="PrimaryPhoneNumber" name="PrimaryPhoneNumber" id="PrimaryPhoneNumber" placeholder="Primary Phone Number" class="form-control phone-control" data-parsley-trigger="change" required="required">
+
+                    <div *ngIf="submitted && contactInfo.PrimaryPhoneNumber.errors" class="invalid-feedback">
+                      <div *ngIf="contactInfo.PrimaryPhoneNumber.errors.required">Primary Phone Number is required</div>
+                      <div *ngIf="contactInfo.PrimaryPhoneNumber.errors.pattern">Please enter valid Primary Phone Number</div>
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+
+                      <label for="SecondaryPhoneNumber">Alternate Phone Number</label>
+                     <div class="input-group"><!-- <select formControlName="Countrycode" name="CountryId" id="CountryId" placeholder="Select Country" class="form-control" data-parsley-trigger="change" required="required">
+                      <option value="">--Select--</option>
+                      <option *ngFor="let p of countryList" value="{{p.id}}">
+                        {{p.name}}
+                      </option>
+                  </select> -->
+                  <input  type="tel" name="phone"     formControlName="SecondaryPhoneNumber" name="SecondaryPhoneNumber" id="SecondaryPhoneNumber" placeholder="Alternate Phone Number" class="form-control phone-control" data-parsley-trigger="change">
+
+                      <!-- <div *ngIf="submitted && contactInfo.SecondaryPhoneNumber.errors" class="invalid-feedback">
+                        <div *ngIf="contactInfo.SecondaryPhoneNumber.errors.required">Alternate Phone Number is required</div>
+                        <div *ngIf="contactInfo.SecondaryPhoneNumber.errors.pattern">Please enter valid Alternate Phone Number</div>
+                      </div> -->
+
+                    </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="Address">Current Address<b class="red-color">*</b></label>
+                  <div class="input-group">
+<input type="text" formControlName="Address" name="Address" id="Address" placeholder=" Current Address" class="form-control" data-parsley-trigger="change">
+                    <div *ngIf="submitted && contactInfo.Address.errors" class="invalid-feedback">
+                      <div *ngIf="contactInfo.Address.errors.required">Address is required</div>
+
+                    </div>
+                    <!-- <div *ngIf="submitted && contactInfo.Address.errors" class="invalid-feedback">
+                      <div *ngIf="contactInfo.Address.errors.required">Current Address is required</div>
+                      <div *ngIf="contactInfo.Address.errors.pattern">Please enter valid Current Address</div>
+                    </div> -->
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+                      <label for="CountryId">Country<b class="red-color">*</b></label>
+                      <div class="input-group">
+                        <select formControlName="CountryId" name="CountryId" id="CountryId" placeholder="Select Country" class="custom-select" data-parsley-trigger="change" required="required">
+                          <option value=0>--Select--</option>
+                          <option *ngFor="let p of countryList" value="{{p.id}}">
+                            {{p.name}}
+                          </option>
+                      </select>
+
+                      <div *ngIf="submitted && contactInfo.CountryId.errors" class="invalid-feedback">
+                        <div *ngIf="contactInfo.CountryId.errors.required">Country is required</div>
+                      </div>
+
+                    </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="City">City<b class="red-color">*</b></label>
+                   <div class="input-group"> <input type="text" formControlName="City" name="City" id="City" placeholder=" City" maxlength="45" class="form-control">
+                    <div *ngIf="submitted && contactInfo.City.errors" class="invalid-feedback">
+                      <div *ngIf="contactInfo.City.errors.required">City is required</div>
+                      <div *ngIf="contactInfo.City.errors.pattern">Please enter valid City Name</div>
+                    </div>
+
+                    <!--
+                   <div *ngIf="submitted && contactInfo.City.errors" class="invalid-feedback">
+                       <div *ngIf="contactInfo.City.errors.required">City is required</div>
+                        <div class="text-danger" *ngIf="contactInfo.City.errors.pattern">Please enter valid city </div>
+                    </div> -->
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+
+                      <label for="PostalCode">Zip Code / Postal Code</label>
+                     <div class="input-group">  <input type="text" formControlName="PostalCode" name="PostalCode" id="PostalCode" placeholder=" Zip Code" class="form-control" maxlength="45" data-parsley-trigger="change">
+
+                      <!-- <div *ngIf="submitted && contactInfo.PostalCode.errors" class="invalid-feedback">
+                        <div *ngIf="contactInfo.PostalCode.errors.required">Zip Code / Postal Code is required</div>
+                        <div *ngIf="contactInfo.PostalCode.errors.pattern">Please enter valid Zip Code / Postal Code</div>
+                    </div> -->
+
+                    </div>
+
+                    </div>
+                </div>
+              </div>
+          </form>
+         </div>
+          </div>
+          <!-- Contact Information Widget End -->
+        </div>
+        </div>
+        <div class="row mt-3"><div class="col-md-12">
+          <button type="button" class="btn btn-success pull-left back" (click)="onBack()"><i class="fa fa-backward"></i>&nbsp;
+              Back
+          </button>
+
+          <button type="submit" class="btn btn-primary pull-right ml-2 continue" (click)="onNext('Continue')" *ngIf="!SubscriptionCancel"><i class="fa fa-forward"></i>&nbsp;
+            Continue
+          </button>
+          <button type="button" class="btn btn-success pull-right ml-3 draft " (click)="onNext('Draft')" *ngIf="!SubscriptionCancel"><i class="fas fa-save"></i>&nbsp;
+            Save as Draft
+          </button>
+          <!-- <button type="button" class="btn btn-default pull-right" (click)="onCancel()"><i class="fa fa-close"></i>&nbsp;
+              Cancel
+          </button> -->
+            <!-- </section> -->
+          </div></div>
+    <!-- <button type="button" class="btn btn-success pull-left" (click)="onBack()"><i class="fa fa-backward"></i>&nbsp;
+        Back
+    </button>
+    <button type="button" class="btn btn-success pull-left ml-3" (click)="onNext()"><i class="fas fa-save"></i>&nbsp;
+      Save as Draft
+    </button>
+    <button type="submit" class="btn btn-primary pull-right ml-2" (click)="onNext()"><i class="fa fa-forward"></i>&nbsp;
+        Continue
+    </button> -->
+      <!-- </section> -->
+

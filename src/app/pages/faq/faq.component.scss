@@ -1,0 +1,35 @@
+// .increase-size {
+//   min-height: calc(100vh - 100px);
+// }
+
+// .banner {
+//   height: 650px;
+//   color: #fff;
+//   background-image: url("../../../assets/img/cover.jpg");
+//   background-size: 100% ;
+//   background-size: cover;
+// }
+// p {
+//   margin-top: 0;
+//   margin-bottom: 1rem;
+//   color: #29323A;
+//   font-size: medium;
+// }
+
+.hero-banner p.lead {
+  width: 45%;
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+  color: white;
+}
+
+.main_wrapper.fixed .menu_wrpr ul li img {
+  filter: none;
+}

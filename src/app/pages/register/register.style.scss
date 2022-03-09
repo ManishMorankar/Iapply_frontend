@@ -1,0 +1,42 @@
+.widget-auth {
+  max-width: 700px;
+  padding: 30px !important;
+}
+
+.invalid-feedback {
+  display: block;
+}
+input, button, select, optgroup, textarea {
+margin: 0;
+font-family: inherit;
+font-size: inherit;
+line-height: inherit;
+width: 305px;
+height: 33.5px;
+}
+.content {
+position: relative;
+padding: 50px 0px 20px;
+background-color: #f9fbfd;
+}
+.option-card[_ngcontent-ypv-c137] {
+border: 1px solid black;
+margin: 5rem 5rem;
+padding-top: 40px;
+}
+.content.content-option {
+  padding: 1rem 1rem !important;
+  margin: 2rem 5rem;
+  background-color: #dadada;
+  border-radius: 10px;
+}
+.content-option-list {
+  justify-content: space-around;
+}
+.content-option-item {
+  background-color: #c5c5c5;
+  margin: 1rem 1rem;
+  text-align: center;
+  padding: 2rem;
+  cursor: pointer;
+}

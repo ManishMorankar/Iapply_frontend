@@ -1,0 +1,389 @@
+<div class="page_head">
+  <h2>Job Configuration</h2>
+</div>
+<div class="row profile">
+  <div class="col-md-12 mb-3 ">
+    <div class="subhead">
+        <p>This screen is for configuration of the job apply preferences. Admin can update current number of preferred job titles and number of location allowed while create job profile.</p>
+    </div>
+ </div>
+<div class="col-lg-12 col-12">
+  <section class="dasboard-cont" style="height: 100%;">
+
+  <div class="row">
+    <div class="col-12 col-m-12 col-sm-12">
+
+
+          <h5 class="green-color">
+      Standard Subscriber
+        </h5>
+
+    <div class="row">
+
+ <div class="col-md-12 ">
+  <table class="job_table mt-4 mb-4">
+    <thead><tr>
+      <th>Preferred Job Title Allowed </th>
+    <th>Preferred Job Location Allowed </th>
+    </tr></thead>
+    <tbody>
+
+    <tr><td class="col-lg-6">{{SubscriberMasterDetails.jobTitle_Allow}}</td><td class="col-lg-6">{{SubscriberMasterDetails.jobLocation_Allow}}</td></tr>
+    </tbody>
+    </table>
+  <!-- <ngx-datatable class="table table-striped table-hover"
+  [rows]="TempSubscriberMasterDetails"
+  [columnMode]="'force'"
+  [headerHeight]="60"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [limit]="10">
+<ngx-datatable-column name="Preferred Job Title Allowed"  prop="jobTitle_Allow" [width]="280">
+<ng-template let-value="value" ngx-datatable-cell-template>
+  {{value}}
+</ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column name="Preferred Job Location Allowed" prop="jobLocation_Allow" [width]="280" >
+<ng-template let-value="value" ngx-datatable-cell-template>
+{{value}}
+</ng-template>
+</ngx-datatable-column>
+</ngx-datatable> -->
+
+</div>
+
+<form [formGroup]="JobConfigurationMasterForm" (ngSubmit)="onSubmit()" class="col-md-12">
+  <div class="row">
+          <div class="col-lg-6 form-holder">
+
+               <label for="FieldofStudy" class="relative-label blue-color">Update Preferred Job Title Allowed</label>
+
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                  <input type="text" formControlName="JobTitle" id="JobTitle" name="JobTitle" placeholder="Enter the Job Title " class="form-control" data-parsley-trigger="change">
+                  <!-- <span class="text-danger" *ngIf="pSubmitted && JobConfigurationMasterForm.controls['JobTitle'].hasError('required')">JobTitle is required</span> -->
+                  <span class="text-danger" *ngIf="pSubmitted && JobConfigurationMasterForm.controls['JobTitle'].hasError('pattern')">Please enter JobTitle</span>
+                  </div>
+              </div>
+
+
+          </div>
+          <div class="col-lg-6 form-holder">
+            <label for="FieldofStudy" class="relative-label blue-color">Update Preferred Job Location Allowed</label>
+            <div class="form-holder1 w-100 p-0 mb-4">
+              <div class="input-group">
+               <input type="text" formControlName="JobLocation" id="JobLocation" name="JobLocation" placeholder="Enter the Job Location" class="form-control" data-parsley-trigger="change">
+              <!-- <span class="text-danger" *ngIf="pSubmitted && JobConfigurationMasterForm.controls['JobLocation'].hasError('required')">Job Location is required</span> -->
+              <span class="text-danger" *ngIf="pSubmitted && JobConfigurationMasterForm.controls['JobLocation'].hasError('pattern')">Please enter Job Location</span>
+              </div></div></div>
+              <p class="col-md-12 gray-color mb-4">Admin can update allowed preferred number of job titles and job locations.</p>
+
+
+
+      <div class="col-md-12 text-right">
+        <button type="submit" class="btn btn-primary continue mr-3">
+        Update
+        </button>
+        <button type="button" class="btn btn-success back" (click)="resetForm()">
+          Clear
+      </button>
+    </div>
+  </div>
+  </form>
+      </div>
+    </div>
+
+
+  </div>
+
+</section>
+</div>
+
+
+<!-- <div class="col-lg-6 col-12">
+  <section class="dasboard-cont" style="height: 100%;">
+ <form [formGroup]="">
+  <div class="row">
+    <div class="col-12 col-m-12 col-sm-12">
+
+    <h5 class="green-color">Basic Subscriber</h5>
+
+        <div class="row">
+          <div class="col-md-12 ">
+            <table class="job_table mt-4 mb-4">
+            <thead><tr>
+              <th>Preferred Job Title Allowed </th>
+            <th>Preferred Job Location Allowed </th>
+            </tr></thead>
+            <tbody>
+            <tr><td>5</td><td>5</td></tr>
+
+            </tbody>
+            </table>
+
+            </div>
+
+            <div class="col-lg-6 form-holder">
+
+              <label for="FieldofStudy" class="relative-label blue-color">Update Preferred Job Title Allowed</label>
+
+             <div class="form-holder1 w-100 p-0 mb-4">
+                <div class="input-group">
+                 <input type="text" formControlName="JobTitle" id="JobTitle" name="JobTitle" placeholder="" class="form-control" data-parsley-trigger="change">
+                  <span class="text-danger" *ngIf="pSubmitted && FormName.controls['JobTitle'].hasError('required')">JobTitle is required</span>
+                 <span class="text-danger" *ngIf="pSubmitted && FormName.controls['JobTitle'].hasError('pattern')">Please enter JobTitle</span>
+                                  </div>
+             </div>
+
+
+         </div>
+
+
+
+
+         <div class="col-lg-6 form-holder">
+          <label for="FieldofStudy" class="relative-label blue-color">Update Preferred Job Location Allowed</label>
+          <div class="form-holder1 w-100 p-0 mb-4">
+            <div class="input-group">
+             <input type="text" formControlName="JobLocation" id="JobLocation" name="JobLocation" placeholder="" class="form-control" data-parsley-trigger="change">
+             <span class="text-danger" *ngIf="pSubmitted && FormName.controls['JobLocation'].hasError('required')">Job Location is required</span>
+            <span class="text-danger" *ngIf="pSubmitted && FormName.controls['JobLocation'].hasError('pattern')">Please enter Job Location</span>
+            </div></div></div>
+            <p class="col-md-12 gray-color mb-4">Admin can update allowed preferred number of job titles and job locations.</p>
+
+            <div class="col-md-12">
+              <button type="button" class="btn btn-primary continue mr-3">
+              Update
+              </button>
+              <button type="button" class="btn btn-success back">
+                Clear
+            </button>
+          </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</form>
+</section>
+</div> -->
+
+<p class="col-md-12 mt-5 mb-5 gray-color">Below screen shows list of job titles/skills which is added by registered user if job Title/Skills is marked as other. Once admin approved this job title and skills it will be added in the database and it will be available to selection in appropriate fields. On click of Approve pop up will open and admin user will review / change and approve.</p>
+
+</div>
+
+
+
+<!--New Job Title and Skills-->
+
+<h5 class="green-color mt-0">  New Job Title & Skills </h5>
+<form [formGroup]="filterForm">
+<div class="row">
+  <div class="col-md-3 form-holder">
+    <label class="relative-label blue-color ">Select Type (Job Title or Skills)</label>
+    <div class="form-holder1 w-100 p-0 mb-4">
+       <div class="input-group">
+          <select  formControlName="Type" name="Type" id="Type" placeholder="Select Type" class="custom-select" data-parsley-trigger="change">
+            <option selected>All</option>
+             <option>Skill</option>
+             <option>Job Title</option>
+          </select>
+       </div>
+    </div>
+ </div>
+
+ <div class="col-md-3 form-holder">
+  <label class="relative-label blue-color ">Status</label>
+  <div class="form-holder1 w-100 p-0 mb-4">
+     <div class="input-group">
+      <select  formControlName="Status" name="Status" id="Status" placeholder="Status" class="custom-select" data-parsley-trigger="change">
+        <option selected>All</option>
+           <option>Approved</option>
+           <option>Rejected</option>
+           <option>Pending</option>
+        </select>
+     </div>
+  </div>
+</div>
+<div class="col-md-6 form-holder admin_mbl">
+  <label class="relative-label blue-color ">&nbsp;</label>
+   <div class="btm_btn">
+   <div class="d-flex justify-content-between">
+          <div class="d-flex">
+         <!-- <a class="continue pe-4 ps-4 ms-3">SEARCH</a><a class="back ps-4 pe-4 ms-3">RESET FILTER</a> -->
+<button type="button" (click)="searchFilter()" class="btn btn-primary continue mr-3">SEARCH</button>
+<button type="button"  (click)="clearFilter()"  class="btn btn-success  back">RESET FILTER</button>
+         </div>
+         <button type="button" (click)="AddNewJobTitleandSkills()" class="btn btn-primary continue mr-3 btn_fr_mb">Add New Job Skills and Titles</button>
+      </div>
+</div>
+</div>
+</div>
+</form>
+
+
+
+
+  <!-- <button (click)="exportToExcel()" class="btn btn-success float-right mb-3 ml-2">Export To Excel</button>
+  <button (click)="largeModal.show(); resetJobDetailsForm()" class="btn btn-success float-right mb-3">Add New Job Title/Skills</button>
+  <input type="text" class="form-control" style="padding:8px;width:20%;" placeholder="Type to filter..." (keyup)="searchFilter($event)" />-->
+  <ngx-datatable class="table table-striped table-hover"
+                 [rows]="TempJobDetails"
+                 [columnMode]="'force'"
+                 [headerHeight]="60"
+                 [footerHeight]="50"
+                 [rowHeight]="'auto'"
+                 [limit]="10">
+    <ngx-datatable-column name="Type" prop="type" [width]="280">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+       {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Content" prop="content" [width]="280" >
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Created On" prop="addedOn" [width]="280">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+
+          {{ value | date: 'dd-MM-yyyy' }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Status"  prop="status" [width]="280">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <!-- <span class="text-success" *ngIf="value == 1 || value == '1'">Approved</span>
+        <span class="text-danger" *ngIf="value == 0 || value == '0'">Pending</span>
+        <span class="text-danger" *ngIf="value == -1 || value == '-1'">Deleted</span> -->
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Action">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div class="btn-toolbar">
+          <button class="">
+            <!-- <span class="d-none d-md-inline-block" >Approved</span>
+            <span class="d-md-none"><i class='la la-edit'></i></span> -->
+
+            <!-- <button type="button" (click)="onAccept(row)"  class="btn btn-primary continue mr-3">Accept</button> -->
+            <button type="button" (click)="AddSearchJobTitleandSkills(row)"  class="btn btn-primary continue mr-3">Accept</button>
+          </button>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <!-- <ngx-datatable-column name="Action">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div class="btn-toolbar">
+          <button class=""> -->
+            <!-- <span class="d-none d-md-inline-block" >Approved</span>
+            <span class="d-md-none"><i class='la la-edit'></i></span> -->
+
+            <!-- <button type="button" (click)="onReject(row)"  class="btn btn-success  back">Reject</button> -->
+
+          <!-- </button>
+        </div>
+      </ng-template>
+    </ngx-datatable-column> -->
+  </ngx-datatable>
+  <div class="mt-4">
+  <section class="dasboard-cont" style="height: 100%;" >
+    <h5 class="green-color"> IP Addresses </h5>
+    <form  [formGroup]="IPAddressForm" (ngSubmit)="onSubmitIpAddress()">
+    <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="">
+        <div class="subhead "><h4>New IP Address:</h4> </div>
+        <div class="form-holder1 w-100 p-0 mb-2">
+          <div class="input-group">
+            <input type="text" formControlName="IPAddress" id="IPAddress" name="IPAddress" placeholder="" class="form-control" data-parsley-trigger="change">
+            </div>
+        </div>
+     </div>
+      <span class="input-group-btn">
+        <button class="btn btn-primary continue" type="submit">Add</button>
+      </span>
+    </div></div>
+    </form>
+<div class="w-100">
+<div class="row" *ngFor="let data of IpAddressDetails;let i = index; ">
+<div class="col-md-4 mb-3">
+  <div class=" dasboard-cont d-flex" style="padding:10px;" >
+    <h6 class="mb-0 flex-fill bd-highlight mt-1">{{IpAddressDetails[i].ipAddress}}</h6>
+    <span class="red-color span_btn" title="Delete this IP Address"  (click)="DeleteIPAddressDetails(data)" ><i class="fas fa-trash-alt"></i></span>
+  </div></div>
+
+
+</div>
+</div>
+
+    </section></div>
+
+  <div class="modal fade" bsModal #largeModal="bs-modal" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">New Job Title and Skills </h4>
+          <button type="button" class="close pull-right" (click)="largeModal.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="JobDetailsForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">New Job Title</label>
+                  <input type="text" formControlName="Title" class="form-control"
+                          autocomplete="off">
+                  <div *ngIf="submitted && cuf.Title.errors" class="invalid-feedback">
+                    <div *ngIf="cuf.Title.errors.required">New Job Title is required</div>
+                    <div *ngIf="cuf.Title.errors.pattern">Please enter valid Job Title</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">New Job Skills</label>
+                  <input type="text" formControlName="Skills" class="form-control"
+                          autocomplete="off">
+                  <div *ngIf="submitted && cuf.Skills.errors" class="invalid-feedback">
+                    <div *ngIf="cuf.Skills.errors.required">New Job Skills  is required</div>
+                    <div *ngIf="cuf.Skills.errors.pattern">Please enter valid Job Skills</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Description</label>
+                  <textarea formControlName="Description" class="form-control" rows="2"></textarea>
+                  <div *ngIf="submitted && cuf.Description.errors" class="invalid-feedback">
+                    <div *ngIf="cuf.Description.errors.required">Description is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="btn-toolbar">
+              <button *ngIf="!JobId" type="submit" class="btn btn-success">
+                Submit
+              </button>
+              <button *ngIf="JobId" type="submit" class="btn btn-success">
+                Update
+              </button>
+              <button type="button" class="btn btn-success" (click)="largeModal.hide()">
+                Cancel
+              </button>
+            </div>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

@@ -1,0 +1,783 @@
+<!-- <section class="widget"> -->
+  <div class="page_head">
+    <h2>MY PROFILE</h2>
+  </div>
+  <app-wizard></app-wizard>
+  <div class="dasboard-cont">
+    <div class="row">
+
+      <div class="d-flex justify-content-between col-md-12"><p class="mb-0">Add/Update Your Experience & Other Related Details</p>    <span class="red-txt small-font text-end">Supports only English content</span></div>
+      <div class="col-md-12">
+      <div class="bg-gray-lighter progress progress-xs mt-3 mb-4 ">
+        <div id="bar" class="progress-bar progress-xs progress-bar-gray-light" style="width: 30%;"></div>
+        </div></div>
+
+
+
+        </div>
+    <div class="row profile">
+
+
+        <!-- Add Additional Information Widget Start -->
+            <div class="col-lg-6 col-12" [class.highlightDiv]="editSummary==true">
+
+              <div class="page_sub_head"><p>Summary</p></div>
+
+              <div class="d-flex justify-content-between w-100 "><p >(You can add Summary)</p><span class="pull-right mbl_pull_left" style="color: green;">Optional</span></div>
+
+
+
+                <section class="w-100 float-left" >
+              <form [formGroup]="SummaryForm">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-holder w-100 p-0 mb-4">
+
+                         <label for="Summery">Summary</label>
+                       <div class="input-group">   <textarea rows="4" formControlName="Summery" name="Summery" id="Summery" placeholder="Summary" class="form-control" data-parsley-trigger="change" required="required"></textarea>
+                          <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['AdditionalInfo'].hasError('required')">Additional Information is required</span> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-right">
+                    <button _ngcontent-dth-c304="" type="button" class="btn btn-success btn-small   draft " *ngIf="editSummary" (click)="resetSummary()">Cancel</button>
+                    <button type="submit" (click)="addSummary()" *ngIf="!editSummary" class="btn btn-success btn-small ml-3 float-right" [disabled]="!SummaryForm.valid">
+                      Add
+                    </button>
+                    <button type="submit" (click)="addSummary()" *ngIf="editSummary" class="btn btn-success btn-small ml-3 float-right" [disabled]="!SummaryForm.valid">
+                      Update
+                    </button>
+                    <!-- <button class="btn btn-default float-right" type="button">
+                      Clear
+                    </button> -->
+                  </div></div>
+                  <!-- <div class="row"> -->
+
+                <!-- </div> -->
+              </form>
+            </section>
+              </div>
+              <!-- Add Additional Information Widget End -->
+
+
+
+              <!-- Your Additional Information Widget Start -->
+              <div class="col-lg-6 col-12 flex-container">
+
+                <div class="page_sub_head"><p>Summary</p></div>
+              <p>You can edit and delete from here</p>
+
+                 <section class="round_brdr_box">
+                  <div *ngFor="let SummaryItem of SummaryList; let i=index">
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h5><span class="blue-color">Summary</span> <span class="edit_links">
+                          <button  class="blue-color " title="Edit"  (click)="editSummaryData(SummaryItem,i, SummaryItem.CustomerSummeryId )"><i class="far fa-edit"></i></button>
+                          <button   class="red-color" (click)="deleteModal(SummaryItem,i,'summary')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h5>
+
+                      </div>
+
+                    </div>
+
+                  <p>
+                        {{ SummaryItem.Summery }}</p>
+
+                    <hr>
+
+                  </div>
+            </section>
+              </div>
+              <!-- Your Additional Information Widget End -->
+            </div>
+
+
+        <!-- Total Experience Widget Start -->
+        <div class="row profile pt-4">
+        <div class="col-md-6" [class.highlightDiv]="editExperience==true">
+          <div class="page_sub_head"><p>Total Experience</p></div>
+          <p class="gray-color"  style="word-spacing: -0.3px;">(System auto calculates the total years of experience based on added experiences)</p>
+            <!-- <h6>(You can Add Multiple Experience Details)</h6> -->
+            <section  class="w-100 float-left">
+              <form [formGroup]="totalExperienceForm">
+                <div class="form-holder w-100 p-0 mb-4">
+                  <label for="JobTitle">Total Experience</label>
+                            <div class="input-group">
+                                 <input type="text" [(ngModel)]="TotalExperience" formControlName="TotalExperience" name="TotalExperience" id="TotalExperience" readonly="true">
+                              <!--  {{TotalExperience}}-->
+                            </div>
+                          </div>
+            <div class="page_sub_head mt-2"><p>Add Your Experience</p></div>
+            <p class="gray-color mb-0">On selection of this checkbox below all fields will be hidden</p>
+            <div class="row">
+                <div class="col-lg-6">
+                  <div class="w-100  mb-4">
+                    <div class="w-100 mt-3">
+
+                        <div class="form-check abc-checkbox abc-checkbox-primary">
+                            <input type="checkbox" formControlName="IsFresher" name="IsFresher" id="IsFresher" (change)="toggleJobExperienceDiv($event)" class="form-check-input">
+                            <label class="form-check-label" for="IsFresher">
+                                I am Fresher
+                            </label>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="!IsFresherBoolean">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                      <label for="JobTitle">Job Title<b class="red-color">*</b></label>
+                    <div class="input-group">  <input type="text" formControlName="JobTitle" name="JobTitle" id="JobTitle" placeholder="Job Title" class="form-control" data-parsley-trigger="change" maxlength="95" required="required">
+                      <div *ngIf="submitted && contactInfo.JobTitle.errors" class="invalid-feedback">
+                        <div *ngIf="contactInfo.JobTitle.errors.required">Job Title is required</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+
+                        <label for="CompanyName">Company Name<b class="red-color">*</b></label>
+                    <div class="input-group">
+                      <input type="text" formControlName="CompanyName" name="CompanyName" id="CompanyName" placeholder="Company Name" class="form-control"  data-parsley-trigger="change">
+                    </div>
+
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                        <label for="Country">Country<b class="red-color">*</b></label>
+                     <div class="input-group">  <select formControlName="CountryId" name="CountryId" placeholder="Select Country" class="custom-select" data-parsley-trigger="change" required="required">
+                      <option value=0>--Select--</option>
+                          <option *ngFor="let p of countryList" value="{{p.id}}">
+                            {{p.name}}
+                          </option>
+                      </select>
+                      <div *ngIf="submitted && contactInfo.CountryId.errors" class="invalid-feedback">
+                        <div *ngIf="contactInfo.CountryId.errors.required">Country is required</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+
+                      <label for="City">City</label>
+                   <div class="input-group">   <input type="text" formControlName="City" name="City" id="City" placeholder="City" class="form-control" maxlength="45" data-parsley-trigger="change">
+                    <div *ngIf="contactInfo.City.errors" class="invalid-feedback">
+                      <div *ngIf="contactInfo.City.errors.pattern">Please enter valid City Name</div>
+                    </div>
+                    <!-- <div *ngIf="submitted && contactInfo.City.errors" class="invalid-feedback"></div> -->
+                    <!-- <span class="text-danger" *ngIf="pSubmitted && totalExperienceForm.controls['City'].hasError('required')">Current Address is required</span> -->
+                    </div>
+
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="w-100 p-0 mb-4">
+
+                    <p class="mt-2 mb-2">On selection of this checkbox <strong>To Field</strong> will be hidden</p>
+                    <div class="form-check abc-checkbox abc-checkbox-primary">
+                      <input type="checkbox" formControlName="IsCurrentWorkingHere" name="IsCurrentWorkingHere"
+                        id="IsCurrentWorkingHere" (change)="toggleToDate($event)" class="form-check-input">
+                      <label class="form-check-label" for="IsCurrentWorkingHere">
+                        Currently working
+                      </label>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-lg-12">
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- <div class="wrapper new_pkr">
+                        <label for="datepicker">Pick a Date
+                          <input type="text" id="datepicker" autocomplete="off">
+                        </label>
+                      </div> -->
+                      <div class="form-holder w-100 p-0 mb-4">
+                        <!-- <label for="FromDate">From<b class="red-color">*</b></label> -->
+                        <label for="FromDate">From</label>
+                       <div class="input-group"> <input type="date" formControlName="FromDate" name="FromDate" id="FromDate" placeholder=" From Date"  class="form-control" data-parsley-trigger="change" [max]="totalExperienceForm.controls['ToDate'].value" (change)="setStatusFromDate()">
+                        <div *ngIf="submitted && contactInfo.FromDate.errors" class="invalid-feedback">
+                          <div *ngIf="contactInfo.FromDate.errors.required">From Date is required</div>
+                        </div>
+                    </div>
+                  </div>
+                    </div>
+                    <div class="col-sm-6" *ngIf="IsCurrentWorkingHereBool == false">
+                      <div class="form-holder w-100 p-0 mb-4">
+                        <label for="ToDate">To</label>
+                     <div class="input-group">
+                       <input type="date" formControlName="ToDate" name="ToDate" id="ToDate" (change)="setStatus()" placeholder="To Date" class="form-control" data-parsley-trigger="change" [min]="totalExperienceForm.controls['FromDate'].value" (change)="calculateTotalExperience()">
+                       <div *ngIf="submitted && contactInfo.ToDate.errors" class="invalid-feedback">
+
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+                <div class="col-md-12">
+
+
+                        <h6>Description</h6>
+                        <p class="gray-color">(In 1000 or more words describe your professional responsibilities and accomplishments.
+                           Eg. Maintained inventory of office supplies and ordered as and when needed)</p>
+                  <textarea rows="4" formControlName="Description" id="Description" placeholder="Job Description" class="form-control" data-parsley-trigger="change" required="required">
+                      </textarea>
+                      <!-- <span class="text-danger" *ngIf="pSubmitted && totalExperienceForm.controls['Description'].hasError('required')">Job Description is required</span> -->
+                      <!-- <ckeditor formControlName="Description" [editor]="Editor" (change)="onChange($event)" (ready)="onReady($event)" ></ckeditor> -->
+                      <div *ngIf="submitted && cuf.Description.errors" class="invalid-feedback">
+                        <div *ngIf="cuf.Description.errors.required">Data is required</div>
+                      </div>
+                </div>
+
+
+
+              <!-- <div class="row"> -->
+              <div class="w-100 text-right pt-4">
+                <button _ngcontent-dth-c304="" type="button" class="btn btn-success btn-small  draft " *ngIf="editExperience" (click)="resetExperience()">Cancel</button>
+                <button type="submit" *ngIf="!editExperience" (click)="addTotalExperience()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!totalExperienceForm.valid">
+                  Add
+                </button>
+                <button type="submit" *ngIf="editExperience" (click)="addTotalExperience()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!totalExperienceForm.valid">
+                  Update
+                </button>
+
+                <!-- <button type="reset" class="btn btn-success">
+                  Clear
+                </button> -->
+              </div></div>
+              </div>
+            <!-- </div> -->
+          </form>
+        </section>
+          </div>
+          <!-- Total Experience Widget End -->
+
+          <!-- Job Experience Widget Start -->
+          <div class="col-lg-6 col-12 flex-container job_experience_review">
+            <div class="page_sub_head"><p>Job Experience Review</p></div>
+            <p>You can edit and delete from here</p>
+            <section class="round_brdr_box"  >
+              <div class="w-100" *ngFor="let experience of experienceList; let i=index">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h5><span class="blue-color">{{ experience.JobTitle }}</span> <span class="edit_links">
+                    <button class="blue-color" title="Edit"  (click)="editExperienceData(experience,i, experience.CustomerExperienceId)"><i class="far fa-edit"></i></button>
+                    <button class="red-color" (click)="deleteModal(experience,i,'experience');calculateTotalExperience()"><i class="far fa-trash-alt" title="Delete"></i></button></span></h5>
+
+
+
+                </div>
+              </div>
+              <div class="d-flex justify-content-between  mb-2 small-font">
+                <span>
+                  {{findCountry(experience.CountryId)}}, {{ experience.City}}
+                </span>
+                <span>
+                  <i class="fas fa-square-full small-icon"></i>{{ experience.CompanyName }}
+                </span>
+                <span *ngIf="experience.ToDate == '' || experience.ToDate == null" >
+                  <i class="fas fa-square-full small-icon"></i> <span class="gray-color">From</span> {{ experience.FromDate | date: 'dd-MMM-yyyy' }} to Till Date
+                </span>
+                <span *ngIf="experience.ToDate == currentDate">
+                  <i class="fas fa-square-full small-icon"></i> <span class="gray-color">From</span> {{ experience.FromDate | date: 'dd-MMM-yyyy' }} to Till Date
+                </span>
+
+                <span *ngIf="experience.ToDate">
+                  <i class="fas fa-square-full small-icon"></i> <span class="gray-color">From</span> {{ experience.FromDate | date: 'dd-MMM-yyyy' }} to {{
+                  experience.ToDate | date: 'dd-MMM-yyyy' }}
+                </span>
+              </div>
+
+
+
+                  <p ul class="bullet">
+                   <span  [innerHTML]="experience?.Description"></span>
+                   <!-- {{experience.Description}} -->
+                  </p>
+
+                <hr>
+              </div>
+
+        </section>
+          </div>
+          <!-- Job Experience Widget End -->
+        </div>
+
+        <div class="row profile pt-4">
+        <!-- Add your Achievements Widget Start -->
+            <div class="col-md-6" [class.highlightDiv]="editAchievement==true">
+
+               <div class="row">
+                  <div class="page_sub_head col-md-12"><p>Add Your Achievements</p></div>
+
+                  <div class="d-flex justify-content-between col-md-12 "> <p>(You can add multiple achievements)</p> <strong class="pull-right mbl_pull_left" style="color: green;">Optional</strong></div>
+
+                  <!-- <h6>(You can Add Multiple Experience Details)</h6> -->
+                </div>
+
+            <section class="float-left w-100" >
+              <form [formGroup]="achievementsForm">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-holder w-100 p-0 mb-4">
+
+                          <label for="AchievementsTitle">Achievements Title</label>
+                        <div class="input-group">   <input type="text" formControlName="AchievementsTitle" id="AchievementsTitle" placeholder="Achievements Title" class="form-control" data-parsley-trigger="change"    required="required">
+                          <!-- <span class="text-danger" *ngIf="pSubmitted && achievementsForm.controls['AchievementsTitle'].hasError('required')">Achievements Title is required</span>
+                          <span class="text-danger" *ngIf="pSubmitted && !achievementsForm.controls['AchievementsTitle'].hasError('required') && achievementsForm.controls['AchievementsTitle'].hasError('pattern')">Please enter valid Achievements Title</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-holder w-100 p-0 mb-4">
+
+
+                            <label for="AchievementsDate">Achievements Date</label>
+                            <div class="input-group">    <input type="date"   id="AchievementsDate" name="AchievementsDate" [ngModel]="AchievementsDate | date:'yyyy-MM-dd'"   formControlName="AchievementsDate"  (change)="setStatusAchievementsDate()" placeholder="Achievements Date" value="2015-08-09" class="form-control" data-parsley-trigger="change" required="required">
+
+                        </div>
+
+                        <!-- <label for="datepicker">Pick a Date</label>
+                          <div class="input-group">
+                          <input type="text" id="AchievementsDate"  formControlName="AchievementsDate"  name="AchievementsDate"  class="form-control" autocomplete="off">
+                        </div> -->
+                        <!-- <div classs="input-group">
+                        <input id="AchievementsDate"   formControlName="AchievementsDate"   class="form-control" type="text" />
+                        </div> -->
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                      <div class="form-holder w-100 p-0 mb-4">
+
+                        <label for="AchievementsDescription">Description</label>
+                        <div class="input-group">
+
+               <textarea rows="4" formControlName="AchievementsDescription" id="AchievementsDescription" placeholder="Achievements Description" class="form-control" data-parsley-trigger="change" required="required">
+                                                    </textarea>
+                                                    <!-- <span class="text-danger" *ngIf="pSubmitted && achievementsForm.controls['AchievementsDescription'].hasError('required')">Achievements Description is required</span> -->
+                                                  </div>
+                                                 </div>
+                                               </div>
+                                        </div>
+                  <div class="w-100 text-right  pb-4">
+                    <button _ngcontent-dth-c304="" type="button" class="btn btn-success btn-small  draft " *ngIf="editAchievement" (click)="resetAchievement()">Cancel</button>
+                    <button type="submit" (click)="addAchievements()" *ngIf="!editAchievement" class="btn btn-success ml-3 btn-small float-right" [disabled]="!achievementsForm.valid">
+                      Add
+                    </button>
+                    <button type="submit" (click)="addAchievements()" *ngIf="editAchievement" class="btn btn-success ml-3 btn-small float-right" [disabled]="!achievementsForm.valid">
+                      Update
+                    </button>
+                    <!-- <button type="reset" class="btn btn-success">
+                      Clear
+                    </button> -->
+                  </div>
+                  <!-- <div class="row"> -->
+
+                <!-- </div> -->
+              </form>
+            </section>
+              </div>
+              <!-- Add your Achievements Widget End -->
+
+              <!-- Your Achievements Widget Start -->
+              <div class="col-lg-6 col-12 flex-container achievement_review_h">
+                <div class="page_sub_head"><p>Achievements Review</p></div>
+                <p>You can edit and delete from here</p>
+
+
+
+                <section class="round_brdr_box">
+              <div *ngFor="let achievements of achievementsList; let i=index">
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h5><span class="blue-color">{{ achievements.AchievementsTitle }}</span> <span class="edit_links">
+                      <button class="blue-color" title="Edit" (click)="editAchievementsData(achievements,i, achievements.CustomerAchievementId)"><i class="far fa-edit"></i></button>
+                      <button class="red-color" (click)="deleteModal(achievements,i, 'achievement')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h5>
+                </div>
+                    </div>
+                    <div class="d-flex justify-content-between  mb-2 small-font">
+                      <span>
+                        Achievement Date - {{ achievements.AchievementsDate | date: 'dd-MMM-yyyy' }}
+
+                      </span>
+
+                    </div>
+
+
+
+                  <p class="w-100">
+                    {{ achievements.AchievementsDescription }}
+                  </p>
+
+                <hr>
+
+              </div>
+            </section>
+              </div>
+              <!-- Your Achievements Widget End -->
+            </div>
+
+            <div class="row profile pt-4">
+            <!-- Add your Certificates Widget Start -->
+                <div class="col-lg-6 col-12" [class.highlightDiv]="editcertificate==true">
+                  <div class="row">
+                    <div class="page_sub_head col-md-12"><p>Add your License / Certificate</p></div>
+
+                    <div class="d-flex justify-content-between col-md-12"> <p>(You can add multiple certificates)</p> <strong class="pull-right mbl_pull_left" style="color: green;">Optional</strong></div>
+
+                    <!-- <h6>(You can Add Multiple Experience Details)</h6> -->
+                  </div>
+
+
+                <section class="w-100 float-left" >
+                  <form [formGroup]="certificatesForm">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-holder w-100 p-0 mb-4">
+
+                              <label for="CertificateName">Certificate Name</label>
+                            <div class="input-group">  <input type="text" formControlName="CertificateName" id="CertificateName" placeholder="Certificate Name" class="form-control" data-parsley-trigger="change" maxlength="45"  required="required">
+                              <!-- <span class="text-danger" *ngIf="pSubmitted && certificatesForm.controls['CertificateName'].hasError('required')">Certificate Name is required</span>
+                              <span class="text-danger" *ngIf="pSubmitted && !certificatesForm.controls['CertificateName'].hasError('required') && certificatesForm.controls['CertificateName'].hasError('pattern')">Please enter valid Certificate Name</span> -->
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="col-lg-6">
+                          <div class="form-holder w-100 p-0 mb-4">
+
+                              <label for="OrganizationName">Organization Name</label>
+                            <div class="input-group">  <input type="text" formControlName="OrganizationName" id="OrganizationName" placeholder="Organization Name" class="form-control" data-parsley-trigger="change" required="required">
+
+                            </div>
+                          </div>
+                        </div> -->
+                        <div class="col-lg-6">
+                          <div class="form-holder w-100 p-0 mb-4">
+
+
+                                <label for="IssuedOn">Certificate issued on</label>
+                                <div class="input-group">      <input type="date" (change)="setStatusIssuedOn()" formControlName="IssuedOn" name="IssuedOn" id="IssuedOn"  placeholder="Certificate issued on" class="form-control" data-parsley-trigger="change" required="required">
+                                <!-- <span class="text-danger" *ngIf="pSubmitted && certificatesForm.controls['IssuedOn'].hasError('required')">Certificate Issued Date is required</span> -->
+                            </div>
+
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-6">
+                          <div class="form-holder w-100 p-0 mb-4">
+
+
+                                <label for="ValidDate">Certificate Valid Date</label>
+                                <div class="input-group">      <input type="date" (change)="setStatusIssuedOn()" formControlName="ValidDate" name="ValidDate" id="ValidDate"  placeholder="Certificate Valid Date" class="form-control" data-parsley-trigger="change" required="required">
+
+                            </div>
+
+                            </div>
+                        </div> -->
+                        <div class="col-lg-12">
+                          <div class="form-holder w-100 p-0 mb-4">
+
+                                <label for="Description">Description</label>
+                                <div class="input-group">   <textarea rows="4" formControlName="Description" name="Description" id="Description" placeholder="Certificate Description" class="form-control" data-parsley-trigger="change" required="required">
+                              </textarea>
+                              <!-- <span class="text-danger" *ngIf="pSubmitted && certificatesForm.controls['Description'].hasError('required')">Certificate Description is required</span> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="w-100 text-right  pb-4">
+                        <button _ngcontent-dth-c304="" type="button" class="btn btn-success btn-small   draft " *ngIf="editcertificate" (click)="resetCertificate()">Cancel</button>
+                        <button type="submit" *ngIf="!editcertificate" (click)="addCertificates()" class="btn btn-success btn-small float-right" [disabled]="!certificatesForm.valid">
+                          Add
+                        </button>
+                        <button type="submit" *ngIf="editcertificate" (click)="addCertificates()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!certificatesForm.valid">
+                          Update
+                        </button>
+                        <!-- <button type="reset" class="btn btn-success">
+                          Clear
+                        </button> -->
+                      </div>
+                      <!-- <div class="row"> -->
+
+                    <!-- </div> -->
+                  </form>
+                </section>
+                  </div>
+                  <!-- Add your Certificates Widget End -->
+
+                  <!-- Your Certificates Widget Start -->
+                  <div class="col-lg-6 col-12 flex-container certificates_review_h">
+
+                    <div class="page_sub_head"><p>Certificates Review</p></div>
+                    <p>You can edit and delete from here</p>
+
+
+
+                    <section class="round_brdr_box">
+                      <div class="w-100" *ngFor="let certificates of certificatesList; let i=index">
+
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <h5><span class="blue-color">{{ certificates.CertificateName }}</span> <span class="edit_links">
+                              <button  class="blue-color" title="Edit" (click)="editCertificatesData(certificates,i, certificates.CustomerCertificationId)"><i class="far fa-edit"></i></button>
+                              <button   class="red-color" (click)="deleteModal(certificates,i,'certificates')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h5>
+
+                          </div>
+
+                        </div>
+                        <!-- <h5><span class="blue-color">{{ certificates.OrganizationName }}</span></h5> -->
+                        <div class="d-flex justify-content-between small-font">
+
+                          <span>
+                            <i class="fas fa-square-full small-icon"></i> <span class="gray-color">Certificate issued on - </span> {{ certificates.IssuedOn | date: 'dd-MMM-yyyy' }}
+                          </span>
+                        </div>
+
+                        <!-- <div class="d-flex justify-content-between small-font">
+
+                          <span>
+                            <i class="fas fa-square-full small-icon"></i> <span class="gray-color">Certificate Valid Date- </span> {{ certificates.ValidDate | date: 'dd-MMM-yyyy' }}
+                          </span>
+                        </div> -->
+
+                          <p class="w-100">
+                            {{ certificates.Description }}
+                          </p>
+
+                        <hr>
+
+                      </div>
+                </section>
+                  </div>
+                  <!-- Your Certificates Widget End -->
+                </div>
+
+                <div class="row profile pt-4">
+                <!-- Add your Portfolio Widget Start -->
+                    <div class="col-lg-6 col-12" [class.highlightDiv]="editPortfolio==true">
+                      <div class="row">
+                        <div class="page_sub_head col-md-12"><p>Add your Portfolio</p></div>
+
+                        <div class="d-flex justify-content-between col-md-12"> <p>(You can add multiple portfolio details)</p> <strong class="pull-right mbl_pull_left" style="color: green;">Optional</strong></div>
+
+                        <!-- <h6>(You can Add Multiple Experience Details)</h6> -->
+                      </div>
+
+
+                    <section class="float-left w-100" >
+                      <form [formGroup]="portfolioForm">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-holder w-100 p-0 mb-4">
+
+                                <label for="Url">Personal Website URL</label>
+                             <div class="input-group">     <input type="url" formControlName="Url" name="Url" id="Url" placeholder="Personal Website URL" class="form-control" data-parsley-trigger="change" required="required">
+                                  <!-- <span class="text-danger" *ngIf="pSubmitted && portfolioForm.controls['PersonalWebsiteURL'].hasError('required')">Personal Website URL is required</span> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w-100 text-right  pb-4">
+                            <button _ngcontent-dth-c304="" type="button" class="btn btn-success btn-small   draft " *ngIf="editPortfolio" (click)="resetPortfolio()">Cancel</button>
+                            <button type="submit"  *ngIf="!editPortfolio" (click)="addPortfolio()" class="btn ml-3 btn-success btn-small float-right" [disabled]="!portfolioForm.valid">
+                              Add
+                            </button>
+                            <button type="submit"  *ngIf="editPortfolio" (click)="addPortfolio()" class="btn ml-3 btn-success btn-small float-right" [disabled]="!portfolioForm.valid">
+                              Update
+                            </button>
+                            <!-- <button type="reset" class="btn btn-success">
+                              Clear
+                            </button> -->
+                          </div>
+                          <!-- <div class="row"> -->
+
+                        <!-- </div> -->
+                      </form>
+                    </section>
+                      </div>
+                      <!-- Add your Portfolio Widget End -->
+
+                      <!-- Your Portfolio Widget Start -->
+                      <div class="col-lg-6 col-12 flex-container portfolio_review">
+
+
+                        <div class="page_sub_head"><p>Portfolio Review</p></div>
+                        <p>You can edit and delete from here</p>
+
+
+                        <section class="round_brdr_box">
+                          <div *ngFor="let portfolio of portfolioList; let i=index">
+
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <h6 class="mb-0"><span class="blue-color"> {{ portfolio.Url }}</span> <span class="edit_links">
+                                  <button  class="blue-color" title="Edit" (click)="editPortfolioData(portfolio,i, portfolio.CustomerPortfolioId)"><i class="far fa-edit"></i></button>
+                                  <button   class="red-color" (click)="deleteModal(portfolio,i , 'portfolio')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h6>
+
+                              </div>
+
+                            </div>
+
+
+                            <hr>
+
+                          </div>
+                    </section>
+                      </div>
+                      <!-- Your Portfolio Widget End -->
+                    </div>
+
+                    <div class="row profile pt-4">
+                    <!-- Add your Social Profiles Widget Start -->
+                        <div class="col-lg-6 col-12" [class.highlightDiv]="editSocialProfile==true">
+                          <div class="row">
+                            <div class="page_sub_head col-md-12"><p>Add your Social Profiles</p></div>
+
+                            <div class="d-flex justify-content-between col-md-12"> <p>(You can add introduction video link and social profile)</p> <strong class="pull-right mbl_pull_left" style="color: green;">Optional</strong></div>
+
+                            <!-- <h6>(You can Add Multiple Experience Details)</h6> -->
+                          </div>
+
+
+                        <section class="w-100 float-left" >
+                          <form [formGroup]="socialProfilesForm">
+                              <div class="row">
+                                <div class="col-lg-6">
+                                  <div class="form-holder w-100 p-0 mb-4">
+
+                                      <label for="Name">Select Social Profile Type</label>
+                                    <div class="input-group">
+                                    <select formControlName="SocialProfileTypeId" name="SocialProfileTypeId" id="SocialProfileTypeId"  placeholder="SelectSocialProfileType"   class="custom-select" data-parsley-trigger="change" required="required">
+
+
+                                      <option value=0>--Select Social Profile Type--</option>
+                                      <option *ngFor="let p of proficiencyTypeList" value="{{p.id}}">
+                                        {{p.name}}
+                                      </option>
+                                    </select>
+                                      <!-- <span class="text-danger" *ngIf="pSubmitted && socialProfilesForm.controls['Name'].hasError('required')">Social Profile Type is required</span> -->
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6">
+                                  <div class="form-holder w-100 p-0 mb-4">
+
+
+                                        <label for="Url">Social Profile URL</label>
+                                     <div class="input-group">    <input type="url" formControlName="Url" name="Url" id="Url" placeholder="Social Profile URL" class="form-control" data-parsley-trigger="change">
+                                         <span class="text-danger" *ngIf="submitted && socialProfilesForm.controls['Url'].hasError('required')">Social Profile URL is required</span>
+                                    </div>
+
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="w-100 text-right  pb-4">
+                                <button _ngcontent-dth-c304="" *ngIf="editSocialProfile" type="button" class="btn btn-success btn-small   draft " (click)="resetSocialProfile()">Cancel</button>
+
+                                <button type="submit" *ngIf="!editSocialProfile" (click)="addSocialProfiles()" class="btn btn-success ml-3 btn-small float-right" [disabled]="!socialProfilesForm.valid">
+                                  Add
+                                </button>
+                                <button type="submit" *ngIf="editSocialProfile" (click)="addSocialProfiles()" class="btn btn-success btn-small ml-3 float-right" [disabled]="!socialProfilesForm.valid">
+                                  Update
+                                </button>
+                                <!-- <button type="reset" class="btn btn-success">
+                                  Clear
+                                </button> -->
+                              </div>
+                              <!-- <div class="row"> -->
+
+                            <!-- </div> -->
+                          </form>
+                        </section>
+                          </div>
+                          <!-- Add your Social Profiles Widget End -->
+
+                          <!-- Your Social Profiles Widget Start -->
+                          <div class="col-lg-6 col-12 flex-container social_profiles_review">
+
+                            <div class="page_sub_head"><p>Social Profiles Review</p></div>
+                        <p>You can edit and delete from here</p>
+
+                             <section class="round_brdr_box">
+                              <div *ngFor="let socialProfile of socialProfileList; let i=index">
+
+
+                                <div class="row">
+                                  <div class="col-sm-12">
+                                    <h6><span class="blue-color"> {{ findProfileType(socialProfile.SocialProfileTypeId) }}: {{ socialProfile.Url }}</span> <span class="edit_links">
+                                      <button  class="blue-color" title="Edit" (click)="editSocialProfilesData(socialProfile,i, socialProfile.CustomerSocialProfileId)"><i class="far fa-edit"></i></button>
+                                      <button   class="red-color" (click)="deleteModal(socialProfile,i, 'socialProfile')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h6>
+
+                                  </div>
+
+                                </div>
+
+
+                                <hr>
+
+                              </div>
+                        </section>
+                          </div>
+                          <!-- Your Social Profiles Widget End -->
+                        </div>
+
+        </div>
+        <div class="row mt-3"><div class="col-md-12">
+          <button type="button" class="btn btn-success pull-left back" (click)="onBack()"><i class="fa fa-backward"></i>&nbsp;
+              Back
+          </button>
+
+          <button type="submit" class="btn btn-primary pull-right ml-2 continue" (click)="onNext('Continue')" *ngIf="!SubscriptionCancel"><i class="fa fa-forward"></i>&nbsp;
+            Continue
+          </button>
+          <button type="button" class="btn btn-success pull-right ml-3 draft " (click)="onNext('Draft')" *ngIf="!SubscriptionCancel"><i class="fas fa-save"></i>&nbsp;
+            Save as Draft
+          </button>
+          <!-- <button type="button" class="btn btn-default pull-right" (click)="onCancel()"><i class="fa fa-close"></i>&nbsp;
+              Cancel
+          </button> -->
+            <!-- </section> -->
+          </div></div>
+
+
+          <div class="modal modal_subscription" id="deleteExperince">
+            <div class="modal-dialog modal-dialog-centered ">
+              <div class="modal-content">
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="text-center">
+                    <h3>Are you sure want to delete ?</h3>
+                    <button class="yes btn-sm btn-success m-1" (click)="deleteItemFunc()">Yes</button>
+                    <button class="no btn-sm btn-danger m-1" data-bs-dismiss="modal">No</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+

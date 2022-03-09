@@ -1,0 +1,72 @@
+<div class="middle_content">
+  <div class="page_head">
+    <h2>CONTENT UPDATE</h2>
+ </div>
+
+ <div class="row mt-4">
+  <div class="col-md-12">
+    <div class="subhead mt-3 mb-3">
+      <h4 class="d-md-flex align-items-center justify-content-between">Cookies Section</h4>
+    </div>
+
+    <div class="round_brdr_box bg-white no_radius">
+      <form [formGroup]="CookiesSectionForm">
+        <div class="row">
+          <div class="col-md-12">
+            <ckeditor formControlName="HtmlContent" [editor]="Editor" (change)="onChange($event)" (ready)="onReady($event)"></ckeditor>
+            <div *ngIf="submitted && cuf.HtmlContent.errors" class="invalid-feedback">
+              <div *ngIf="cuf.HtmlContent.errors.required">Data is required</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="subhead mb-2">
+              <h4>User Comment:</h4>
+           </div>
+           <div class="form-holder1 w-100 p-0 mb-2">
+              <div class="input-group">
+              <textarea formControlName="Comment" class="form-control" rows="5"></textarea>
+              <div *ngIf="submitted && cuf.Comment.errors" class="invalid-feedback">
+                <div *ngIf="cuf.Comment.errors.required">Comment is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Standard'" >
+          <div class="d-flex justify-content-end">
+             <div>
+                <!-- <a href="" class="back  me-3">CANCEL</a> -->
+                <button (click)="onCancel()" class="back  me-3">CANCEL</button>
+             </div>
+             <div class="d-flex justify-content-end">
+                <!-- <a href="" class="draft">SUBMIT FOR APPROVAL</a> -->
+                <button (click)="updateCookiesSection()" class="draft">SUBMIT FOR APPROVAL</button>
+             </div>
+          </div>
+       </div>
+  
+       <!-- <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Admin'">
+        <div class="d-flex justify-content-end">
+           <div>
+              <button (click)="onCancel()" class="back  me-3">CANCEL</button>
+           </div>
+           <div class="d-flex justify-content-end">
+              <button (click)="saveCookiesSection()" class="draft me-3">SAVE</button>
+              <button value="Approved" (click)="approveCookiesSection('Approved')" class="continue me-3">PUBLISH</button>
+              <button value="Rejected" (click)="approveCookiesSection('Rejected')" class="continue">REJECT</button>
+           </div>
+        </div>
+     </div> -->
+
+        <!-- <button (click)="updateCookiesSection()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+        <button (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button> -->
+      </form>
+    </div>
+  </div>
+  </div>
+  </div>
+  

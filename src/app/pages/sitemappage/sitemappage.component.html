@@ -1,0 +1,313 @@
+
+ <div class="main_wrapper">
+  <div class="container">
+      <header id="masthead" class="row site-header">
+          <div class="col-md-2 site-branding">
+              <div class="logo"><a href="index.html" class="custom-logo-link" rel="home" aria-current="page">
+                  <img width="86" height="86" src="./assets/images/logo_2.svg"></a>
+                  <!-- <img width="86" height="86" [src]="bannerData?.headerLogoDownloadLink"></a> -->
+               </div>
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+              </span>
+            </button>
+               <div class="logo_popup_box" href="#" data-bs-toggle="modal" data-bs-target="#logo_meaning">Do you want to know the meaning of the logo?</div>
+          </div>
+          <div class="col-md-10 menu_wrpr d-flex align-items-center justify-content-center">
+              <nav class=" navbar-expand-lg ">
+
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul>
+                    <li class=""><a [routerLink]="['../home']" fragment="banner" >Home</a></li>
+                    <li><a [routerLink]="['../home']" fragment="whoweare">Who We ARe</a></li>
+                    <li><a [routerLink]="['../home']" fragment="whoweserve">Who We Serve</a></li>
+                    <li><a [routerLink]="['../home']" fragment="howitworks">How It Works</a></li>
+                    <li><a [routerLink]="['../home']" fragment="features">Features</a></li>
+                    <li><a [routerLink]="['../home']" fragment="pricing">Pricing</a></li>
+                    <li><a (click)="gotoContactUsPage()" cl>Contact Us</a></li>
+                    <li class="lgn_btn"><a (click)="goToLoginPage()">Login</a></li>
+                    <li class="sgn_btn"><a (click)="goToSignUpPage()">Signup</a></li>
+                    <li><a href="#" class="language_btn" data-bs-toggle="modal" data-bs-target="#lang_select"><i class="fas fa-language"></i></a></li>
+                  </ul>
+                  </div>
+              </nav>
+          </div>
+      </header><!-- #masthead -->
+  </div>
+</div>
+
+<!-- <div class="cmn-bnr-privacy d-flex align-items-center justify-content-center">
+  <div class="container-fluid h-100">
+      <div class="row h-100">
+          <div class="col-md-12 serv_sct_head text-center d-flex align-items-center justify-content-center">
+              <div class="">
+                  <h3 class="text-white">SiteMap</h3>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
+<div class=" d-flex align-items-center justify-content-center">
+  <div class="inner-banner">
+  <img src="../../../assets/images/sitemap.jpg">
+   <h3 class="text-white inner-banner-txt">SiteMap
+    <!-- Latest Posts -->
+  </h3>
+  </div>
+
+   </div>
+
+<div class="who_are_u sitemap" id="who_are_u">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="pb-2" *ngFor="let SiteMapDataItem of SiteMapData; let i=index;">
+                <a href="{{SiteMapData[i]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[i]?.pageName}}</h3></a>
+                <p>{{SiteMapData[i]?.description}}</p>
+                <!-- <a href="{{SiteMapData[0]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[0]?.pageName}}</h3></a>
+                <p>{{SiteMapData[0]?.description}}</p>
+              <a href="{{SiteMapData[1]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[1]?.pageName}}</h3></a>
+                <p>{{SiteMapData[1]?.description}}</p>
+              <a href="{{SiteMapData[2]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[2]?.pageName}}</h3></a>
+                <p>{{SiteMapData[2]?.description}}</p>
+              <a href="{{SiteMapData[3]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[3]?.pageName}}</h3></a>
+                <p>{{SiteMapData[3]?.description}}</p>
+              <a href="{{SiteMapData[4]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[4]?.pageName}}</h3></a>
+                <p>{{SiteMapData[4]?.description}}</p>
+              <a href="{{SiteMapData[5]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[5]?.pageName}}</h3></a>
+                <p>{{SiteMapData[5]?.description}}</p>
+              <a href="{{SiteMapData[6]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[6]?.pageName}}</h3></a>
+                <p>{{SiteMapData[6]?.description}}</p>
+              <a href="{{SiteMapData[7]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[7]?.pageName}}</h3></a>
+                <p>{{SiteMapData[7]?.description}}</p>
+              <a href="{{SiteMapData[8]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[8]?.pageName}}</h3></a>
+                <p>{{SiteMapData[8]?.description}}</p>
+                <a href="{{SiteMapData[9]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[9]?.pageName}}</h3></a>
+                <p>{{SiteMapData[9]?.description}}</p>
+                <a href="{{SiteMapData[10]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[10]?.pageName}}</h3></a>
+                <p>{{SiteMapData[10]?.description}}</p>
+                <a href="{{SiteMapData[11]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[11]?.pageName}}</h3></a>
+                <p>{{SiteMapData[11]?.description}}</p>
+                <a href="{{SiteMapData[12]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[12]?.pageName}}</h3></a>
+                <p>{{SiteMapData[12]?.description}}</p>
+                <a href="{{SiteMapData[13]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[13]?.pageName}}</h3></a>
+                <p>{{SiteMapData[13]?.description}}</p>
+                <a href="{{SiteMapData[14]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[14]?.pageName}}</h3></a>
+                <p>{{SiteMapData[14]?.description}}</p>
+                <a href="{{SiteMapData[15]?.pageNameLink}}" target="_blank"><h3>{{SiteMapData[15]?.pageName}}</h3></a>
+                <p>{{SiteMapData[15]?.description}}</p> -->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- <div class="redy_box page-section">
+  <div class="get_ready ">
+      <div class="container">
+          <div class="row align-items-center ">
+              <div class="col-lg-6 ">
+                  <h3 class="">Get Ready<br> to Explore Worldwide Jobs</h3>
+                  <p class="mt-3">We Apply Realtime Jobs for you</p>
+              </div>
+              <div class="col-lg-6 d-flex justify-content-center">
+                  <a href="#" class="common_btn">Subscribe</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+<div class="redy_box">
+  <div class="get_ready ">
+    <div class="container">
+      <div class="row align-items-center ">
+        <div class="col-lg-6 ">
+          <h3 class="">{{whoWeAreSubSectionData?.title}}</h3>
+          <p class="mt-3">{{whoWeAreSubSectionData?.subTitle}}</p>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-center">
+         <a class="common_btn" (click)="gotoSubscribeSignupPage()">Subscribe</a>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+<div id="footer" class="d-flex align-items-center">
+  <div class="container">
+      <div id="footer-widget-area" class="row mt-5 pt-3">
+        <div class="col-md-4 col-lg-4">
+
+          <h3 class="widget-title" style="texr-align :center">Important Links</h3>
+
+          <div class="col-md-6 col-lg-6" style="float: left;">
+
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/who-we-are.html">Who We Are</a></li>
+
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/who-we-serve.html">Who We Serve</a></li>
+
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/how-it-works.html">How It Works</a></li>
+
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/features.html">Features</a></li>
+
+          </div>
+          <div class="col-md-6 col-lg-6" style="float: left;">
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/pricing.html">Pricing</a></li>
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/blog/index.html">Blog</a></li>
+             <li><a target="_blank" (click)="gotoFaqPage()"  style="color:white;" >FAQ</a></li>
+             <li><a target="_blank" (click)="gotoContactUsPage()" style="color:white;">Contact Us </a></li>
+          </div>
+       </div>
+       <div class="col-md-2 col-lg-2">
+        <div class="widget-container">
+          <h3 class="widget-title">We Are Social</h3>
+          <div class="social-icon-top mt-3" >
+            <!-- <a *ngFor="let socialMediaData of socialMediaContent; let i=index" href="{{socialMediaData?.socialMediaLink}}">
+              <img [src]="'data:image/png;base64,'+ socialMediaData?.socialMediaIconResult">
+            </a> -->
+            <!-- <img [src]="'data:image/jpg;base64,'+jobCountIcon?.iconResult"> -->
+             <a href="{{facebooklink}}" target="_blank"><img [src]="facebookIcon" alt=""></a>
+             <a href="{{instagramlink}}" target="_blank"><img [src]="instagramIcon" alt=""></a>
+             <a href="{{youtubelink}}" target="_blank"><img [src]="youtubeIcon" alt=""></a>
+             <a href="{{linkedinlink}}" target="_blank"><img [src]="linkedinIcon" alt=""></a>
+           </div>
+      </div>
+    </div>
+       <div class="col-md-3 col-lg-3">
+        <div class="widget-container">
+           <h3 class="widget-title">Let's Talk</h3>
+           <div class="menu-our-services-container">
+              <ul id="menu-our-services" class="menu">
+                 <!-- <li><a href="mailto:info@adgroup.ie"><img src="assets/images/email_bg.svg" alt="" class="me-2">info@adgroup.ie</a></li> -->
+                 <li><a href="mailto:FooterContentData?.letsTalkEmail"><img src="assets/images/email_bg.svg" alt="" class="me-2">{{FooterContentData?.letsTalkEmail}}</a></li>
+              </ul>
+           </div>
+
+        </div>
+     </div>
+          <div class="col-lg-3 col-md-3" style="float: Right;">
+              <div class="widget-container">
+                 <h3 class="widget-title">Subscribe To Our Newsletter</h3>
+                 <form [formGroup]="NewsLetterForm" (ngSubmit)="onSubmitNewsLetterForm()">
+                 <div class="textwidget mt-3">
+                  <div class="input-group mb-3 subscribe-cont" >
+                       <input type="email" formControlName="EmailId" class="form-control" placeholder="Enter Your Email">
+                       <div *ngIf="submitted1 && nlf.EmailId.errors" class="invalid-feedback">
+                        <div *ngIf="nlf.EmailId.errors.required">Email id is required</div>
+                        <div *ngIf="nlf.EmailId.errors.pattern">Please enter valid email id</div>
+                      </div>
+                       <span class="input-group-btn">
+                       <button class="btn btn-theme" type="submit">REGISTER</button>
+                       </span>
+                    </div>
+                 </div>
+                </form>
+              </div>
+           </div>
+           <div class="col-md-12 mt-5 pt-3">
+              <div class="pt-3 site-info text-center d-flex justify-content-between">
+                <p> <a (click)="gototTermsAndConditionsPage()">Terms &amp; Conditions</a>
+                    <a (click)="gotoPrivacyPolicyPage()"  class="ms-4">Privacy Policy</a></p>
+                 <!-- <p>© 2021 iApply. All rights reserved.</p> -->
+                 <p>{{FooterContentData?.copyrightContent}}</p>
+                 <p><a href="#" data-bs-toggle="modal" data-bs-target="#cookies">Cookies </a> <a (click)="gotoSiteMapPage()" class="ms-4">Sitemap</a></p>
+              </div>
+           </div>
+      </div>
+  </div>
+
+<!-- <a href="#" id="chat"><span><img src="./assets/images/chats.svg"></span></a> -->
+</div>
+
+<div class="modal fade" id="logo_meaning" tabindex="-1" role="dialog" aria-labelledby="logo_meaningLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <!-- <h5 class="modal-title">Modal title</h5> -->
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img  src="assets/images/iapply_logo_details.jpg">
+        <!-- <div class="col-md-12">
+          <div class="p-4">
+            <div class="mt-3">
+              <img width="86" height="86" [src]="bannerData?.headerLogoDownloadLink"><br>
+              <h5 class="uk-card-title mt-3">{{bannerData?.logoTitle}}</h5>
+              <p class="uk-text-details">{{bannerData?.logoDescription}}</p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="lang_select" tabindex="-1" role="dialog" aria-labelledby="lang_selectLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+   <div class="modal-content">
+    <div class="modal-header border-0 pt-3">
+      <!-- <h5 class="modal-title">Language Select</h5> -->
+      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+       <span aria-hidden="true">×</span>
+     </button>
+   </div>
+   <div class="modal-body">
+     <div class="col-md-12">
+      <div class="p-4">
+       <div class="mt-3">
+         <h5 class="uk-card-title mt-3">Language Select</h5>
+         <p class="uk-text-details mb-3">You can select any language of your choice to translate the current content.</p>
+         <div id="google_translate_element"></div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  }
+  </script>
+
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+<div class="modal fade" id="cookies" tabindex="-1" role="dialog" aria-labelledby="cookies_Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+   <div class="modal-content">
+    <div class="modal-header border-0">
+      <!-- <h5 class="modal-title">Modal title</h5> -->
+      <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+       <span aria-hidden="true">×</span>
+     </button> -->
+   </div>
+   <div class="modal-body">
+     <div class="col-md-12">
+
+      <div class="d-flex justify-content-center mt-5 h-100">
+        <div class="d-flex align-items-center align-self-center card p-3 text-center cookies">
+          <img src="https://i.imgur.com/Tl8ZBUe.png" width="50">
+          <span class="mt-2">
+            We use third party cookies to personalize content, ads and analyze site traffic.
+          </span>
+          <a class="d-flex align-items-center" href="{{Url}}/privacy-policy">Learn more<i class="fa fa-angle-right ml-2"></i></a>
+          <button class="btn btn-success mt-3 px-4" type="button" data-bs-dismiss="modal">Accept</button>
+      </div>
+    </div>
+
+   </div>
+ </div>
+ </div>
+ </div>
+ </div>

@@ -1,0 +1,13 @@
+<svg id="testimonials_left_arrow" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="_4781858_arrow_arrows_back_direction_left_icon" data-name="4781858_arrow_arrows_back_direction_left_icon">
+      <g id="Layer_2-2" data-name="Layer 2" transform="translate(2.994 5.996)">
+        <path id="Path_10" data-name="Path 10" d="M28,26a1,1,0,0,0,.71-1.71L20.41,16l8.3-8.29a1,1,0,1,0-1.42-1.42l-9,9a1,1,0,0,0,0,1.42l9,9A1,1,0,0,0,28,26Z" transform="translate(-17.994 -5.996)" fill="#444"/>
+        <path id="Path_11" data-name="Path 11" d="M3.735,17h17.63c.406,0,.735-.448.735-1s-.329-1-.735-1H3.735C3.329,15,3,15.448,3,16S3.329,17,3.735,17Z" transform="translate(-1.994 -5.996)" fill="#444"/>
+      </g>
+      <g id="frame">
+        <rect id="Rectangle_4" data-name="Rectangle 4" width="32" height="32" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

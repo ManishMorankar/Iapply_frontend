@@ -1,0 +1,62 @@
+.content.content-option {
+  padding: 1rem 1rem !important;
+  margin: 2rem 5rem;
+  background-color: #dadada;
+  border-radius: 10px;
+}
+.content-option-list {
+  justify-content: space-around;
+}
+.content-option-item {
+  background-color: #c5c5c5;
+  margin: 1rem 1rem;
+  text-align: center;
+  padding: 2rem;
+  cursor: pointer;
+}
+.mat-icon {
+  transform: scale(2);
+  margin-bottom: 1rem;
+}
+.content-option-item.active {
+  border-bottom-style: solid;
+  border-bottom-color: blue;
+  border-bottom-width: 5px;
+}
+
+.option-card {
+  border: 1px solid black;
+  margin: 5rem 5rem;
+  padding-top: 40px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.content-item-box {
+  margin: 0rem 3rem;
+  padding: 1rem 0rem;
+}
+
+.content-lablel-box {
+  background-color: #d6dee5;
+  padding: 1.5rem 0rem;
+}
+
+.content-btn-box {
+  padding: 10px 0px;
+}
+
+.content-btn {
+  width: 12rem;
+  padding: 10px 5px;
+}
+
+.content-item {
+  margin-bottom: 2rem;
+}
+.invalid-feedback {
+  display: block;
+  color:red;
+}

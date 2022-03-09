@@ -1,0 +1,116 @@
+<div class="page_head">
+  <h2>PAYMENT HISTORY</h2>
+</div>
+<form [formGroup]="filterForm">
+
+  <div class="row">
+    <div class="col-md-2 form-holder">
+       <label class="relative-label blue-color">Plan</label>
+
+          <select formControlName="Plan" name="Plan" id="Plan" placeholder="Select Plan" class="custom-select" data-parsley-trigger="change">
+            <option selected>All</option>
+            <option *ngFor="let p of PlanList" value="{{p}}">
+              {{p}}
+            </option>
+          </select>
+
+    </div>
+    <div class="col-md-3 form-holder">
+      <label class="relative-label blue-color">Payment Method:</label>
+
+          <select formControlName="PaymentMethod" name="PaymentMethod" id="PaymentMethod" placeholder="Select Payment Method" class="custom-select" data-parsley-trigger="change">
+            <option selected>All</option>
+            <option *ngFor="let q of PaymentMethodList" value="{{q}}">
+              {{q}}
+            </option>
+          </select>
+
+    </div>
+    <div class="col-md-3 form-holder">
+      <label class="relative-label blue-color">Payment Status:</label>
+
+          <select formControlName="PaymentStatus" name="PaymentStatus" id="PaymentStatus" placeholder="Select Payment Status" class="custom-select" data-parsley-trigger="change">
+            <option selected>All</option>
+            <option *ngFor="let p of PaymentStatusList" value="{{p}}">
+              {{p}}
+            </option>
+          </select>
+
+    </div>
+    <div class="col-md-2 form-holder">
+      <label class="relative-label blue-color">From Date:</label>
+
+          <input type="date" formControlName="FromDate" name="FromDate" id="FromDate" placeholder="Enter From Date" class="form-control" data-parsley-trigger="change">
+
+    </div>
+    <div class="col-md-2 form-holder">
+      <label class="relative-label blue-color">To Date:</label>
+
+          <input type="date" formControlName="ToDate" name="ToDate" id="ToDate" placeholder="Enter To Date" class="form-control" data-parsley-trigger="change">
+
+    </div>
+    <div class="col-md-12 mt-4">
+      <div class="btm_btn">
+        <div class="d-flex justify-content-end">
+          <button type="button" (click)="searchFilter()" class="btn btn-primary continue mr-3">SEARCH</button>
+          <button type="button" (click)="clearFilter()" class="btn btn-success  back">RESET FILTER</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+<div class="row">
+<div class="col-md-12 mb-3 mt-4">
+  <div class="subhead">
+    <h4 class="d-md-flex align-items-center justify-content-between">PAYMENT HISTORY <span><a (click)="exportData()">Export <i class="fas fa-file-export"></i></a> </span></h4>
+  </div>
+</div>
+</div>
+<ngx-datatable class="table table-striped table-hover"
+               [rows]="TempPaymentHistoryDetails"
+               [columnMode]="'force'"
+               [rowHeight]="'auto'"
+               [limit]="10">
+  <ngx-datatable-column name="Plan" [width]="50" prop="plan">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Total Payment" prop="totalPayment" width="50">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Payment Method" prop="paymentMethod" width="50">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Payment Date" prop="paymentDate" width="50">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value | date: 'dd-MMM-yyyy'}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Payment Status" prop="paymentStatus" width="50">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Subscription Status" prop="subscriptionStatus" width="50">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Subscription End Date" prop="subscriptionEndDate" width="200">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value | date: 'dd-MMM-yyyy'}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Remaining Days" prop="remainingDays" width="50">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
+

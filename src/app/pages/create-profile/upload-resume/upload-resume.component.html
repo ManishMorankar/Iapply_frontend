@@ -1,0 +1,46 @@
+<!-- <section class="widget"> -->
+<div class="page_head">
+  <h2>MY PROFILE</h2>
+</div>
+<div class="dasboard-cont">
+  <div class="row">
+    <div class="page_sub_head col-md-12"><p>Upload your Resume</p></div>
+    <div class="d-flex justify-content-between col-md-12 mb-3"><p>This section allow you to upload resume and cover letter as attachment.</p></div>
+  </div>
+  <section>
+    <form id="file-upload-form" class="mb-3" [formGroup]="uploadDocumentForm">
+      <!-- <input id="file-upload" type="file" name="fileUpload"> -->
+
+      <input type="file" class="upload-attach" (change)="selectFile($event)" formControlName="UploadDocument" name="UploadDocument" id="UploadDocument">
+
+      <label for="file-upload" id="file-drag">
+        <div class=" w-100">
+          <span class="d-flex align-items-center justify-content-center mb-3 drag-icons">
+            <!-- <img src="../../../../assets/images/dashboard/metro-file-word.svg" class="pe-2 ps-2">
+   <img src="images/dashboard/image_icon.svg" class="pe-2 ps-2">
+  <img src="images/dashboard/metro-file-pdf.svg" class="pe-2 ps-2"> -->
+            <span class="pe-2 ps-2"><i class="far fa-file-word"></i></span>
+            <span class="pe-2 ps-2">  <i class="far fa-file-pdf"></i></span>
+            <!--<span class="pe-2 ps-2">  <i class="far fa-images"></i></span>-->
+          </span>
+          <span id="file-upload-btn" class="submit ripple-theme ">Drag File to attach, or <span class="text-success">browse</span></span>
+          <p class="certificates_upload">Only upload your Resume (no cover letter, certificates, reference, …)</p>
+          <span class="max_size">Max Size: 15 MB</span>
+        </div>
+      </label>
+    </form>
+
+    <div class="inner_box  mt-2" *ngFor="let document of resumeAttachments; let i=index;">
+      <i class="{{getFileExtension(document.name)}}" style="color:red;" aria-hidden="true"></i> {{document.name}}
+      <span class="edit_links"><p (click)="removeFile(document.name)" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></p></span>
+    </div>
+  </section>
+</div>
+<div class="row mt-3">
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary pull-right ml-2 continue" (click)="onNext()">
+      <i class="fa fa-forward"></i>&nbsp;
+      Continue
+    </button>
+  </div>
+</div>

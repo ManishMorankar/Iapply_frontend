@@ -1,0 +1,85 @@
+
+.map_box1 {
+  margin-top: 7px !important;
+}
+.green.card a {
+  font: normal normal 500 14px/21px Poppins;
+  letter-spacing: 0px;
+  color: #2CBF8C;
+  text-transform: uppercase;
+}
+.offlinepayment 
+{
+  text-align: center;
+  font: normal normal 600 18px Poppins !important;
+  letter-spacing: 0.4px;
+  color: #304893;
+  text-transform: uppercase;
+  margin: 0
+}
+.OfflinePaymentReceipt{
+  position:fixed;
+  border-top:1px solid rgba(0,0,0,0.2);
+  padding: 15px 15px;
+  text-align:center;
+  z-index: 99;
+  bottom:0;
+  left:0;
+  right:0; top: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+.OfflinePaymentContent{position:absolute; max-width:700px; top:50%; left:50%; transform: translate(-50%, -50%); background:#FFF; border-radius: 20px;}
+.OfflinePaymentReceipt a{color:#3B3663;}
+.inner_box {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid #DBDBDB;
+  background: #FFF;
+
+  padding: 5px 15px;
+}
+.drag-icons{font-size: 38px; color: #304893;}
+.drag-icons > span{margin:0 5px;}
+#file-upload-form-Offline-Payment input[type="file"] {
+position: absolute;left:0; right:0; top:0; bottom: 0; z-index: 9999; opacity: 0; width: 100%;
+}
+#file-upload-form-Offline-Payment input[type="file"]:hover{cursor: pointer;}
+
+#file-upload-form-Offline-Payment input:hover + #file-drag { background-color: #E7E8E8; }
+
+#file-drag {    color: #173249;
+    cursor: pointer;
+    font-weight: bold;
+    margin:  0 0;
+    padding: 1em;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+    height: 150px;
+    border: 2px dashed #313384;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+#file-drag:hover {    background: #E7E8E8;
+}
+
+#file-drag:hover,
+#file-drag.hover {
+}
+
+#file-progress {
+  display : none;
+  margin  : 1em auto;
+  width   : 100%;
+}
+
+
+
+
+#file-upload-form-Offline-Payment {
+  margin : auto;
+  width  : 100%; position: relative;
+}

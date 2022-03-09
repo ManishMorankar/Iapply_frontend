@@ -1,0 +1,178 @@
+<div class="edit_page">
+  <div class="page_head">
+    <h2>CONTENT UPDATE</h2>
+ </div>
+
+ <div class="row mt-4">
+  <div class="col-md-12">
+    <div class="subhead mt-3 mb-3">
+      <h4 class="d-md-flex align-items-center justify-content-between">List of Approved Social Media Links</h4>
+    </div>
+
+    <div class="round_brdr_box bg-white no_radius">
+      <ngx-datatable class="table table-striped table-hover"
+                   [rows]="ApprovedSocialMediaLinks"
+                   [columnMode]="'force'"
+                   [headerHeight]="60"
+                   [footerHeight]="50"
+                   [rowHeight]="'auto'"
+                   [scrollbarH]="true"
+                   [limit]="10">
+      <ngx-datatable-column name="Action">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div class="btn-toolbar">
+            <button class="btn btn-primary continue" (click)="attachFormData(row)">
+                <span class="d-none d-md-inline-block">Edit</span>
+                <span class="d-md-none"><i class='la la-edit'></i></span>
+            </button>
+            <!-- <a [routerLink]="['../course-details']">
+              <span class="d-none d-md-inline-block">View</span>
+              <span class="d-md-none"><i class='la la-edit'></i></span>
+            </a> -->
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Social Media Name" prop="socialMediaName">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Social Media Link" prop="socialMediaLink">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Social Media Status" prop="status">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+    </div>
+    </div>
+<div class="SocialSpace">
+
+</div>
+<div *ngIf="showForm">
+  <div class="subhead mt-3 mb-3">
+    <h4 class="d-md-flex align-items-center justify-content-between">Update We Are Social Icon Data</h4>
+  </div>
+
+  <div class="round_brdr_box bg-white no_radius">
+    <form [formGroup]="WeAreSocialSectionForm">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-holder1 w-100 p-0 mb-2">
+            <div class="input-group">
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <div class="fileinput-new thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                <img alt="social-icon-image" [src]="getSocialIconImage()">
+              </div>
+              <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+              <div>
+                <span class="btn btn-default btn-file">
+                  <span class="fileinput-new">Select Social Icon Image</span>
+                  <span class="fileinput-exists">Change</span>
+                  <input type="file" name="..." accept="image/jpeg,image/x-png,image/png,image/svg" (change)="onFileChangeSocialIconImage($event)">
+                </span>
+                <a (click)="removeSocialIconImageFile()" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="subhead mb-2">
+            <h4>Social Media Name:</h4>
+         </div>
+         <div class="form-holder1 w-100 p-0 mb-2">
+            <div class="input-group">
+            <input type="text" formControlName="SocialMediaName" class="form-control" placeholder="Social Media Name" autocomplete="off" readonly="readonly">
+            <div *ngIf="submitted && cuf.SocialMediaName.errors" class="invalid-feedback">
+              <div *ngIf="cuf.SocialMediaName.errors.required">Social Media Name is required</div>
+              <div *ngIf="cuf.SocialMediaName.errors.pattern">Please enter valid Social Media Name</div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="subhead mb-2">
+            <h4>Social Media Link:</h4>
+         </div>
+         <div class="form-holder1 w-100 p-0 mb-2">
+            <div class="input-group">
+            <input type="text" formControlName="SocialMediaLink" class="form-control" placeholder="Enter Social Media Link" autocomplete="off">
+            <div *ngIf="submitted && cuf.SocialMediaLink.errors" class="invalid-feedback">
+              <div *ngIf="cuf.SocialMediaLink.errors.required">Social Media Link is required</div>
+              <div *ngIf="cuf.SocialMediaLink.errors.pattern">Please enter valid Social Media Link</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="subhead mb-2">
+            <h4>User Comment:</h4>
+         </div>
+         <div class="form-holder1 w-100 p-0 mb-2">
+            <div class="input-group">
+            <textarea rows="4" formControlName="Comment" class="form-control" placeholder="Enter Comment" autocomplete="off"></textarea>
+            <div *ngIf="submitted && cuf.Comment.errors" class="invalid-feedback">
+              <div *ngIf="cuf.Comment.errors.required">Comment is required</div>
+              <div *ngIf="cuf.Comment.errors.pattern">Please enter valid Comment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Standard'" >
+        <div class="d-flex justify-content-end">
+           <div>
+              <!-- <a href="" class="back  me-3">CANCEL</a> -->
+              <button (click)="onCancel()" class="back  me-3">CANCEL</button>
+           </div>
+           <div class="d-flex justify-content-end">
+              <!-- <a href="" class="draft">SUBMIT FOR APPROVAL</a> -->
+              <button (click)="updateWeAreSocialSection()" class="draft">SUBMIT FOR APPROVAL</button>
+           </div>
+        </div>
+     </div>
+
+     <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Admin'">
+      <div class="d-flex justify-content-end">
+         <div>
+            <!-- <a href="" class="back  me-3">CANCEL</a> -->
+            <button (click)="onCancel()" class="back  me-3">CANCEL</button>
+         </div>
+         <div class="d-flex justify-content-end">
+            <!-- <a href="" class="draft me-3">SAVE</a>
+            <a href="" class="continue">PUBLISH</a> -->
+            <button (click)="saveWeAreSocialSection()" class="draft me-3">SAVE</button>
+            <button value="Approved" (click)="approveWeAreSocialSection('Approved')" class="continue me-3">PUBLISH</button>
+            <button value="Rejected" (click)="approveWeAreSocialSection('Rejected')" class="continue">REJECT</button>
+         </div>
+      </div>
+   </div>
+
+      <!-- <button *ngIf=" currentUserType == 'Standard'" (click)="updateWeAreSocialSection()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+      <button *ngIf=" currentUserType == 'Standard'" (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button>
+
+      <button *ngIf=" currentUserType == 'Admin'" (click)="onCancel()" class="btn btn-success float-right mb-3">Cancel</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approveWeAreSocialSection('Rejected')" class="btn btn-success float-right mb-3 mr-2"><i class="fi flaticon-multiply" value="Rejected"></i>&nbsp;Reject</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approveWeAreSocialSection('Approved')" class="btn btn-success float-right mb-3 mr-2"> <i class="fi flaticon-plus" value="Approved"></i>&nbsp; Approve & Publish</button> -->
+
+    </form>
+    </div>
+</div>
+</div>
+</div>
+
+

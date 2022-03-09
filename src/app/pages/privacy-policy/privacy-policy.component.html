@@ -1,0 +1,302 @@
+<div class="main_wrapper">
+  <div class="container">
+      <header id="masthead" class="row site-header">
+          <div class="col-md-2 site-branding">
+              <div class="logo"><a href="index.html" class="custom-logo-link" rel="home" aria-current="page">
+                  <img width="86" height="86" src="./assets/images/logo_2.svg"></a>
+                  <!-- <img width="86" height="86" [src]="bannerData?.headerLogoDownloadLink"></a> -->
+               </div>
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon">
+                 <div class="bar1"></div>
+                 <div class="bar2"></div>
+                 <div class="bar3"></div>
+               </span>
+             </button>
+               <div class="logo_popup_box" href="#" data-bs-toggle="modal" data-bs-target="#logo_meaning">Do you want to know the meaning of the logo?</div>
+          </div>
+          <div class="col-md-10 menu_wrpr d-flex align-items-center justify-content-center">
+              <nav class=" navbar-expand-lg ">
+
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul>
+                    <li class=""><a [routerLink]="['../home']" fragment="banner" >Home</a></li>
+                    <li><a [routerLink]="['../home']" fragment="whoweare">Who We ARe</a></li>
+                    <li><a [routerLink]="['../home']" fragment="whoweserve">Who We Serve</a></li>
+                    <li><a [routerLink]="['../home']" fragment="howitworks">How It Works</a></li>
+                    <li><a [routerLink]="['../home']" fragment="features">Features</a></li>
+                    <li><a [routerLink]="['../home']" fragment="pricing">Pricing</a></li>
+                    <li><a (click)="gotoContactUsPage()" cl>Contact Us</a></li>
+                    <li class="lgn_btn"><a (click)="goToLoginPage()">Login</a></li>
+                    <li class="sgn_btn"><a (click)="goToSignUpPage()">Signup</a></li>
+                    <li><a href="#" class="language_btn" data-bs-toggle="modal" data-bs-target="#lang_select"><i class="fas fa-language"></i></a></li>
+                  </ul>
+                  </div>
+              </nav>
+          </div>
+      </header><!-- #masthead -->
+  </div>
+</div>
+
+<div class="d-flex align-items-center justify-content-center">
+<div class="inner-banner">
+  <img src="../../assets/images/shield-privacy-min-min.png"/>
+     <h3 class="text-white inner-banner-txt">Privacy Policy
+       <!-- Latest Posts -->
+     </h3>
+    </div>
+</div>
+
+<div class="who_are_u terms_page" id="who_are_u">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+                   <!-- <h2 class="mt-2">{{privacyPolicyData?.title}}</h2> -->
+                <div class="pb-4 dynamic_text" [innerHTML]="privacyPolicyData?.description"></div>
+                  <!-- <p>Our Privacy Policy elaborates that iApply E-Commerce Online Services collects, uses, and discloses the personal information that it collects from you when you use iApply E-Commerce Online Services website or subscribe to one of its services available through the website. By using our website and our services, you consent to the information collection and use practices described in this Privacy Policy. Your use of our website and services is subject to this Privacy Policy and our Terms of Use, including its limitations on damages. For the purposes of this Privacy Policy, "Personal Information" means information that would allow a third party to learn your identity or contact you, including, for example, your full name, address, telephone number, email address, your social profile links, your portfolio, your experience, your skills, your introductory YouTube video, or Apple/Samsung Pay or Debit/Credit card number.</p>
+<p><strong>What Information We Collect</strong></p>
+<p>When you use our website and our services, we collect information from you. This information may include your name, email address, phone number, home address, date of birth, work experience, education, references, supporting documents, previous and expected salaries, race, ethnicity, gender, disability status, veteran status, email, LinkedIn Profile Link, Facebook Profile Link, YouTube Introductory Video link, Twitter Link, Portfolio Details, Projects Detail, Languages you speak, your nationality, Your preferred Job Details&nbsp;and more. If you subscribe to one of our packages, you may also be providing us with your resume, cover letter, certificates and any related information or documentation. You must be at least 18 years old to subscribe to our packages/services and use your own credit/debit cards to make the online payments.&nbsp;</p>
+<p>We might also collect additional Information from you. Once you subscribe to any of our packages through our website, we will collect your credit card number and other payment information which we will use only to process your subscription amount payment or monthly reoccurring payments. We may also collect non-personal information from you. When you access our website, we may collect such things as your cookies, IP address, browser type, operating system, referring URL, service provider, location, and other general information about our users. This information, on its own, cannot usually be used to identify you. We may at times also collect automatically generated data that will help diagnose problems with our server, help administer our website, analyze trends, track client movement, or gather demographic information for purposes of improving our website.</p>
+<p><strong>Use of Cookies:</strong></p>
+<p>We use cookies and other tracking technologies to collect information about you and about your use of our website and services. We may combine this information with other personal information we collect from you. We use this information to enhance and personalize your experience while using this website and our services, to track client activities in order to understand how clients use our website and to improve our website and services. We may also use third-party vendors to track and analyze website data. We use the data collected by such third parties to help us administer and improve the quality of the website and to analyze website usage. Such third parties may combine the information that we provide you with other information that they have collected. This Policy does not cover such third parties' use of the data. We use automated devices and applications, such as Google Analytics, to evaluate usage of our website. We may also use other analytic means to evaluate our services. We use these tools to help us improve our services, performance, and client experiences. We do not share your personal information with these third parties.</p>
+<p><strong>Use of Information and &amp; Disclosure of Personal Information</strong></p>
+<p>We may use your information:</p>
+<ul class="bullet">
+<li>To apply for jobs on behalf of you, wherever the jobs are available like Internet, Professional Job Sites, Companies Websites, Social Networking Sites, Job Portals, Recruitment Sites, and others if applicable.</li>
+<li>To enhance or improve client experiences.</li>
+<li>To provide our services to you, to communicate with you about your use of our services, to respond to your inquiries, to fulfil your orders, process your payments, and for other customer service-related purposes.</li>
+<li>To understand how client&rsquo;s access and use our website and services, both on an aggregated and individualized basis, in order to improve our website and services and respond to client desires and preferences.</li>
+<li>As necessary to comply with our legal obligations, resolve disputes, enforce our agreements (including this Privacy Policy and the Terms of Use), to protect or defend our rights, to investigate, prevent, or take action regarding illegal activities, suspected fraud, and situations involving potential threats to the safety of any person.</li>
+</ul>
+<p>We do not sell or rent your Personal Information to third parties so that those third the information we collect about you, including your Personal Information, as follows:</p>
+<ul class="bullet">
+<li>We may share your Personal Information with our contractors and service providers who perform functions on our behalf. For example, we use third parties to provide credit card processing services on our website, and we will disclose your credit card and billing information to such third parties so that they may process your payment on our behalf.</li>
+<li>We also may disclose the information we collect from you in order to comply with the law, a judicial proceeding, court order, or another legal process, such as in response to a subpoena.</li>
+<li>To a buyer or other successor in the event of a merger, divestiture, restructuring, reorganization, dissolution or other sale or transfer of some or all of our assets or stock, whether as a going concern or as part of bankruptcy, liquidation or similar proceeding, in which Personal Information held by us about our Clients is among the assets transferred.</li>
+</ul>
+<p>We may change this Privacy Policy from time to time, and the updated version will be posted on our website in place of the old version. We will also include the date that the currently displayed Privacy Policy took effect to help you determine whether there have been any changes since you last used our website. If we make a material modification to this Privacy Policy, we will notify you by sending an email to the email address you have provided (if any) and by other means where appropriate. If you do not agree with the terms of any updated Privacy Policy, you must immediately cease using our website and services.<p>
+
+<p><strong>Cyber Security</strong></p>
+<p>We have implemented reasonable security measures to protect against unauthorized access to and unlawful interception or processing of your Personal Information. We have also implemented two-factor authentication on user accounts. Unfortunately, no data transmission over the Internet is 100% secure. While we strive to protect your Personal Information, we cannot ensure or warranty the security of any such Personal Information.parties can market their own products or services to you. We may, however, disclose </p> -->
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- <div class="redy_box page-section">
+  <div class="get_ready ">
+      <div class="container">
+          <div class="row align-items-center ">
+              <div class="col-lg-6 ">
+                  <h3 class="">Get Ready<br> to Explore Worldwide Jobs</h3>
+                  <p class="mt-3">We Apply Realtime Jobs for you</p>
+              </div>
+              <div class="col-lg-6 d-flex justify-content-center">
+                  <a href="#" class="common_btn">Subscribe</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+<div class="redy_box">
+  <div class="get_ready ">
+    <div class="container">
+      <div class="row align-items-center ">
+        <div class="col-lg-6 ">
+          <!-- <h3 class="">{{whoWeAreSubSectionData?.title}}</h3> -->
+<!-- <p class="mt-3">{{whoWeAreSubSectionData?.subTitle}}</p> -->
+<h3 class="">Job finding is hard, we won't lie! Let’s simplify it</h3>
+<p class="mt-3"> with iApply!</p>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-center">
+         <a class="common_btn" (click)="gotoSubscribeSignupPage()">Subscribe</a>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+<div id="footer" class="d-flex align-items-center">
+  <div class="container">
+      <div id="footer-widget-area" class="row mt-5 pt-3">
+        <div class="col-md-4 col-lg-4">
+
+          <h3 class="widget-title" style="texr-align :center">Important Links</h3>
+
+          <div class="col-md-6 col-lg-6" style="float: left;">
+
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/who-we-are.html">Who We Are</a></li>
+
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/who-we-serve.html">Who We Serve</a></li>
+
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/how-it-works.html">How It Works</a></li>
+
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/features.html">Features</a></li>
+
+          </div>
+          <div class="col-md-6 col-lg-6" style="float: left;">
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/pricing.html">Pricing</a></li>
+             <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/blog/index.html">Blog</a></li>
+             <li><a target="_blank" (click)="gotoFaqPage()"  style="color:white;" >FAQ</a></li>
+             <li><a target="_blank" (click)="gotoContactUsPage()" style="color:white;">Contact Us </a></li>
+          </div>
+       </div>
+       <div class="col-md-2 col-lg-2">
+        <div class="widget-container">
+          <h3 class="widget-title">We Are Social</h3>
+          <div class="social-icon-top mt-3" >
+            <!-- <a *ngFor="let socialMediaData of socialMediaContent; let i=index" href="{{socialMediaData?.socialMediaLink}}">
+              <img [src]="'data:image/png;base64,'+ socialMediaData?.socialMediaIconResult">
+            </a> -->
+            <!-- <img [src]="'data:image/jpg;base64,'+jobCountIcon?.iconResult"> -->
+             <a href="{{facebooklink}}" target="_blank"><img [src]="facebookIcon" alt=""></a>
+             <a href="{{instagramlink}}" target="_blank"><img [src]="instagramIcon" alt=""></a>
+             <a href="{{youtubelink}}" target="_blank"><img [src]="youtubeIcon" alt=""></a>
+             <a href="{{linkedinlink}}" target="_blank"><img [src]="linkedinIcon" alt=""></a>
+           </div>
+      </div>
+    </div>
+       <div class="col-md-3 col-lg-3">
+        <div class="widget-container">
+           <h3 class="widget-title">Let's Talk</h3>
+           <div class="menu-our-services-container">
+              <ul id="menu-our-services" class="menu">
+                 <!-- <li><a href="mailto:info@adgroup.ie"><img src="assets/images/email_bg.svg" alt="" class="me-2">info@adgroup.ie</a></li> -->
+                 <li><a href="mailto:FooterContentData?.letsTalkEmail"><img src="assets/images/email_bg.svg" alt="" class="me-2">{{FooterContentData?.letsTalkEmail}}</a></li>
+              </ul>
+           </div>
+
+        </div>
+     </div>
+          <div class="col-lg-3 col-md-3" style="float: Right;">
+              <div class="widget-container">
+                 <h3 class="widget-title">Subscribe To Our Newsletter</h3>
+                 <form [formGroup]="NewsLetterForm" (ngSubmit)="onSubmitNewsLetterForm()">
+                 <div class="textwidget mt-3">
+                  <div class="input-group mb-3 subscribe-cont" >
+                       <input type="email" formControlName="EmailId" class="form-control" placeholder="Enter Your Email">
+                       <div *ngIf="submitted1 && nlf.EmailId.errors" class="invalid-feedback">
+                        <div *ngIf="nlf.EmailId.errors.required">Email id is required</div>
+                        <div *ngIf="nlf.EmailId.errors.pattern">Please enter valid email id</div>
+                      </div>
+                       <span class="input-group-btn">
+                       <button class="btn btn-theme" type="submit">REGISTER</button>
+                       </span>
+                    </div>
+                 </div>
+                </form>
+              </div>
+           </div>
+           <div class="col-md-12 mt-5 pt-3">
+
+
+
+              <div class="pt-3 row site-info ">
+                <p class="col-md-4 text-left"> <a (click)="gototTermsAndConditionsPage()">Terms &amp; Conditions</a>
+                  <a (click)="gotoPrivacyPolicyPage()" class="ms-4">Privacy Policy</a>
+                </p>
+                <!-- <p>© 2021 iApply. All rights reserved.</p> -->
+                <p class="col-md-4 text-center">{{FooterContentData?.copyrightContent}}</p>
+                <p class="col-md-4 text-right"><a href="#" data-bs-toggle="modal" data-bs-target="#cookies">Cookies </a> <a (click)="gotoSiteMapPage()"
+                    class="ms-4">Sitemap</a></p>
+              </div>
+
+
+
+           </div>
+      </div>
+  </div>
+
+<!-- <a href="#" id="chat"><span><img src="./assets/images/chats.svg"></span></a> -->
+</div>
+
+<div class="modal fade" id="logo_meaning" tabindex="-1" role="dialog" aria-labelledby="logo_meaningLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header border-0">
+      <!-- <h5 class="modal-title">Modal title</h5> -->
+      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <img  src="assets/images/iapply_logo_details.jpg">
+      <!-- <div class="col-md-12">
+        <div class="p-4">
+          <div class="mt-3">
+            <img width="86" height="86" [src]="bannerData?.headerLogoDownloadLink"><br>
+            <h5 class="uk-card-title mt-3">{{bannerData?.logoTitle}}</h5>
+            <p class="uk-text-details">{{bannerData?.logoDescription}}</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="lang_select" tabindex="-1" role="dialog" aria-labelledby="lang_selectLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+   <div class="modal-content">
+    <div class="modal-header border-0 pt-3">
+      <!-- <h5 class="modal-title">Language Select</h5> -->
+      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+       <span aria-hidden="true">×</span>
+     </button>
+   </div>
+   <div class="modal-body">
+     <div class="col-md-12">
+      <div class="p-4">
+       <div class="mt-3">
+         <h5 class="uk-card-title mt-3">Language Select</h5>
+         <p class="uk-text-details mb-3">You can select any language of your choice to translate the current content.</p>
+         <div id="google_translate_element"></div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+<div class="modal fade" id="cookies" tabindex="-1" role="dialog" aria-labelledby="cookies_Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+   <div class="modal-content">
+    <div class="modal-header border-0">
+      <!-- <h5 class="modal-title">Modal title</h5> -->
+      <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+       <span aria-hidden="true">×</span>
+     </button> -->
+   </div>
+   <div class="modal-body">
+     <div class="col-md-12">
+
+      <div class="d-flex justify-content-center mt-5 h-100">
+        <div class="d-flex align-items-center align-self-center card p-3 text-center cookies">
+          <img src="https://i.imgur.com/Tl8ZBUe.png" width="50">
+          <span class="mt-2">
+            We use third party cookies to personalize content, ads and analyze site traffic.
+          </span>
+          <a class="d-flex align-items-center" href="{{Url}}/privacy-policy">Learn more<i class="fa fa-angle-right ml-2"></i></a>
+          <button class="btn btn-success mt-3 px-4" type="button" data-bs-dismiss="modal">Accept</button>
+      </div>
+    </div>
+
+   </div>
+ </div>
+ </div>
+ </div>
+ </div>

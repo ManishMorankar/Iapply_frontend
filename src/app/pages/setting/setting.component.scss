@@ -1,0 +1,66 @@
+.btn-primary {
+  color: #fff;
+  margin-left: 350px;
+
+}
+.btn-success {
+  color: #fff;
+  margin-left: 125px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+.btn-warning {
+  color: #fff;
+  margin-left: 125px;
+  width: 300px;
+}
+input.form-control {
+  font: normal normal 400 14px/23px Poppins;
+ 
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border-radius: 4px 4px 4px 4px;
+  color: #2B3150;
+}
+
+.invalid-feedback{
+  display: block;
+  color:red
+}
+.form-control1
+{
+width:100px;
+}
+.form-holder img {
+  width: 18px;
+  padding-bottom: 100px;
+}
+.subhead h4 {
+  text-align: left;
+  font: normal normal 600 18px Poppins !important;
+  letter-spacing: 0.4px;
+  color: #304893;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.cancle{display: flex;
+  padding: 0 40px;
+  height: 50px;
+  background: #F35162 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 500 16px/27px Poppins;
+  letter-spacing: 0px;  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  color: #FFFFFF;border: 1px solid #F35162;}
+.cancle:hover{border: 1px solid #F35162;
+  background: transparent;
+  color: #F35162;}
+
+.table.detail_table>thead tr th {
+  padding: .5rem .5rem !important;
+  vertical-align: middle !important;
+}

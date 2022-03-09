@@ -1,0 +1,875 @@
+<div class="main_wrapper">
+  <div class="container">
+    <header id="masthead" class="row site-header">
+      <div class="col-lg-2 site-branding">
+        <div class="logo"><a href="" class="custom-logo-link" rel="home" aria-current="page">
+            <!-- <img width="86" height="86" src="assets/images/logo_2.svg"></a> -->
+            <!-- <img width="86" height="86" [src]="bannerData?.headerLogoDownloadLink"> -->
+
+            <img width="86" height="86" src="./assets/images/logo_2.svg">
+
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </span>
+          </button>
+        <div class="logo_popup_box" href="#" data-bs-toggle="modal" data-bs-target="#logo_meaning">Do you want to
+            know the meaning of the logo?</div>
+      </div>
+      <div class="col-lg-10 menu_wrpr d-flex align-items-center justify-content-center">
+        <nav class=" navbar-expand-lg ">
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul>
+              <li><a [routerLink]="['./']" fragment="/">Home</a></li>
+              <li><a [routerLink]="['./']" fragment="whoweare">Who We ARe</a></li>
+              <li><a [routerLink]="['./']" fragment="whoweserve">Who We Serve</a></li>
+              <li><a [routerLink]="['./']" fragment="howitworks">How It Works</a></li>
+              <li><a [routerLink]="['./']" fragment="features">Features</a></li>
+              <li><a [routerLink]="['./']" fragment="pricing">Pricing</a></li>
+              <li><a (click)="gotoContactUsPage()">Contact Us</a></li>
+              <li class="lgn_btn"><a (click)="goToLoginPage()">Login</a></li>
+              <li class="sgn_btn"><a (click)="gotoSignupPage()">Signup</a></li>
+              <!-- <li><a href=""><img src="assets/images/lang.svg"></a></li> -->
+              <li><a href="#" class="language_btn" data-bs-toggle="modal" data-bs-target="#lang_select"><i class="fas fa-language"></i></a></li>
+
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header><!-- #masthead -->
+  </div>
+</div>
+<!-- Hero Banner Section -->
+<div class="hero-banner d-flex align-items-center " id="/"
+  [ngStyle]="{'background-image': 'url('+bannerData?.bannerImageDownloadLink+')'}">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-12 d-flex align-items-center ">
+        <div>
+          <h1 class="main_heading">{{bannerData?.header}} <br> <span>{{bannerData?.title}}</span></h1>
+          <p class="lead mt-3 mb-3" [innerHTML]="bannerData?.description">
+            <!-- <div [innerHTML]="bannerData.description"></div> -->
+            <!-- {{bannerData?.description}} -->
+          </p>
+
+          <div class="d-flex">
+            <a (click)="gotoSubscribeSignupPage()" class="mt-3 common_btn">Subscribe</a>
+            <!-- <a href="#" class="mt-3 common_btn wt_back">Find Out More</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="arrow_down d-flex align-items-center justify-content-center"
+     [routerLink]="['./']" fragment="whoweare" ><i class="fas fa-arrow-down"></i>
+  </div>
+</div>
+
+
+
+
+<div class="who_are_u1" id="whoweare">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 serv_sct_head1 text-center mb-4">
+        <h3 class="heading_cmn1">{{whoWeAreSectionData?.title}}</h3>
+        <p class="Sub_semi_heading mb-5"[innerHTML]="whoWeAreSectionData?.subTitle"></p>
+        <!-- <p class="Sub_semi_heading mb-5"><strong>iApply</strong>is one of its kind and the first ever Artificial Intelligence (AI) powered platform in the world that applies jobs on your behalf. It is an innovative platform that drives the consumer market forward using a unique and advanced AI algorithm. iApply was born to facilitate humans throughout their job hunt journey. It works by searching and applying to real-time posted jobs across numerous industries, sectors and fields on behalf of job seekers from all around the globe. It is designed to help the job seekers to find and apply their dream jobs in their desired job role and countries, like UAE, KSA, Oman, Jordan, Egypt, Bahrain, USA, UK, Canada, Australia and all over the world. Our platform gives leverage to every person on this planet to benefit from our advanced artificial intelligence algorithm, which has the ability to search and apply upto 4,000 real-time posted jobs. We help fresh graduates, unemployed job seekers, skilled workers and those who are looking for a new job, but either haven’t been able to organize their time due to their busy schedule or take a leap to find and apply to one. </p>
+<h3 class="heading_cmn1">Our Vision</h3>
+<p class="Sub_Semi_heading mb_5">We know that applying for a new job can be stressful. As economies worldwide are changing rapidly and moving towards adapting digitalization & automation, so huge number of workforces are losing their jobs. In Such time finding a suitable job has become challenging for the majority of job seekers. iApply will give back people, what digitalization and Artificial Intelligence might have taken from them, their JOBS.</p>
+<p class="Sub_Semi_heading mb_5">We aspire to help people from all over the world find the perfect job they’re looking for through our advanced & powerful platform as conventional ways of finding a job are now considered outdated and time-consuming. Many people around the world struggle to find better opportunities or they are not able to reach the right jobs and the right markets. iApply will empower its users with an advanced artificial intelligence algorithm (assistant) to get better reach and exposure of available jobs around the globe.</p> -->
+
+      </div>
+      <div class="col-md-8">
+        <!-- <img src="assets/images/image_bbl.svg"> -->
+        <img [src]="whoWeAreSectionData?.downloadLink">
+      </div>
+      <!-- <div class="col-md-4">
+          <div class="servi_div mt-3 mb-5">
+            <h4>01 - Save Time</h4>
+            <p>TELOS is the first AI-powered software to create a highly detailed inventory of your employee's skills and capabilities. </p>
+          </div>
+          <div class="servi_div mb-5">
+            <h4>02 - Organize</h4>
+            <p>TELOS is the first AI-powered software to create a highly detailed inventory of your employee's skills and capabilities. </p>
+          </div>
+          <div class="servi_div mb-5">
+            <h4>03 - Opportunities</h4>
+            <p>TELOS is the first AI-powered software to create a highly detailed inventory of your employee's skills and capabilities.</p>
+          </div>
+          <div class="servi_div">
+            <h4>04 - Sit Back & Relax</h4>
+            <p>TELOS is the first AI-powered software to create a highly detailed inventory of your employee's skills and capabilities.</p>
+          </div>
+        </div> -->
+      <div class="col-md-4">
+        <div class="servi_div">
+          <div class="row" [innerHTML]="whoWeAreSectionData?.htmlContent"></div>
+        </div>
+      </div>
+      <!-- {{whoWeAreSectionData.whoWeAreData}} -->
+      <!-- <div class="row" [innerHTML]="whoWeAreSectionData?.htmlContent"></div> -->
+    </div>
+  </div>
+</div>
+<div class="redy_box">
+  <div class="get_ready ">
+    <div class="container">
+      <div class="row align-items-center ">
+        <div class="col-lg-6 ">
+          <h3 class="">{{whoWeAreSubSectionData?.title}}</h3>
+          <p class="mt-3">{{whoWeAreSubSectionData?.subTitle}}</p>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-center">
+          <a (click)="gotoSubscribeSignupPage()" class="common_btn">Subscribe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="abut_us frst_ab" id="whoweserve">
+  <div class="container h-100">
+    <div class="row align-items-center h-100">
+      <div class="col-md-6 ">
+        <div class="left_section_box">
+          <h4 class="heading_cmn2">{{whoWeServeSectionData?.title}}</h4>
+          <!-- <ul class="mt-3 mb-3">
+            <li >
+             Working Professional
+            </li>
+            <li >
+              Unemployed Jobseekers
+            </li>
+            <li >
+              Skilled Workers
+            </li>
+            <li>
+              Fresh Graduates
+            </li>
+          </ul>
+          <p class="mb-4">Silent sir say desire fat him letter. Whatever settling goodness too and honoured she building answered her. Strongly thoughts remember mr to do consider debating. Spirits musical behaved on we he farther letters.</p>
+          <p>Silent sir say desire fat him letter. Whatever settling goodness too and honoured she building answered her. Strongly thoughts remember mr to do consider debating. Spirits musical behaved on we he farther letters.</p> -->
+          <div [innerHTML]="whoWeServeSectionData?.htmlContent"></div>
+          <a (click)="gotoSubscribeSignupPage()" class="mt-2 common_btn">Subscribe</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="rgt_section_box d-flex align-items-center w-100 justify-content-between">
+          <div class="fr_rgt2">
+            <div class="ani_box  mb-4">
+              <img [src]="whoWeServeSectionData?.imagePath[0]" class="">
+              <div class="ani_box-content">
+              </div>
+            </div>
+            <div class="ani_box">
+              <img [src]="whoWeServeSectionData?.imagePath[1]" class="">
+              <div class="ani_box-content">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="fr_rgt" style="width: 1100px;">
+            <div class="ani_box">
+              <img [src]="whoWeServeSectionData?.imagePath[2]" class="">
+              <div class="ani_box-content">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=" how_it_works " id="howitworks">
+
+  <div class="container">
+    <div id="particles-js"></div>
+
+    <div class="row p_rl justify-content-center">
+      <h4 class="heading_cmn text-center mb-5">{{howItWorksSectionData?.title}}</h4>
+      <!-- <div class="col-lg-4 col-md-6">
+      <div class="icns_box d-flex align-items-center justify-content-center">
+        <div class="text-center">
+          <div class="details_icon">
+            <h5>Subscribe</h5>
+            <span class="seprt_btm"></span>
+            <p>Integer euismod lectus a laoreet faucibus. Fusce nec tempus sem, eget scelerisque odio. Donec at nulla in erat facilisis malesuada. Donec mi erat, tristique eu faucibus in, venenatis hendrerit nisl. Proin finibus magna quis purus tincidunt interdum.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="icns_box d-flex align-items-center justify-content-center">
+        <div class="text-center">
+          <div class="details_icon">
+            <h5>Create Your Profile</h5>
+            <span class="seprt_btm"></span>
+            <p>Integer euismod lectus a laoreet faucibus. Fusce nec tempus sem, eget scelerisque odio. Donec at nulla in erat facilisis malesuada. Donec mi erat, tristique eu faucibus in, venenatis hendrerit nisl. Proin finibus magna quis purus tincidunt interdum.  </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="icns_box d-flex align-items-center justify-content-center">
+       <div class="text-center">
+        <div class="details_icon">
+          <h5>Let AI Assist You</h5>
+          <span class="seprt_btm"></span>
+          <p>Integer euismod lectus a laoreet faucibus. Fusce nec tempus sem, eget scelerisque odio. Donec at nulla in erat facilisis malesuada. Donec mi erat, tristique eu faucibus in, venenatis hendrerit nisl. Proin finibus magna quis purus tincidunt interdum.</p>
+        </div>
+      </div>
+    </div>
+    </div> -->
+      <div class="col-lg-4 col-md-6" *ngFor="let data of howItWorksSectionData?.howItWorksHtmlContent;">
+        <div class="icns_box d-flex align-items-center justify-content-center">
+          <div class="text-center">
+            <div class="details_icon">
+              <h5>{{data?.subTitle}}</h5>
+              <span class="seprt_btm"></span>
+              <p [innerHTML]="data?.htmlContent"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 video_container d-flex align-items-center justify-content-center mt-5">
+        <div class="row align-items-center">
+          <div class="col-lg-12 text-center d-flex align-items-center justify-content-center">
+            <a href="#" class="" data-bs-toggle="modal" data-bs-target="#video_modal"><img
+                src="assets/images/play_button.svg"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="service_box d-flex align-items-center" id="features">
+  <div class="container">
+    <div class="row align-items-center justify-content-center mt-4 features_wrpr">
+      <div class="col-lg-12 col-md-12 text-center mb-3 Features_heading">
+        <h4 class="heading_cmn text-center mb-4">{{featuresSectionData?.title}}</h4>
+        <!-- <p class="semi_heading mb-5 text-center">  Do You Think Getting a Dream Job is Unattainable? Think Again!</p> -->
+        <p class="semi_heading mb-5 text-center" [innerHTML]= "featuresSectionData?.subTitle"></p>
+      </div>
+      <div class="col-md-3 col-sm-6 " *ngFor="let data of featuresSectionData?.featuresContent">
+        <div class="service_wrp flex-column justify-content-center d-flex">
+          <div [innerHTML]="data?.htmlContent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="map_box d-flex align-items-center" id="">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-12 col-md-12 text-center mb-5 ">
+        <h2>Where We Go For Jobs</h2>
+        <h4 class="map-sub-heading">These are Real Time available Job  Insights for the current week !</h4>
+      </div>
+      <div class="col-lg-12 col-md-12">
+        <div class="mapcontainer">
+          <div class="map">
+            <span>Alternative content for the map</span>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="member btm_member_box">
+  <div class="container">
+    <div class="row align-items-center justify-content-center h-100" id="counter">
+      <!-- <div class="col-lg-3 col-md-6" *ngFor="let jobCountIcon of JobsAvailablityCounterContent; let i=index">
+       <div class="de_count text-center" *ngIf="jobCountIcon?.iconResult"><img [src]="'data:image/jpg;base64,'+jobCountIcon?.iconResult">
+        <h3 class="timer mt-2 "> <p class="counter">{{jobCountIcon?.count}}</p>  <span>{{jobCountIcon?.heading}}</span></h3>
+
+      </div>
+    </div> -->
+
+      <div class="col-md-3 col-sm-6" *ngFor="let jobCountIcon of JobsAvailablityCounterContent; let i=index">
+        <div class="de_count text-center" *ngIf="jobCountIcon?.downloadLink"><img [src]="jobCountIcon?.downloadLink">
+          <h3 class="timer mt-2 ">
+            <p>{{jobCountIcon?.count}}</p> <span>{{jobCountIcon?.heading}}</span>
+          </h3>
+
+        </div>
+      </div>
+      <!-- <div class="col-lg-3 col-md-6">
+       <div class="de_count text-center"><img src="assets/images/count3.svg">
+        <h3 class="timer mt-2 "> <p class="counter">50000</p>  <span>Subscribers</span></h3>
+
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="de_count text-center "><img src="assets/images/count1.svg">
+      <h3 class="timer mt-2"><p class="counter">500000 </p><span> Jobs Applied</span></h3>
+
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+   <div class="de_count text-center "><img src="assets/images/count2.svg">
+    <h3 class="timer mt-2"><p class="counter">70</p><span>Industries</span></h3>
+
+  </div>
+</div>
+<div class="col-lg-3 col-md-6">
+ <div class="de_count text-center "><img src="assets/images/count4.svg">
+  <h3 class="timer mt-2"><p class="counter">95</p> <span>Success Rate</span></h3>
+</div>
+</div> -->
+      <div class="col-lg-12 col-md-12 ">
+        <div class="head_box text-center">
+          <h3 class="mb-4 heading_cmn mt-5 mb-5 text-capitalize">{{JobsAvailablityCounterTitle?.title}}</h3>
+          <div class="sub_wrp d-flex align-items-center justify-content-center">
+            <a (click)="gotoSubscribeSignupPage()" class=" common_btn">Subscribe</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="testimonals ">
+  <div class="container">
+    <div class="row align-items-center h-100">
+      <div class="col-lg-12 col-md-12 pb-4 mb-2">
+        <h3 class="heading_cmn">{{testimonialSectionData?.title}}</h3>
+        <p class="semi_heading mb-2">{{testimonialSectionData?.subTitle}}</p>
+      </div>
+      <div class="col-lg-12 col-md-12 p-0">
+        <div class="row testi_box_bg">
+
+          <div class="col-md-12 position-relative">
+            <div class="testimonals_slider">
+              <div class=" testimonial-item h-100"
+                *ngFor="let data of testimonialContentSectionDataInPair;let i = index;">
+
+                      <div class="content">
+                        <div class="info d-flex align-items-center mb-4">
+
+                          <div class="usr_img">
+                            <img width="60" height="60" src="{{data.SectionData1.downloadLink}}">
+                          </div>
+                          <div class="test_details">
+                            <h2>{{data.SectionData1.userName}}</h2>
+                            <h3>{{data.SectionData1.designation}}</h3>
+                          </div>
+                        </div>
+                        <h3>{{data.SectionData1.subTitleDesignation}}</h3>
+                        <p class="description">{{data.SectionData1.description}}</p>
+                      </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- <div class="slider slider-info">
+
+        </div> -->
+         <div class="video_slider  mt-5">
+          <div class=" video-item h-100" *ngFor="let data of videoSectionData;let i = index;">
+            <div class="row new_vdo_slid">
+              <div class="col-lg-6 arrowvidp">
+                <div class="embed-responsive embed-responsive-21by9 pt-5 mt-4">
+                <iframe width="100%" height="315" [src]="getSanitizedVideoUrl(videoSectionData[i]?.videoMasterUrl)+'?controls=1&rel=0&enablejsapi=1'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+             </div>
+
+              <div class="col-lg-6 arrowvidp">
+                <div class="embed-responsive embed-responsive-21by9 pt-5 mt-4">
+                <iframe width="100%" height="315" [src]="getSanitizedVideoUrl(videoSectionData[i+1]?.videoMasterUrl)+'?controls=1&rel=0&enablejsapi=1'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+             </div>
+             </div>
+            </div>
+          <!-- <div class=" video-item h-100">
+              <div class="row">
+                <div class="col-lg-6 arrowvidp" id="u1">
+                  <div class="embed-responsive embed-responsive-21by9 pt-5 mt-4">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/oV74Najm6Nc"
+                      title="YouTube video player" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 arrowvidp" id="u2">
+                  <div class="embed-responsive embed-responsive-21by9 pt-5 mt-4">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/oV74Najm6Nc"
+                      title="YouTube video player" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+                  </div>
+                </div>
+            </div>
+          </div> -->
+          <!-- <div class=" video-item h-100">
+            <div class="row">
+              <div class="col-lg-6 arrowvidp">
+                <div class="embed-responsive embed-responsive-21by9 pt-5 mt-4">
+                  <iframe width="100%" height="315" src="https://www.youtube.com/embed/oV74Najm6Nc" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                </div>
+              </div>
+
+              <div class="col-lg-6 arrowvidp">
+                <div class="embed-responsive embed-responsive-21by9 pt-5 mt-4">
+                  <iframe width="100%" height="315" src="https://www.youtube.com/embed/oV74Najm6Nc" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="choose_your_package page-section" id="pricing">
+  <div class="container">
+    <div class="row align-items-center h-100">
+      <div class="col-lg-12 col-md-12">
+        <div class=" text-center">
+          <h3 class="heading_cmn mb-4">{{packageSectionData?.title}}</h3>
+          <!-- <p class="semi_heading mb-2 text-center">{{packageSectionData?.subTitle}}</p> -->
+          <p class="semi_heading mb-2 text-center">We use tomorrow’s technology to get you today’s job opportunities! Choose your package and get ready to fly with iApply! </p>
+        </div>
+      </div>
+
+
+         <div class="col-lg-8 m-auto"><div class="row">
+          <div class="col-md-6 mt-4">
+            <div class="price_wrpr1"  style="height: 100%;">
+              <div class=" price_box fr_box" *ngIf="packageContent" style="height: 100%;">
+                <div class="price_details text-center " style="height: 100%; display: flex;
+                flex: 1;
+                flex-direction: column;">
+                  <h5>{{packageContent[0]?.packageName}}</h5>
+                  <h4 class="d-flex align-items-center justify-content-center flex-column">
+                    <p class="mb-0 price_main">{{packageContent[0]?.packagePrice}}<span></span></p>
+                  </h4>
+                  <p class="PackagePeriod">{{packageContent[0]?.packagePeriod}}</p>
+
+                <P [innerHTML]="packageContent[0]?.htmlContent"></P>
+                <div class="d-flex align-items-center justify-content-center" style="margin-top:auto;">
+                  <button type="button" (click)="gotoSubscribeSignupPage()" class="get_started  btn btn-primary m-auto">Get
+                    Started</button>
+                  </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-4">
+            <div class="price_wrpr" style="height: 100%;">
+              <div class=" price_box standard_box" *ngIf="packageContent">
+                <div class="price_details text-center ">
+                  <h5>{{packageContent[1]?.packageName}}</h5>
+                  <h4 class="d-flex align-items-center justify-content-center flex-column">
+                    <p class="mb-0 price_main">{{packageContent[1]?.packagePrice}}<span></span> </p>
+                  </h4>
+                  <p class="PackagePeriod">{{packageContent[1]?.packagePeriod}}</p>
+                </div>
+
+                  <P [innerHTML]="packageContent[1]?.htmlContent"></P>
+
+                  <div class="d-flex align-items-center justify-content-center" style="margin-top:auto;">
+                    <button type="button" (click)="gotoSubscribeSignupPage()"
+                      class="continue  btn btn-primary m-auto">Get Started</button>
+                  </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="blog_sectn page-section" id="articles">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 d-flex mb_sectn_mbr d-flex align-items-center">
+        <div class="">
+          <h4>{{recentArticlesSectionData?.title}}</h4>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex mb_sectn_mbr d-flex align-items-center justify-content-end">
+        <a (click)="gotoBlogsPage()" class="tm-readmore ar_view" tabindex="-1">View More <i class="fa fa-arrow-right"></i></a>
+      </div>
+
+
+      <div class="col-md-4" *ngFor="let data of recentArticlesContentSectionData;let i = index;" >
+        <div class="tm-blog"style="height: 500px;">
+          <div class="tm-blog-topside tm-revealblock reveal-close">
+            <div class="post-thumbnail" >
+              <img width="616" height="347" src="{{recentArticlesContentSectionData[i]?.downloadLink}}">
+            </div>
+            <div class="tm-blog-bottomside">
+
+              <h6>{{recentArticlesContentSectionData[i]?.blogTitle}}</h6>
+              <div class="tag">
+                <span class="date_sectn">{{recentArticlesContentSectionData[i]?.addedOn | date:"d MMM y"}}</span>
+              </div>
+              <p [innerHTML]="recentArticlesContentSectionData[i]?.shortDescription"></p>
+
+              <!-- <p (click)="gotoBlogDetailPage(recentArticlesContentSectionData[i]?.blogContentId)" class="tm-readmore"
+                tabindex="-1">Learn More <i class="fa fa-arrow-right"></i></p> -->
+
+                <a href="{{recentArticlesContentSectionData[i]?.blogUrl}}" class="tm-readmore" tabindex="-1">Learn More <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="col-lg-4 col-md-6">
+            <div class="tm-blog">
+              <div class="tm-blog-topside tm-revealblock reveal-close">
+                <div class="post-thumbnail">
+                  <img width="616" height="347" src="../../../assets/images/1.jpg">
+                </div>
+                <div class="tm-blog-bottomside">
+
+                  <h1>Fresh Graduates Guide: Apply for Jobs Online</h1>
+                  <div class="tag">
+                    <span class="date_sectn">{{recentArticlesContentSectionData[1]?.addedOn | date:"d MMM y"}}</span>
+                  </div>
+                  <p>{{recentArticlesContentSectionData[1]?.shortDescription}}</p>
+<p>Applying for jobs online can be a bit tricky. iApply have some tips for you to help you land on the job of your dreams. Discover more.</p>
+                  <p (click)="gotoBlogDetailPage(recentArticlesContentSectionData[1]?.blogContentId)" class="tm-readmore" tabindex="-1">Learn More <i class="fa fa-arrow-right"></i></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 ">
+            <div class="tm-blog">
+              <div class="tm-blog-topside tm-revealblock reveal-close">
+                <div class="post-thumbnail">
+                  <img width="616" height="347" src="{{recentArticlesContentSectionData[2]?.downloadLink}}">
+                </div>
+                <div class="tm-blog-bottomside">
+
+                  <h6>{{recentArticlesContentSectionData[2]?.blogTitle}}</h6>
+                  <div class="tag">
+                    <span class="date_sectn">{{recentArticlesContentSectionData[2]?.addedOn | date:"d MMM y"}}</span>
+                  </div>
+                  <p>{{recentArticlesContentSectionData[2]?.shortDescription}}</p>
+
+                  <p (click)="gotoBlogDetailPage(recentArticlesContentSectionData[2]?.blogContentId)" class="tm-readmore" tabindex="-1">Learn More <i class="fa fa-arrow-right"></i></p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+<div class="form_box" id="form_box">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 col-md-12">
+        <div class="form_box_head text-center">
+          <h2>Have a Question About Our Service?</h2>
+          <h4 class="mb-5">Send us a message and we will get back to you within 24 hours</h4>
+        </div>
+        <form [formGroup]="ContactUsForm" (ngSubmit)="onSubmitContactUsForm()">
+          <div class="form_con mt-4">
+            <div class="enqry_frm row">
+
+              <div class="col-md-12 col-lg-6">
+                <label>Name</label>
+                <input formControlName="Name" placeholder="Enter Name" id="" type="text">
+                <div *ngIf="submitted && cuf.Name.errors" class="invalid-feedback">
+                  <div *ngIf="cuf.Name.errors.required">Name is required</div>
+                  <div *ngIf="cuf.Name.errors.pattern">Please enter valid name</div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-6">
+                <label>Your Email</label>
+                <input formControlName="EmailId" placeholder="Enter Email Id" type="email">
+                <div *ngIf="submitted && cuf.EmailId.errors" class="invalid-feedback">
+                  <div *ngIf="cuf.EmailId.errors.required">Email id is required</div>
+                  <div *ngIf="cuf.EmailId.errors.pattern">Please enter valid email id</div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-6">
+                <label>Phone</label>
+                <input formControlName="PhoneNumber" placeholder="Phone Number" id="" type="text">
+                <div *ngIf="submitted && cuf.PhoneNumber.errors" class="invalid-feedback">
+                  <div *ngIf="cuf.PhoneNumber.errors.required">Phone number is required</div>
+                  <div *ngIf="cuf.PhoneNumber.errors.pattern">Please enter valid phone number</div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-6">
+                <label>Subject</label>
+                <input formControlName="Subject" placeholder="Enter Subject" id="" type="text">
+                <!-- <select formControlName="Subject" placeholder="Select Subject" id="">
+                  <option value="">--Select--</option>
+                  <option value="Subscription Related">Subscription Related</option>
+                  <option value="Support">Support</option>
+                  <option value="Technical Support">Technical Support</option>
+                  <option value="Suggestion">Suggestion</option>
+                  <option value="General Enquiry">General Enquiry</option>
+                </select> -->
+                <div *ngIf="submitted && cuf.Subject.errors" class="invalid-feedback">
+                  <div *ngIf="cuf.Subject.errors.required">Subject is required</div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-12">
+                <label>Message</label>
+                <textarea formControlName="Message" placeholder="Enter Message" name="description"></textarea>
+                <div *ngIf="submitted && cuf.Name.errors" class="invalid-feedback">
+                  <div *ngIf="cuf.Message.errors.required">Message is required</div>
+                  <div *ngIf="cuf.Message.errors.pattern">Please enter valid message</div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-lg-12 text-end ">
+                <!-- <input type="submit" name="Send Inquiry" class="float-end common_btn1 border-0"> -->
+                <button class="common_btn float-right" type="submit">Send Enquiry</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="footer" class="d-flex align-items-center mt-4">
+  <div class="container">
+    <div id="footer-widget-area" class="row mt-5 pt-3">
+      <div class="col-md-4 col-lg-4">
+
+        <h3 class="widget-title" style="texr-align :center">Important Links</h3>
+
+        <div class="col-md-6 col-lg-6" style="float: left;">
+
+           <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/who-we-are.html">Who We Are</a></li>
+
+           <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/who-we-serve.html">Who We Serve</a></li>
+
+           <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/how-it-works.html">How It Works</a></li>
+
+           <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/features.html">Features</a></li>
+
+        </div>
+        <div class="col-md-6 col-lg-6" style="float: left;">
+           <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/pricing.html">Pricing</a></li>
+           <li><a target="_blank" style="color:white;" href="https://www.iapply.ai/blog/index.html">Blog</a></li>
+           <li><a target="_blank" (click)="gotoFaqPage()"  style="color:white;" >FAQ</a></li>
+           <li><a target="_blank" (click)="gotoContactUsPage()" style="color:white;">Contact Us </a></li>
+        </div>
+     </div>
+     <div class="col-md-2 col-lg-2">
+      <div class="widget-container">
+        <h3 class="widget-title">We Are Social</h3>
+        <div class="social-icon-top mt-3" >
+          <!-- <a *ngFor="let socialMediaData of socialMediaContent; let i=index" href="{{socialMediaData?.socialMediaLink}}">
+            <img [src]="'data:image/png;base64,'+ socialMediaData?.socialMediaIconResult">
+          </a> -->
+          <!-- <img [src]="'data:image/jpg;base64,'+jobCountIcon?.iconResult"> -->
+           <a href="{{facebooklink}}" target="_blank"><img [src]="facebookIcon" alt=""></a>
+           <a href="{{instagramlink}}" target="_blank"><img [src]="instagramIcon" alt=""></a>
+           <a href="{{youtubelink}}" target="_blank"><img [src]="youtubeIcon" alt=""></a>
+           <a href="{{linkedinlink}}" target="_blank"><img [src]="linkedinIcon" alt=""></a>
+         </div>
+    </div>
+  </div>
+     <div class="col-md-3 col-lg-3">
+      <div class="widget-container">
+         <h3 class="widget-title">Let's Talk</h3>
+         <div class="menu-our-services-container">
+            <ul id="menu-our-services" class="menu">
+               <!-- <li><a href="mailto:info@adgroup.ie"><img src="assets/images/email_bg.svg" alt="" class="me-2">info@adgroup.ie</a></li> -->
+               <li><a href="mailto:FooterContentData?.letsTalkEmail"><img src="assets/images/email_bg.svg" alt="" class="me-2">{{FooterContentData?.letsTalkEmail}}</a></li>
+            </ul>
+         </div>
+
+      </div>
+   </div>
+      <div class="col-lg-3 col-md-3" style="float: Right;">
+        <div class="widget-container">
+          <h3 class="widget-title">Subscribe To Our Newsletter</h3>
+          <form [formGroup]="NewsLetterForm" (ngSubmit)="onSubmitNewsLetterForm()">
+            <div class="textwidget mt-3">
+              <div class="input-group mb-3 subscribe-cont">
+                <input type="email" formControlName="EmailId" class="form-control" placeholder="Enter Your Email">
+                <div *ngIf="submitted1 && nlf.EmailId.errors" class="invalid-feedback">
+                  <div *ngIf="nlf.EmailId.errors.required">Email id is required</div>
+                  <div *ngIf="nlf.EmailId.errors.pattern">Please enter valid email id</div>
+                </div>
+                <span class="input-group-btn">
+                  <button class="btn btn-theme" type="submit">REGISTER</button>
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-12 mt-5 pt-3">
+        <div class="pt-3 row site-info ">
+          <p class="col-md-4 text-left"> <a (click)="gototTermsAndConditionsPage()">Terms &amp; Conditions</a>
+            <a (click)="gotoPrivacyPolicyPage()" class="ms-4">Privacy Policy</a>
+          </p>
+          <!-- <p>© 2021 iApply. All rights reserved.</p> -->
+          <p class="col-md-4 text-center">{{FooterContentData?.copyrightContent}}</p>
+          <p class="col-md-4 text-right"><a href="#" data-bs-toggle="modal" data-bs-target="#cookies">Cookies </a> <a (click)="gotoSiteMapPage()"
+              class="ms-4">Sitemap</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <a href="#" id="chat"><span><img src="assets/images/chats.svg"></span></a> -->
+
+</div>
+
+
+<div class="modal fade" id="video_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <iframe width="100%" src="https://www.youtube.com/embed/FBqp43KsrtQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        <!-- <iframe width="100%" [src]="getSanitizedVideoUrl(howItWorksVideoSectionData?.howItWorksVideoUrl)"
+          frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen=""></iframe> -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="logo_meaning" tabindex="-1" role="dialog" aria-labelledby="logo_meaningLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <!-- <h5 class="modal-title">Modal title</h5> -->
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img  src="assets/images/iapply_logo_details.jpg">
+        <!-- <div class="col-md-12">
+          <div class="p-4">
+            <div class="mt-3">
+              <img width="86" height="86" [src]="bannerData?.headerLogoDownloadLink"><br>
+              <h5 class="uk-card-title mt-3">{{bannerData?.logoTitle}}</h5>
+              <p class="uk-text-details">{{bannerData?.logoDescription}}</p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="lang_select" tabindex="-1" role="dialog" aria-labelledby="lang_selectLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0 pt-3">
+        <!-- <h5 class="modal-title">Language Select</h5> -->
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="p-4">
+            <div class="mt-3">
+              <h5 class="uk-card-title mt-3">Language Select</h5>
+              <p class="uk-text-details mb-3">You can select any language of your choice to translate the current content.</p>
+              <div id="google_translate_element"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript"
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+<div class="modal fade" id="cookies" tabindex="-1" role="dialog" aria-labelledby="cookies_Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <!-- <h5 class="modal-title">Modal title</h5> -->
+        <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">×</span>
+       </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+
+          <div class="d-flex justify-content-center mt-5 h-100">
+            <div class="d-flex align-items-center align-self-center card p-3 text-center cookies">
+              <img src="https://i.imgur.com/Tl8ZBUe.png" width="50">
+              <span class="mt-2">
+                We use third party cookies to personalize content, ads and analyze site traffic.
+              </span>
+              <a class="" href="{{Url}}/privacy-policy">Learn more<i class="fa fa-angle-right ml-2"></i></a>
+              <button class="btn btn-success mt-3 px-4" type="button" data-bs-dismiss="modal" onclick="document.cookie = 'cookies-consent=yes;'">Accept</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus, .input-group-no-border .form-control:focus + .input-group-append a.input-group-text:not([href]):not([tabindex]), .input-group-no-border .form-control:focus + .input-group-append a.input-group-addon:not([href]):not([tabindex]), .input-group-no-border.focus a.input-group-text:not([href]):not([tabindex]), .input-group-no-border.focus a.input-group-addon:not([href]):not([tabindex]){
+  color:White;
+
+  }
+
+  a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+    color: white;
+  }
+  .invalid-feedback {
+    display: block;
+    color:red;
+  }
+
+.payment_tabs ul {
+    border: none;
+
+}
+.payment_tabs li button {
+    background: transparent;
+    color: #C0C5C5;
+}
+.payment_tabs li button.active {
+    background: transparent;
+    color: #2CBF8C;
+    border-bottom: 2px solid #2CBF8C;
+}
+.payment_tabs li {
+    font-size: 13px;
+    padding: 10px 8px;
+}
+.payment_wrpr{
+    padding:20px; border-radius: 8px;
+}
+.payment_wrpr p{
+    color: #686868; text-align: left;
+}
+.payment_wrpr h4{color:#304893 !important; font-size: 22px !important; text-align: center; font-weight: 600 !important;}
+.payment_dtl_right {
+    padding: 20px;
+    background: #E6E6E6;
+    border-radius: 10px;
+    min-height: 200px;
+}
+.tab-content > .tab-pane{padding:0;}
+.payment_dtl_right h5 {
+    color: #304893;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.col-lg-6.payment_dtl_right p {
+    font-size: 12px;
+}
+.total_plan_vl {
+    padding: 20px 0px;
+    border-top: 1px solid #2cbf8c;
+    border-bottom: 1px solid #2cbf8c;
+}
+.price_pln span {
+    font-size: 16px;
+    color: #2cbf8c; font-weight: 600;
+}

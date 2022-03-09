@@ -1,0 +1,7 @@
+<svg id="youtube" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Rectangle" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1">
+    <rect width="24" height="24" rx="8" stroke="none"/>
+    <rect x="0.5" y="0.5" width="23" height="23" rx="7.5" fill="none"/>
+  </g>
+  <path id="Youtube-2" data-name="Youtube" d="M.219,7.649A.438.438,0,0,1,0,7.27V.438A.438.438,0,0,1,.657.059L6.574,3.475a.437.437,0,0,1,0,.759L.657,7.649a.431.431,0,0,1-.219.058A.437.437,0,0,1,.219,7.649Z" transform="translate(9.604 8.146)" fill="#fff"/>
+</svg>

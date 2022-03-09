@@ -1,0 +1,213 @@
+
+   <div class="page_head">
+      <h2>USER MANAGEMENT</h2>
+   </div>
+
+   <div class="row mt-4">
+      <div class="col-md-12 mb-3 ">
+        <div class="subhead">
+           <h4 class="d-md-flex align-items-center justify-content-between">SUBSCRIBED USER </h4>
+           <p>Below Screen shows list of all registered users. Admin can find the users using below mentions fields combination and updated it required.</p>
+        </div>
+     </div>
+
+     <div class="col-md-12">
+        <form [formGroup]="RegisterUserFilterform">
+        <div class="row filter_5_col">
+           <div class="col-md-3 form-holder">
+              <label class="relative-label blue-color ">Plan </label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                   <select formControlName="Plan" name="Plan" id="Plan" placeholder="Select Plan" class="custom-select form-control" data-parsley-trigger="change">
+                    <option selected>All</option>
+                    <option *ngFor="let p of PlanList" value="{{p}}">
+                      {{p}}
+                    </option>
+                  </select>
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-3 form-holder">
+              <label class="relative-label blue-color ">Payment Method</label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                    <select formControlName="PaymentMethod" name="PaymentMethod" id="PaymentMethod" placeholder="Select Payment Method" class="custom-select form-control" data-parsley-trigger="change">
+                      <option selected>All</option>
+                      <option *ngFor="let q of PaymentMethodList" value="{{q}}">
+                        {{q}}
+                      </option>
+                    </select>
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-2 form-holder">
+              <label class="relative-label blue-color ">Payment Status</label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                    <select formControlName="PaymentStatus" name="PaymentStatus" id="PaymentStatus" placeholder="Select Payment Status" class="custom-select form-control" data-parsley-trigger="change">
+                      <option selected>All</option>
+                      <option *ngFor="let p of PaymentStatusList" value="{{p}}">
+                        {{p}}
+                      </option>
+                    </select>
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-2 form-holder">
+              <label class="relative-label blue-color ">User Status</label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                    <select formControlName="UserStatus" name="UserStatus" id="UserStatus" placeholder="Select User Status" class="custom-select form-control" data-parsley-trigger="change">
+                      <option selected>All</option>
+                      <option *ngFor="let p of UserStatusList" value="{{p}}">
+                        {{p}}
+                      </option>
+                      </select>
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-2 form-holder">
+              <label class="relative-label blue-color ">Country</label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                  <select formControlName="Country" name="Country" id="Country" placeholder="Select Country" class="custom-select" data-parsley-trigger="change">
+                       <option>All</option>
+                       <option *ngFor="let C of CountryList" value="{{C}}">
+                        {{C}}
+                      </option>
+                    </select>
+                 </div>
+              </div>
+           </div>
+       </div>
+        <div class="row filter_5_col">
+           <div class="col-md-3 form-holder">
+              <label class="relative-label blue-color ">From Date</label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                  <input type="date" formControlName="FromDate" name="FromDate" id="FromDate" value="FromDateValue" class="form-control" data-parsley-trigger="change">
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-3 form-holder">
+              <label class="relative-label blue-color ">To Date</label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                  <input type="date" formControlName="ToDate" name="ToDate" id="ToDate" value="EndDateValue"   class="form-control" data-parsley-trigger="change">
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-2 form-holder">
+              <label class="relative-label blue-color ">Email Address</label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                    <input  type="Email"  formControlName="Email" id="" name="" required="" placeholder="Email Address" class="form-control">
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-2 form-holder">
+               <label class="relative-label blue-color ">Full Name</label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                    <input id="" name="" type="text"  formControlName="FullName" required="" placeholder="Full Name" class="form-control">
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-2 form-holder">
+             <label class="relative-label blue-color ">User Id</label>
+              <div class="form-holder1 w-100 p-0 mb-4">
+                 <div class="input-group">
+                    <input id="" name="" type="text"  formControlName="UserId" required="" placeholder="User Id" class="form-control">
+                 </div>
+              </div>
+           </div>
+           <div class="w-100">
+            <div class="btn_btn">
+         <div class="d-flex justify-content-end">
+          <button type="button"  (click)="searchFilter()" class="btn btn-primary continue mr-3">SEARCH</button>
+          <button type="button"  (click)="clearFilter()" class="btn btn-success back">RESET FILTER</button>
+               </div>
+          </div>
+         </div>
+          </div>
+
+          </form>
+         </div>
+         </div>
+
+
+
+    <div class="col-md-12 mb-3 mt-4">
+        <div class="subhead">
+         <h4 class="d-md-flex align-items-center justify-content-between">User list <span><a (click)="exportData()">Export <i class="fas fa-file-export"></i></a> </span></h4>        </div>
+     </div>
+
+
+    <ngx-datatable class="table table-striped table-hover"
+                 [rows]="TempRegisterUserDetails"
+                 [columnMode]="'force'"
+                 [headerHeight]="60"
+                 [footerHeight]="50"
+                 [rowHeight]="'auto'"
+                 [scrollbarH]="true"
+                 [limit]="10">
+    <ngx-datatable-column name="User ID" [width]="130">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+         {{ row.userId}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="User Name">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{ row.firstName }} {{ row.lastName}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Email Address" prop="emailId" [width]="250">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+   <ngx-datatable-column name="Plan" prop="plan">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Payment Method" prop="paymentMethod">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Payment Status" prop="paymentStatus">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+          {{ value }}
+      </ng-template>
+   </ngx-datatable-column>
+   <ngx-datatable-column name="Country" prop="country">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+   <ngx-datatable-column name="Created On" prop="addedOn">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+         {{ value | date: 'dd-MMM-yyyy' }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="User Status" prop="userStatus">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+         <span class="text-success" *ngIf="value == 'Active'">Active</span>
+         <span class="text-danger" *ngIf="value == 'In-Active'">In-Active</span>
+           <!-- {{ value }} -->
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Action">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+       <div class="btn-toolbar">
+          <!--<button class="btn btn-xs btn-info">
+            <span class="d-none d-md-inline-block" (click)="updateRegisterUser(row)">Update</span>
+            <span class="d-md-none"><i class='la la-edit'></i></span>
+          </button>-->
+          <a class="view_btn"  (click)="updateRegisterUser(row)">View</a>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+

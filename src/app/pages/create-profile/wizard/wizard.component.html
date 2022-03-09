@@ -1,0 +1,137 @@
+<!-- <div class="row">
+    <div class="col-md-12 col-md-offset-3">
+        <div bootstrap-wizard class="form-wizard">
+        <ul class="flex-md-row flex-column mb-sm nav nav-pills nav-fill">
+            <li class="nav-item">
+              <a class="nav-link" (click) = "clickTab(1)" [ngClass]="{'active': step === 1}" href="#tab1" data-toggle="tab">
+            <small>1.</small>
+                Import Profile
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click) = "clickTab(2)" [ngClass]="{'active':step === 2}" href="#tab2" data-toggle="tab">
+            <small>2.</small>
+                Personal Information
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tab3" data-toggle="tab">
+           <small>3.</small>
+                Experience
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tab4" data-toggle="tab">
+        <small>4.</small>
+                Education
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#tab5" data-toggle="tab">
+          <small>5.</small>
+                  Other Details
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#tab6" data-toggle="tab">
+             <small>6.</small>
+                  Job Preferences
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#tab7" data-toggle="tab">
+          <small>7.</small>
+                  Other Attachments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#tab8" data-toggle="tab">
+          <small>8.</small>
+                  Review
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#tab9" data-toggle="tab">
+        <small>9.</small>
+                  Consent
+                </a>
+            </li>
+          </ul>
+
+          <div class="bg-gray-lighter progress progress-xs">
+            <div id="bar" class="progress-bar progress-xs progress-bar-gray-light" style="width: 25%;"></div>
+          </div>
+
+
+
+          </div>
+    </div>
+</div> -->
+<div class="row mb-4">
+  <div class="col-md-12 col-md-offset-3">
+      <div bootstrap-wizard class="tabsWrapper">
+      <div class="tabs ">
+
+            <a [ngClass]="{'active': completedStep > 1, 'current': currentStep == 1}" data-toggle="tab" (click) = "clickTab(1)" >
+              <!-- <small>1.</small> -->
+              <i class="fas fa-check-circle"></i> Import Profile
+            </a>
+
+
+            <a (click) = "clickTab(2)" [ngClass]="{'active': completedStep > 1, 'current': currentStep == 2}" data-toggle="tab" >
+              <i class="fas fa-check-circle"  routerLink="customer/personal-profile"></i> Personal Information
+            </a>
+
+            <a class=" " (click) ="clickTab(3)" [ngClass]="{'active': completedStep > 2, 'current': currentStep == 3}" data-toggle="tab">
+              <!-- <small>3.</small> -->
+              <i class="fas fa-check-circle" routerLink="customer/personal-profile"></i> Experience
+            </a>
+
+            <a class=" " (click) ="clickTab(4)"  [ngClass]="{'active': completedStep > 3, 'current': currentStep == 4}"  data-toggle="tab">
+              <!-- <small>4.</small> -->
+              <i class="fas fa-check-circle"></i>  Education
+            </a>
+
+              <a class=" " (click) ="clickTab(5)"  [ngClass]="{'active': completedStep > 4, 'current': currentStep == 5}"  data-toggle="tab">
+                <!-- <small>5.</small> -->
+                <i class="fas fa-check-circle"></i> Other Details
+              </a>
+
+
+              <a class=" " (click) ="clickTab(6)" [ngClass]="{'active': completedStep > 5, 'current': currentStep == 6}" data-toggle="tab">
+                <!-- <small>6.</small> -->
+                <i class="fas fa-check-circle"></i> Job Preferences
+              </a>
+
+              <a class=" " (click) ="clickTab(7)"  [ngClass]="{'active': completedStep > 6, 'current': currentStep == 7}" data-toggle="tab">
+                <!-- <small>7.</small> -->
+                <i class="fas fa-check-circle"></i> Other Attachments
+              </a>
+
+              <a class=" " (click) ="clickTab(8)" [ngClass]="{'active': completedStep > 7, 'current': currentStep == 8}" data-toggle="tab">
+                <!-- <small>8.</small> -->
+                <i class="fas fa-check-circle"></i>  Review
+              </a>
+
+              <a class=" " (click)="clickTab(9)" [ngClass]="{'active': completedStep > 8, 'current': currentStep == 9}" data-toggle="tab" *ngIf="subscriptionStatus!='Active' && subscriptionStatus!='Past-Active'">
+                <!-- <small>9.</small> -->
+                <i class="fas fa-check-circle"></i> Consent
+              </a>
+              <!-- <a class=" " (click)="clickTab(10)" [ngClass]="{'active': completedStep > 9, 'current': currentStep == 10}" data-toggle="tab">
+               <small>10.</small>  
+                <i class="fas fa-check-circle"></i> Select Plan
+              </a> -->
+            </div>
+
+
+
+        <!-- <div class="tab-content">
+            <router-outlet></router-outlet>
+        </div> -->
+
+        </div>
+
+  </div>
+</div>
+
+

@@ -1,0 +1,87 @@
+<div class="edit_page">
+  <div class="page_head">
+    <h2>CONTENT UPDATE</h2>
+ </div>
+
+ <div class="row">
+  <div class="col-md-12">
+    <div class="subhead mt-3 mb-3">
+      <h4 class="d-md-flex align-items-center justify-content-between">How It Works Video Section</h4>
+    </div>
+
+  <div class="round_brdr_box bg-white no_radius">
+      <form [formGroup]= "HowItWorksVideoSectionForm">
+        <div class="row">
+        <div class="col-md-12">
+          <div class="subhead mb-2">
+             <h4>Video Url:</h4>
+          </div>
+          <div class="form-holder1 w-100 p-0 mb-2">
+             <div class="input-group">
+              <input type="url" formControlName="VideoUrl" name="VideoUrl" id="videoUrl" placeholder="Add VideoUrl" class="form-control">
+              <div *ngIf="submitted && cuf.Name.errors" class="invalid-feedback">
+                  <div *ngIf="cuf.VideoUrl.errors.required">VideoUrl is required</div>
+                  <div *ngIf="cuf.VideoUrl.errors.pattern">Please enter valid VideoUrl</div>
+              </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="subhead mb-2">
+              <h4>User Comment:</h4>
+            </div>
+            <div class="form-holder1 w-100 p-0 mb-2">
+              <div class="input-group">
+              <textarea formControlName="Comment" class="form-control" rows="5"></textarea>
+              <div *ngIf="submitted && cuf.Comment.errors" class="invalid-feedback">
+                <div *ngIf="cuf.Comment.errors.required">Comment is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+
+          <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Standard'" >
+            <div class="d-flex justify-content-end">
+               <div>
+                  <!-- <a href="" class="back  me-3">CANCEL</a> -->
+                  <button (click)="onCancel()" class="back btn  me-3">CANCEL</button>
+               </div>
+               <div class="d-flex justify-content-end">
+                  <!-- <a href="" class="draft">SUBMIT FOR APPROVAL</a> -->
+                  <button (click)="updatehowItWorksVideoSection()" class="draft">SUBMIT FOR APPROVAL</button>
+               </div>
+            </div>
+         </div>
+    
+         <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Admin'">
+          <div class="d-flex justify-content-end">
+             <div>
+                <!-- <a href="" class="back  me-3">CANCEL</a> -->
+                <button (click)="onCancel()" class="back btn  me-3">CANCEL</button>
+             </div>
+             <div class="d-flex justify-content-end">
+                <!-- <a href="" class="draft me-3">SAVE</a>
+                <a href="" class="continue">PUBLISH</a> -->
+                <button (click)="savehowItWorksVideoSection()" class="btn btn-success float-right mb-3 mr-2">SAVE</button>
+                <button value="Approved" (click)="approvehowItWorksVideoSection('Approved')" class="continue me-3">PUBLISH</button>
+                <button value="Rejected" (click)="approvehowItWorksVideoSection('Rejected')" class="continue">REJECT</button>
+             </div>
+          </div>
+       </div>
+          
+    <!-- <button *ngIf=" currentUserType == 'Standard'" (click)="updatehowItWorksVideoSection()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+    <button *ngIf=" currentUserType == 'Standard'" (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button>
+
+    <button *ngIf=" currentUserType == 'Admin'" (click)="onCancel()" class="btn btn-success float-right mb-3">Cancel</button>
+    <button *ngIf=" currentUserType == 'Admin'" (click)="approvehowItWorksVideoSection('Rejected')" class="btn btn-success float-right mb-3 mr-2"><i class="fi flaticon-multiply" value="Rejected"></i>&nbsp;Reject</button>
+    <button *ngIf=" currentUserType == 'Admin'" (click)="approvehowItWorksVideoSection('Approved')" class="btn btn-success float-right mb-3 mr-2"> <i class="fi flaticon-plus" value="Approved"></i>&nbsp; Approve & Publish</button> -->
+
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

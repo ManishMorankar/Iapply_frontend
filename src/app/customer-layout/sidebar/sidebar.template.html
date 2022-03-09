@@ -1,0 +1,79 @@
+<div class="page-wrapper chiller-theme toggled">
+  <nav id="sidebar" class="sidebar-wrapper">
+     <div class="sidebar-content">
+        <div class="sidebar-header">
+           <div class="user-pic">
+    <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/logo.svg" alt="">
+  </div>
+</div>
+ <!-- sidebar-header  -->
+ <div class="sidebar-menu">
+  <ul>
+    <li routerLinkActive="active" *ngIf="subscriptionStatus=='Active' || (subscriptionStatus=='In-Active' && paymentMethod=='Offline') ||subscriptionStatus=='Past-Active'">
+      <a [routerLink]=" ['dashboard'] ">
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/home.svg" alt="">
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li routerLinkActive="active" [ngClass]="{'active':message == 'active'}">
+      <a (click)="goToMyProfile()">
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/users.svg" alt="">
+        <span>My Profile</span>
+      </a>
+    </li>
+
+    <li routerLinkActive="active" *ngIf="subscriptionStatus=='Active' || subscriptionStatus=='Past-Active'">
+      <a [routerLink]=" ['JobHistory'] ">
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/job_history.svg" alt="">
+          <span>Job History</span>
+      </a>
+    </li>
+    <li routerLinkActive="active" *ngIf="subscriptionStatus=='Active' || subscriptionStatus=='Past-Active'">
+      <a [routerLink]=" ['PaymentHistory']">
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/payment.svg" alt="">
+       <span> Payment History </span>
+      </a>
+    </li>
+
+    <!-- <li routerLinkActive="active">
+      <a [routerLink]="['Chat']">
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/chats.svg" alt="">
+      <span>Chat</span>
+      </a>
+    </li> -->
+
+    <li routerLinkActive="active" *ngIf="subscriptionStatus=='Active' || subscriptionStatus=='Past-Active'">
+      <a [routerLink]=" ['AccountSettings'] " >
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/account_setting.svg" alt="">
+        <span> Account Settings</span>
+      </a>
+    </li>
+
+    </ul>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <div class="sidebar-footer">
+
+    <div class="w-100">
+     <span *ngIf="paymentStatus == 'Success'">
+      <a class="VideoTutorial" href="https://www.youtube.com/watch?v=GGrMjiPtNVU" target="_blank">Video Tutorial</a>
+    </span>
+    <span *ngIf="paymentStatus == 'Pending'">
+      <a class="VideoTutorial" href="https://www.youtube.com/watch?v=eZ2hbhsvFO0" target="_blank">Video Tutorial</a>
+    </span>
+      <br>
+      <p>Need Help?<br>We are just one click away</p>
+      <a href="https://www.iapply.ai/visitor/contact-us" target="_blank">Start</a>
+      <br>
+      <img src="../../../assets/images/dashboard/sidebar_footer.svg" alt="">
+   </div>
+ </div>
+</div>
+</nav>
+</div>
+

@@ -1,0 +1,82 @@
+@import "../../styles/helpers";
+@import "../../../../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min";
+@import "../../../../node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min";
+@import "../../../../node_modules/bootstrap-colorpicker/src/sass/colorpicker";
+@import "../../../../node_modules/bootstrap-markdown/css/bootstrap-markdown.min";
+@import "../../../../node_modules/bootstrap-select/dist/css/bootstrap-select";
+@import "../../../../node_modules/jasny-bootstrap/dist/css/jasny-bootstrap";
+@import "../../styles/select2-variables";
+@import "../../../../node_modules/select2/src/scss/core";
+@import "../../../../node_modules/select2-bootstrap-theme/src/select2-bootstrap";
+
+.fileinput.fileinput-new {
+  .thumbnail {
+    padding: $thumbnail-padding;
+    line-height: $line-height-base;
+    background-color: $thumbnail-bg;
+    border: $thumbnail-border-width solid $thumbnail-border-color;
+    border-radius: $thumbnail-border-radius;
+    transition: all .2s ease-in-out;
+    @include box-shadow(0 1px 2px rgba(0,0,0,.075));
+  }
+}
+
+.fileinput-preview.fileinput-exists {
+  border: 1px solid $input-border-color;
+  border-radius: $border-radius;
+  padding: 5px;
+}
+
+.fileinput.input-group {
+  display: flex;
+}
+
+.fileinput-new.input-group .btn-file,
+.fileinput-new .input-group .btn-file {
+  border-radius: 0 $border-radius $border-radius 0;
+
+  &.btn-xs,
+  &.btn-sm {
+    border-radius: 0 $border-radius-sm $border-radius-sm 0;
+  }
+
+  &.btn-lg {
+    border-radius: 0 $border-radius-lg $border-radius-lg 0;
+  }
+}
+
+.form-group.has-warning .fileinput {
+  .fileinput-preview {
+    color: $warning;
+  }
+
+  .thumbnail {
+    border-color: $warning;
+  }
+}
+
+.form-group.has-error .fileinput {
+  .fileinput-preview {
+    color: $danger;
+  }
+
+  .thumbnail {
+    border-color: $danger;
+  }
+}
+
+.form-group.has-success .fileinput {
+  .fileinput-preview {
+    color: $success;
+  }
+
+  .thumbnail {
+    border-color: $success;
+  }
+}
+
+.btn-label {
+  background: transparent;
+  left: 2px;
+  padding: 1px 6px;
+}

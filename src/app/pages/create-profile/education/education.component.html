@@ -1,0 +1,225 @@
+<!-- <section class="widget"> -->
+  <div class="page_head">
+    <h2>MY PROFILE</h2>
+  </div>
+  <app-wizard></app-wizard>
+  <div class="dasboard-cont">
+    <div class="row">
+
+        <div class="d-flex justify-content-between col-md-12"><p class="mb-0">Add/Update your Academic Details</p>    <span class="red-txt small-font text-end">Supports only English content</span></div>
+        <div class="col-md-12">
+        <div class="bg-gray-lighter progress progress-xs mt-3 mb-4 ">
+          <div id="bar" class="progress-bar progress-xs progress-bar-gray-light" style="width: 40%;"></div>
+          </div></div>
+
+
+
+          </div>
+      <div class="row profile">
+          <!-- Add Your Education Details Widget Start -->
+          <div class="col-md-6" [class.highlightDiv]="editEducation==true">
+            <div class="page_sub_head"><p>Add Your Education Details</p></div>
+            <p class=" mb-4">(You can add multiple academic details here)</p>
+               <div class="w-100 float-left" >
+            <form [formGroup]="EducationForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="UniversityName">University / Institute<b class="red-color">*</b></label>
+                 <div class="input-group">
+                   <input type="text" formControlName="UniversityName" name="UniversityName" id="UniversityName" placeholder="University/Institute Name" class="form-control" data-parsley-trigger="change" required="required">
+                    </div>
+                  </div>
+                </div>
+                  <div class="col-md-6">
+                    <div class="form-holder w-100 p-0 mb-4">
+
+                      <label for="FieldOfStudy">Field of Study<b class="red-color">*</b></label>
+                      <div class="input-group">
+                      <input type="text" formControlName="FieldOfStudy" name="FieldOfStudy" id="FieldOfStudy" placeholder="Field of Study" class="form-control" data-parsley-trigger="change" required="required">
+                    </div>
+                    </div>
+                  </div>
+
+                <div class="col-md-12">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                      <label for="EducationLevel">Level of Education<b class="red-color">*</b></label>
+                      <div class="input-group">  <select formControlName="EducationId" name="EducationId" id="EducationId" placeholder="Select your Level of Education" class="custom-select" data-parsley-trigger="change" required="required">
+                        <option value="">--Select--</option>
+                        <option *ngFor="let p of eduList" value="{{p.id}}">
+                          {{p.name}}
+                        </option>
+                      </select>
+                      <span class="text-danger" *ngIf="pSubmitted  && EducationForm.controls['EducationLevel'].hasError('required')">Level of Education is required</span>
+                      <p class="small-font gray-color">(Diploma, Bachelor, Master's Doctorate etc..)</p>
+                    </div>
+                    </div>
+
+                  </div>
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                      <label for="Country">Country<b class="red-color">*</b></label>
+                    <div class="input-group"> <select formControlName="CountryId" name="CountryId" id="CountryId" placeholder="Select Country" class="custom-select" data-parsley-trigger="change" required="required">
+                      <option value="">--Select--</option>
+                      <option *ngFor="let p of countryList" value="{{p.id}}">
+                        {{p.name}}
+                      </option>
+                    </select>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-holder w-100 p-0 mb-4">
+
+                        <label for="City">City</label>
+                      <div class="input-group">
+                        <input type="text" formControlName="City" name="City" id="City" placeholder="Current City" class="form-control" maxlength="45" data-parsley-trigger="change">
+                        <div *ngIf="contactInfo.City.errors" class="invalid-feedback">
+                          <div *ngIf="contactInfo.City.errors.pattern">Please enter valid City Name</div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                    <p class="col-md-12 small-font gray-color" for="">On selection of this checkbox To field will be hidden</p>
+                <div class="col-md-12">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+
+
+                     <div class="input-group">   <div class="form-check abc-checkbox abc-checkbox-primary">
+                            <input type="checkbox" formControlName="CurrentlyEnrolled" name="CurrentlyEnrolled" id="CurrentlyEnrolled" (change)="toggleToDate($event)" class="form-check-input">
+                            <label class="form-check-label" for="CurrentlyEnrolled">
+                              Currently Enrolled
+                            </label>
+                          </div>
+                    </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="FromDate">From<b class="red-color">*</b></label>
+                    <div class="input-group"> <input type="date" formControlName="FromDate"  id="FromDate" name="FromDate" placeholder="FromDate" class="form-control" data-parsley-trigger="change" required="required" (change)="setFromStatus()" >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6" *ngIf="IsCurrentlyEnrolled == false">
+                  <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="ToDate">To<b class="red-color">*</b></label>
+                           <div class="input-group" >
+
+                            <input type="date" formControlName="ToDate" (change)="setStatus()" id="ToDate" name="ToDate" placeholder="ToDate" class="form-control" data-parsley-trigger="change">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="row"> -->
+                <div class="row">
+                  <div class="col-md-12 text-right">
+                    <button _ngcontent-dth-c304="" type="button" class="btn btn-success btn-small   draft " *ngIf="editEducation" (click)="resetEducation()">Cancel</button>
+
+                  <button type="submit" *ngIf="!editEducation" (click)="addEducation()" class="btn ml-3 btn-success btn-small float-right" [disabled]="!EducationForm.valid">
+                    Add
+                  </button>
+                  <button type="submit" *ngIf="editEducation" (click)="addEducation()" class="btn ml-3 btn-success btn-small float-right" [disabled]="!EducationForm.valid">
+                    Update
+                  </button>
+                  <!-- <button class="btn btn-default float-right" type="button">
+                    Clear
+                  </button> -->
+                </div></div>
+              <!-- </div> -->
+
+            </form>
+          </div>
+            </div>
+            <!-- Add Your Education Details Widget End -->
+
+            <!-- Your Education Details Widget Start -->
+            <div class="col-md-6 flex-container">
+              <div class="page_sub_head"><p>Your Education Details</p></div>
+              <p>You can edit and delete from here</p>
+
+                <div class=" round_brdr_box education_details" >
+                 <div *ngFor="let education of educationList; let i=index" class="w-100">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h5><span class="blue-color">{{ education.UniversityName }}</span>
+                        <span class="edit_links">
+                          <button type="button" title="Edit" class="blue-color" (click)="editEducationDetailsData(education,i, education.CustomerEducationId)"><i class="far fa-edit"></i></button>
+                          <button type="button" class="red-color"   (click)="deleteModal(education,i, 'education')"><i class="far fa-trash-alt" title="Delete"></i></button>
+                        </span></h5>
+
+                      {{findEducation(education.EducationId)}}
+
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between  mb-2 small-font">
+                    <span>
+                      {{findCountry(education.CountryId)}}, {{ education.City}}
+                    </span>
+                    <span>
+                      <i class="fas fa-square-full small-icon"></i> {{ education.FieldOfStudy }}
+                    </span>
+                    <span *ngIf="education.ToDate == '' || education.ToDate == null">
+                      <i class="fas fa-square-full small-icon"></i> <span class="gray-color">From</span> {{ education.FromDate | date: 'dd-MMM-yyyy' }} to Till Date
+                    </span>
+                    <span *ngIf="education.ToDate">
+                      <i class="fas fa-square-full small-icon"></i> <span class="gray-color">From</span> {{ education.FromDate | date: 'dd-MMM-yyyy' }} to {{ education.ToDate | date: 'dd-MMM-yyyy' }}
+                    </span>
+
+                  </div>
+                  <hr>
+
+                </div>
+  </div>
+            </div>
+          </div>
+            <!-- Your Education Details Widget End -->
+
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-12">
+      <button type="button" class="btn btn-success pull-left back" (click)="onBack()"><i class="fa fa-backward"></i>&nbsp;
+          Back
+      </button>
+
+      <button type="submit" class="btn btn-primary pull-right ml-2 continue" (click)="onNext('Continue')" *ngIf="!SubscriptionCancel"><i class="fa fa-forward"></i>&nbsp;
+          Continue
+      </button>
+      <button type="button" class="btn btn-success pull-right ml-3 draft" (click)="onNext('Draft')" *ngIf="!SubscriptionCancel"><i class="fas fa-save"></i>&nbsp;
+        Save as Draft
+      </button>
+      <!-- <button type="button" class="btn btn-default pull-right" (click)="onCancel()"><i class="fa fa-close"></i>&nbsp;
+          Cancel
+      </button> -->
+        <!-- </section> -->
+
+      </div></div>
+
+      <div class="modal modal_subscription" id="deleteEducation">
+        <div class="modal-dialog modal-dialog-centered ">
+          <div class="modal-content">
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="text-center">
+                <h3>Are you sure want to delete ?</h3>
+                <button class="yes btn-sm btn-success m-1" (click)="deleteItemFunc()">Yes</button>
+                <button class="no btn-sm btn-danger m-1" data-bs-dismiss="modal">No</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+

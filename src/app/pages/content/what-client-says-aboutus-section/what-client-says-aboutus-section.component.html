@@ -1,0 +1,260 @@
+<div class="edit_page">
+  <div class="page_head">
+    <h2>CONTENT UPDATE</h2>
+ </div>
+
+ <div class="row ">
+  <div class="col-md-12">
+    <div class="subhead mt-3 mb-3">
+      <h4 class="d-md-flex align-items-center justify-content-between">What Our Clients Say About Us Section (Testimonial Section)</h4>
+    </div>
+
+  <div class="round_brdr_box bg-white no_radius">
+      <form [formGroup]="WhatClientSaysAboutUsSectionForm">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="subhead mb-2">
+              <h4>Title:</h4>
+           </div>
+           <div class="form-holder1 w-100 p-0 mb-2">
+              <div class="input-group">
+                  <input type="text" formControlName="Title" class="form-control" placeholder="Enter Title" autocomplete="off">
+                  <div *ngIf="submitted && fsf.Title.errors" class="invalid-feedback">
+                      <div *ngIf="fsf.Title.errors.required">Title is required</div>
+                      <div *ngIf="fsf.Title.errors.pattern">Please enter valid Title</div>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="subhead mb-2">
+              <h4>Sub-Title:</h4>
+           </div>
+           <div class="form-holder1 w-100 p-0 mb-2">
+              <div class="input-group">
+                  <!-- <input type="text" formControlName="SubTitle" class="form-control" placeholder="Enter Sub-Title" autocomplete="off"> -->
+                  <ckeditor formControlName="SubTitle" [editor]="Editor" (change)="onChange($event)" (ready)="onReady($event)"></ckeditor>
+                  <div *ngIf="submitted && fsf.SubTitle.errors" class="invalid-feedback">
+                      <!-- <div *ngIf="fsf.SubTitle.errors.required">Sub Title is required</div> -->
+                      <div *ngIf="fsf.SubTitle.errors.pattern">Please enter valid Sub Title</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="subhead mb-2">
+            <h4>User Comment:</h4>
+         </div>
+         <div class="form-holder1 w-100 p-0 mb-2">
+            <div class="input-group">
+            <textarea formControlName="Comment" class="form-control" rows="5"></textarea>
+            <div *ngIf="submitted && fsf.Comment.errors" class="invalid-feedback">
+              <div *ngIf="fsf.Comment.errors.required">Comment is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Standard'" >
+        <div class="d-flex justify-content-end">
+           <div>
+              <!-- <a href="" class="back  me-3">CANCEL</a> -->
+              <button (click)="onCancel()" class="back btn  me-3">CANCEL</button>
+           </div>
+           <div class="d-flex justify-content-end">
+              <!-- <a href="" class="draft">SUBMIT FOR APPROVAL</a> -->
+              <button (click)="updateTestimonialSection()" class="draft">SUBMIT FOR APPROVAL</button>
+           </div>
+        </div>
+     </div>
+
+     <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Admin'">
+      <div class="d-flex justify-content-end">
+         <div>
+            <!-- <a href="" class="back  me-3">CANCEL</a> -->
+            <button (click)="onCancel()" class="back btn  me-3">CANCEL</button>
+         </div>
+         <div class="d-flex justify-content-end">
+            <!-- <a href="" class="draft me-3">SAVE</a>
+            <a href="" class="continue">PUBLISH</a> -->
+            <button (click)="saveTestimonialSection()" class="btn btn-success float-right mb-3 mr-2" value="Rejected">SAVE</button>
+            <button value="Approved" (click)="approveTestimonialSection('Approved')" class="continue me-3">PUBLISH</button>
+            <button value="Rejected" (click)="approveTestimonialSection('Rejected')" class="continue">REJECT</button>
+         </div>
+      </div>
+   </div>
+
+      <!-- <button *ngIf=" currentUserType == 'Standard'" (click)="updateTestimonialSection()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+      <button *ngIf=" currentUserType == 'Standard'" (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button>
+
+      <button *ngIf=" currentUserType == 'Admin'" (click)="onCancel()" class="btn btn-success float-right mb-3">Cancel</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approveTestimonialSection('Rejected')" class="btn btn-success float-right mb-3 mr-2"><i class="fi flaticon-multiply" value="Rejected"></i>&nbsp;Reject</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approveTestimonialSection('Approved')" class="btn btn-success float-right mb-3 mr-2"> <i class="fi flaticon-plus" value="Approved"></i>&nbsp; Approve & Publish</button> -->
+
+        </form>
+    </div>
+    </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="subhead mt-3 mb-3">
+          <h4 class="d-md-flex align-items-center justify-content-between">What Our Clients Say About Us Section (Testimonial Content Section)</h4>
+        </div>
+
+    <div class="round_brdr_box bg-white no_radius">
+        <form [formGroup]="TestimonialContentForm">
+          <div class="row">
+          <div class="col-md-3">
+            <div class="form-holder1 w-100 p-0 mb-2">
+              <div class="input-group">
+              <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                  <img alt=" image" [src]="getImage()">
+                </div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                <div>
+                  <span class="btn btn-default btn-file">
+                    <span class="fileinput-new">Select Image</span>
+                    <span class="fileinput-exists">Change</span>
+                    <input type="file" name="..." accept="image/jpeg,image/x-png,image/png" (change)="onFileChangeIconImage($event)" multiple="multiple">
+                  </span>
+                  <a (click)="removeIconImageFile()" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="subhead mb-2">
+                    <h4>UserName:</h4>
+                 </div>
+                 <div class="form-holder1 w-100 p-0 mb-2">
+                    <div class="input-group">
+                        <input type="text" formControlName="UserName" class="form-control" placeholder="Enter UserName" autocomplete="off">
+                        <div *ngIf="submitted && cuf.UserName.errors" class="invalid-feedback">
+                            <div *ngIf="cuf.UserName.errors.required">UserName is required</div>
+                            <div *ngIf="cuf.UserName.errors.pattern">Please enter valid UserName</div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              </div>
+
+                <div class="row">
+            <div class="col-md-6">
+              <div class="subhead mb-2">
+                <h4>Designation:</h4>
+              </div>
+              <div class="form-holder1 w-100 p-0 mb-2">
+                <div class="input-group">
+                  <input type="text" formControlName="Designation" class="form-control" placeholder="Enter Designation" autocomplete="off">
+                  <div *ngIf="submitted && cuf.Designation.errors" class="invalid-feedback">
+                      <div *ngIf="cuf.Designation.errors.required">Designation is required</div>
+                      <div *ngIf="cuf.Designation.errors.pattern">Please enter valid Designation</div>
+                  </div>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="subhead mb-2">
+              <h4>Sub-Title Designation:</h4>
+            </div>
+            <div class="form-holder1 w-100 p-0 mb-2">
+              <div class="input-group">
+                <input type="text" formControlName="SubTitleDesignation" class="form-control" placeholder="Enter Sub Title Designation" autocomplete="off">
+                <div *ngIf="submitted && cuf.SubTitleDesignation.errors" class="invalid-feedback">
+                    <div *ngIf="cuf.SubTitleDesignation.errors.required">Sub Title Designation is required</div>
+                    <div *ngIf="cuf.SubTitleDesignation.errors.pattern">Please enter valid Sub Title Designation</div>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="subhead mb-2">
+                              <h4>Description:</h4>
+                           </div>
+                           <div class="form-holder1 w-100 p-0 mb-2">
+                              <div class="input-group">
+
+                   <!-- <textarea formControlName="Description" class="form-control" rows="5"></textarea> -->
+                   <ckeditor formControlName="Description" [editor]="Editor" (change)="onChange($event)" (ready)="onReady($event)"></ckeditor>
+                        <div *ngIf="submitted && cuf.Description.errors" class="invalid-feedback">
+                          <div *ngIf="cuf.Description.errors.required">Comment is required</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="subhead mb-2">
+                              <h4>User Comment:</h4>
+                           </div>
+                           <div class="form-holder1 w-100 p-0 mb-2">
+                              <div class="input-group">
+                  <textarea formControlName="Comment" class="form-control" rows="5"></textarea>
+                  <div *ngIf="submitted && cuf.Comment.errors" class="invalid-feedback">
+                    <div *ngIf="cuf.Comment.errors.required">Comment is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Standard'" >
+              <div class="d-flex justify-content-end">
+                 <div>
+                    <!-- <a href="" class="back  me-3">CANCEL</a> -->
+                    <button (click)="onCancel()" class="back btn  me-3">CANCEL</button>
+                 </div>
+                 <div class="d-flex justify-content-end">
+                    <!-- <a href="" class="draft">SUBMIT FOR APPROVAL</a> -->
+                    <button (click)="updateTestimonialContentSection()" class="draft">SUBMIT FOR APPROVAL</button>
+                 </div>
+              </div>
+           </div>
+
+           <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Admin'">
+            <div class="d-flex justify-content-end">
+               <div>
+                  <!-- <a href="" class="back  me-3">CANCEL</a> -->
+                  <button (click)="onCancel()" class="back  me-3">CANCEL</button>
+               </div>
+               <div class="d-flex justify-content-end">
+                  <!-- <a href="" class="draft me-3">SAVE</a>
+                  <a href="" class="continue">PUBLISH</a> -->
+                  <button (click)="saveTestimonialContentSection()" class="draft me-3">SAVE</button>
+                  <button value="Approved" (click)="approveTestimonialContentSection('Approved')" class="continue me-3">PUBLISH</button>
+                  <button value="Rejected" (click)="approveTestimonialContentSection('Rejected')" class="continue">REJECT</button>
+               </div>
+            </div>
+         </div>
+
+             <!-- <button *ngIf=" currentUserType == 'Standard'" (click)="updateTestimonialContentSection()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+      <button *ngIf=" currentUserType == 'Standard'" (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button>
+
+      <button *ngIf=" currentUserType == 'Admin'" (click)="onCancel()" class="btn btn-success float-right mb-3">Cancel</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approveTestimonialContentSection('Rejected')" class="btn btn-success float-right mb-3 mr-2"><i class="fi flaticon-multiply" value="Rejected"></i>&nbsp;Reject</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approveTestimonialContentSection('Approved')" class="btn btn-success float-right mb-3 mr-2"> <i class="fi flaticon-plus" value="Approved"></i>&nbsp; Approve & Publish</button> -->
+          </form>
+          </div>
+          </div>
+      </div>
+    </div>
+

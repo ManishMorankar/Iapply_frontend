@@ -1,0 +1,81 @@
+<div class="edit_page">
+  <div class="page_head">
+    <h2>CONTENT UPDATE</h2>
+ </div>
+
+ <div class="row">
+  <div class="col-md-12">
+    <div class="subhead mt-3 mb-3">
+      <h4 class="d-md-flex align-items-center justify-content-between">Video Section</h4>
+    </div>
+
+  <div class="round_brdr_box bg-white no_radius">
+       <form [formGroup]="VideoSectionForm">
+
+        <div class="row">
+          <div class="col-md-6">
+              <div class="subhead mb-2">
+                <h4>Video URL:</h4>
+              </div>
+              <div class="form-holder1 w-100 p-0 mb-2">
+                <div class="input-group">
+              <input type="url" formControlName="VideoUrl" name="VideoUrl" class="form-control">
+            </div>
+          </div>
+          </div>
+
+          <div class="col-md-6">
+              <div class="subhead mb-2">
+                <h4>User Comment:</h4>
+              </div>
+              <div class="form-holder1 w-100 p-0 mb-2">
+                <div class="input-group">
+              <input type="text" formControlName="Comment" name="Comment" class="form-control">
+            </div>
+          </div>
+        </div>
+        </div>
+
+      <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Standard'" >
+        <div class="d-flex justify-content-end">
+           <div>
+              <!-- <a href="" class="back  me-3">CANCEL</a> -->
+              <button (click)="onCancel()" class="back btn  me-3">CANCEL</button>
+           </div>
+           <div class="d-flex justify-content-end">
+              <!-- <a href="" class="draft">SUBMIT FOR APPROVAL</a> -->
+              <button (click)="updateVideo()" class="draft">SUBMIT FOR APPROVAL</button>
+           </div>
+        </div>
+     </div>
+
+     <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Admin'">
+      <div class="d-flex justify-content-end">
+         <div>
+            <!-- <a href="" class="back  me-3">CANCEL</a> -->
+            <button (click)="onCancel()" class="back btn  me-3">CANCEL</button>
+         </div>
+         <div class="d-flex justify-content-end">
+            <!-- <a href="" class="draft me-3">SAVE</a>
+            <a href="" class="continue">PUBLISH</a> -->
+            <button (click)="saveVideo()" class="btn btn-success float-right mb-3 mr-2" value="Rejected">SAVE</button>
+            <button value="Approved" (click)="approveVideo('Approved')" class="continue me-3">PUBLISH</button>
+            <button value="Rejected" (click)="approveVideo('Rejected')" class="continue">REJECT</button>
+         </div>
+      </div>
+   </div>
+
+      <!-- <button *ngIf=" currentUserType == 'Standard'" (click)="updateVideo()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+      <button *ngIf=" currentUserType == 'Standard'" (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button>
+
+      <button *ngIf=" currentUserType == 'Admin'" (click)="onCancel()" class="btn btn-success float-right mb-3">Cancel</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approveVideo('Rejected')" class="btn btn-success float-right mb-3 mr-2"><i class="fi flaticon-multiply" value="Rejected"></i>&nbsp;Reject</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approveVideo('Approved')" class="btn btn-success float-right mb-3 mr-2"> <i class="fi flaticon-plus" value="Approved"></i>&nbsp; Approve & Publish</button> -->
+
+      </form>
+      </div>
+      </div>
+    </div>
+    </div>
+    
+

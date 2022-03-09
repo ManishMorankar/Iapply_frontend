@@ -1,0 +1,37 @@
+.modal_subscription h3 {
+    color: #54565a;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+  .modal-backdrop {
+    opacity: 0.2 !important;
+  }
+
+  .modal_subscription button {
+    border: 0;
+    border-radius: 10px;
+    margin: 10px 0px;
+    color: #fff;
+    padding: 13px;
+    width: 68px;
+  }
+
+  .modal_subscription .yes {
+    background-color: #2cbf8c;
+
+  }
+
+  .modal_subscription .no {
+    background-color: #f35162;
+  }
+
+  .modal_subscription .modal-body {
+    padding: 20px 35px;
+  }
+
+  .modal_subscription .modal-content {
+    border: 0;
+    border-radius: 0px;
+    box-shadow: 0px 0px 18px 0px #818181;
+  }

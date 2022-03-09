@@ -1,0 +1,199 @@
+<div class="page-wrapper chiller-theme toggled">
+  <nav id="sidebar" class="sidebar-wrapper">
+     <div class="sidebar-content">
+        <div class="sidebar-header">
+           <div class="user-pic">
+     <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/logo.svg" alt="">
+  </div>
+</div>
+ <div class="sidebar-menu">
+  <ul>
+    <li routerLinkActive="active">
+      <a [routerLink]=" ['dashboard'] ">
+      <!-- <a href="https://app.powerbi.com/reportEmbed?reportId=e12165b8-0970-4f40-9ecf-cf275ad98e8b&autoAuth=true&ctid=e72783c0-698d-4367-b39c-67786a9446fb&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVhZS1ub3J0aC1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"> -->
+        <!-- <a href="http://localhost:50164?ReportName=AdminDashboard&ReportType=english"> -->
+        <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/home.svg" alt="">
+        <span>Dashboard</span>
+  </a>
+    </li>
+
+    <li class="has_sub" routerLinkActive="active">
+      <a href="javascript:;" *ngIf="currentUserType=='Admin'">
+        <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/users.svg" alt="">
+        <span>User Management <i class="fa fa-chevron-down submenu_icon"></i></span>
+      </a>
+      <ul  class="inr_sub hide">
+        <li>
+          <a class="load" (click)="gotoRegisteruserDetailsPage()">
+          Subscribed User
+          </a>
+        </li>
+        <li>
+          <a class="load" (click)="gotousermanagementPage()">
+          Internal User
+          </a>
+        </li>
+     </ul>
+    </li>
+
+    <li class="active" routerLinkActive="active">
+      <a [routerLink]="['contentUpdate']">
+      <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/job_history.svg" alt="job_history">
+      <span>Content Update </span>
+      </a>
+   </li>
+
+   <li routerLinkActive="active" *ngIf=" currentUserType == 'Admin'">
+    <a [routerLink]=" ['JobConfiguration'] ">
+    <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/payment.svg" alt="payment">
+    <span>Job Configuration</span>
+    </a>
+ </li>
+
+ <li class="has_sub" routerLinkActive="active">
+  <a href="javascript:;">
+  <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/account_setting.svg" alt="report">
+  <span>Report <i class="fa fa-chevron-down   submenu_icon"></i></span>
+  </a>
+  <ul class="inr_sub hide" *ngIf=" currentUserType == 'Admin'">
+    <li class="sub_active">
+      <a [routerLink]=" ['SubscriptionReport'] ">
+      <!-- <a href="https://app.powerbi.com/reportEmbed?reportId=e12165b8-0970-4f40-9ecf-cf275ad98e8b&autoAuth=true&ctid=e72783c0-698d-4367-b39c-67786a9446fb&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVhZS1ub3J0aC1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"> -->
+      Subscription Report
+      </a>
+    </li>
+    <li>
+      <a [routerLink]=" ['PaymentReport'] ">
+      <!-- <a href="https://app.powerbi.com/reportEmbed?reportId=e12165b8-0970-4f40-9ecf-cf275ad98e8b&autoAuth=true&ctid=e72783c0-698d-4367-b39c-67786a9446fb&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVhZS1ub3J0aC1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"> -->
+      Payment Report
+      </a>
+    </li>
+    <li>
+      <a [routerLink]=" ['JobAppliedReport'] ">
+        <!-- <iframe src="https://iapplyuatapp.azurewebsites.net/bir?ReportName=JobAppliedReport&ReportType=english" name="iFrame Name" scrolling="No" height="100%" width="100%" style="border: none;"> -->
+      <!-- <a href="https://app.powerbi.com/reportEmbed?reportId=e12165b8-0970-4f40-9ecf-cf275ad98e8b&autoAuth=true&ctid=e72783c0-698d-4367-b39c-67786a9446fb&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVhZS1ub3J0aC1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"> -->
+        Job Applied Report
+      <!-- </iframe> -->
+      </a>
+    </li>
+    <li>
+      <a [routerLink]=" ['ErrorLogReport'] ">
+        Error Logs
+      </a>
+    </li>
+    <li>
+      <a [routerLink]=" ['SupportReport'] ">
+      <!-- <a href="https://app.powerbi.com/reportEmbed?reportId=e12165b8-0970-4f40-9ecf-cf275ad98e8b&autoAuth=true&ctid=e72783c0-698d-4367-b39c-67786a9446fb&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVhZS1ub3J0aC1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"> -->
+        Support Report
+      </a>
+    </li>
+ </ul>
+
+ <ul class="inr_sub" *ngIf=" currentUserType == 'Standard'">
+  <li class="sub_active">
+    <!-- <a href="https://app.powerbi.com/reportEmbed?reportId=e12165b8-0970-4f40-9ecf-cf275ad98e8b&autoAuth=true&ctid=e72783c0-698d-4367-b39c-67786a9446fb&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVhZS1ub3J0aC1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"> -->
+   <a [routerLink]=" ['SubscriptionReport'] ">
+      Subscriber Report
+    </a>
+  </li>
+  <li>
+    <!-- <a href="https://app.powerbi.com/reportEmbed?reportId=e12165b8-0970-4f40-9ecf-cf275ad98e8b&autoAuth=true&ctid=e72783c0-698d-4367-b39c-67786a9446fb&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVhZS1ub3J0aC1hLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D"> -->
+ <a [routerLink]=" ['JobAppliedReport'] ">
+      Job Applied Report
+    </a>
+  </li>
+</ul>
+</li>
+
+<li class="" routerLinkActive="active">
+  <a href="https://www.tidio.com/panel/login" target="_blank">
+  <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/account_setting.svg" alt="chat">
+  <span>Chat</span>
+  </a>
+</li>
+
+    </ul>
+  </div>
+
+  <!-- div class="sidebar-footer dsfsdf">
+    <div class="w-100">
+       <p>Need Help?<br>We are just one click away</p>
+       <a href="{{Url}}/contact-us" target="_blank">Start</a>
+       <img src="../../../assets/images/dashboard/sidebar_footer.svg" alt="">
+    </div>
+ </div -->
+</div>
+</nav>
+</div>
+
+  <!-- <div class="page-wrapper chiller-theme toggled">
+  <nav id="sidebar" class="sidebar-wrapper">
+     <div class="sidebar-content">
+        <div class="sidebar-header">
+           <div class="user-pic">
+    <a [routerLink]=" ['../visitor/home'] "><img class="img-responsive img-rounded" src="../../../assets/images/dashboard/logo.svg" alt=""></a>
+  </div>
+</div>
+ <div class="sidebar-menu">
+  <ul>
+    <li routerLinkActive="active" >
+      <a [routerLink]=" ['dashboard']">
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/home.svg" alt="">
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li *ngIf=" currentUserType == 'Admin'">
+      <a href="javascript:;">
+        <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/users.svg" alt="">
+        <span>User Management</span>
+      </a>
+      <ul>
+        <li routerLinkActive="active">
+          <a [routerLink]=" ['registerUserDetails'] ">
+          Subscribed User
+          </a>
+        </li>
+        <li  routerLinkActive="active">
+          <a [routerLink]=" ['user-management'] " >
+          Internal User
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li routerLinkActive="active">
+      <a [routerLink]=" ['JobHistory'] ">
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/job_history.svg" alt="">
+          <span>Job History</span>
+      </a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]=" ['PaymentHistory']">
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/payment.svg" alt="">
+       <span> Payment History </span>
+      </a>
+    </li>
+
+
+
+    <li routerLinkActive="active">
+      <a [routerLink]=" ['AccountSettings'] ">
+          <img class="img-responsive img-rounded" src="../../../assets/images/dashboard/account_setting.svg" alt="">
+        <span> Account Settings</span>
+      </a>
+    </li>
+
+    </ul>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="w-100">
+       <p>Need Help?<br>We are just one click away</p>
+       <a href="https://iapplyapp.azurewebsites.net/visitor/contact-us" target="_blank">Start</a>
+       <img src="../../../assets/images/dashboard/sidebar_footer.svg" alt="">
+    </div>
+ </div>
+</div>
+</nav>
+</div> -->
+

@@ -1,0 +1,65 @@
+<div class="page-top-line">
+    <h3 class="page-title"> <span class="fw-semi-bold">Subscription Report</span></h3>
+  </div>
+  
+  <widget>
+    <button class="btn btn-success float-right mb-3 ml-2">Export To Excel</button>
+    <!-- <button (click)="addInternalUser()" class="btn btn-success float-right mb-3">Add Internal User</button> -->
+  
+    <input type="text" class="form-control" style="padding:8px;width:20%;" placeholder="Type to filter..." />
+    <ngx-datatable class="table table-striped table-hover"
+                   [rows]="subscriptionList"
+                   [columnMode]="'force'"
+                   [headerHeight]="60"
+                   [footerHeight]="50"
+                   [rowHeight]="'auto'"
+                   [scrollbarH]="true"
+                   [limit]="10">
+      <ngx-datatable-column name="Plan" prop="emailId" [width]="50">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Total Payment" prop="emailId" [width]="135" >
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Payment Method" prop="userType" [width]="150" >
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Payment Date"  prop="status" [width]="125">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+  
+      <ngx-datatable-column name="Payment Status" prop="addedOn" [width]="140">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="End Date" prop="addedOn" [width]="85">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Remaining Days" prop="addedOn" [width]="140">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Subscription Status" prop="addedOn" [width]="150">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Status" prop="addedOn" [width]="100">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </widget>

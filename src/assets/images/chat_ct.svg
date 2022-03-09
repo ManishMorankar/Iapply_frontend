@@ -1,0 +1,6 @@
+<svg id="chat_ct" xmlns="http://www.w3.org/2000/svg" width="32.015" height="32" viewBox="0 0 32.015 32">
+  <path id="Path_132" data-name="Path 132" d="M21,1H3A2,2,0,0,0,1,3V15a2,2,0,0,0,2,2H6v4l4-4H21a2,2,0,0,0,2-2V3A2,2,0,0,0,21,1Z" fill="none" stroke="#353535" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <path id="Path_133" data-name="Path 133" d="M11,20v1a10,10,0,0,0,2.928,7.068L11,31H21a10,10,0,0,0,5-18.66" fill="none" stroke="#353535" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line id="Line_1" data-name="Line 1" x2="14" transform="translate(5 7)" fill="none" stroke="#2f5bea" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line id="Line_2" data-name="Line 2" x2="14" transform="translate(5 11)" fill="none" stroke="#2f5bea" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+</svg>

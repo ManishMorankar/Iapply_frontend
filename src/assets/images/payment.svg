@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42.097" height="37.543" viewBox="0 0 42.097 37.543">
+  <g id="payment" transform="translate(-5.491 -8.271)">
+    <path id="Path_156" data-name="Path 156" d="M42.36,22.39a8.544,8.544,0,0,0-.79-.909L29.831,9.742a3.312,3.312,0,0,0-4.688,0L6.962,27.923a3.312,3.312,0,0,0,0,4.688l7.731,7.723" fill="none" stroke="#353535" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="32.41" height="22.924" rx="4.17" transform="translate(14.677 22.39)" fill="none" stroke="#353535" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <line id="Line_3" data-name="Line 3" x2="32.41" transform="translate(14.677 28.714)" fill="none" stroke="#353535" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <line id="Line_4" data-name="Line 4" x2="32.41" transform="translate(14.677 31.876)" fill="none" stroke="#353535" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <line id="Line_5" data-name="Line 5" x2="6.324" transform="translate(19.42 36.619)" fill="none" stroke="#2f5bea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <line id="Line_6" data-name="Line 6" x2="3.952" transform="translate(19.42 39.781)" fill="none" stroke="#2f5bea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <line id="Line_7" data-name="Line 7" x2="3.952" transform="translate(28.906 36.619)" fill="none" stroke="#2f5bea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</svg>

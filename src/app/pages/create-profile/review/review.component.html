@@ -1,0 +1,523 @@
+
+  <!--Review Code Start-->
+  <div class="page_head">
+    <h2>MY PROFILE</h2>
+  </div>
+  <app-wizard></app-wizard>
+<div class="dasboard-cont review-cont">
+  <div class="row">
+
+    <div class="d-flex justify-content-between col-md-12">
+      <!-- <p class="mb-0">Add/ Update Your Personal Information With Contact Information.</p> -->
+      <p class="mb-0">Review your profile information.</p>
+      <span class="red-txt small-font text-end">Supports only English content</span></div>
+    <div class="col-md-12">
+    <div class="bg-gray-lighter progress progress-xs mt-3 mb-4 ">
+      <div id="bar" class="progress-bar progress-xs progress-bar-gray-light" style="width: 90%;"></div>
+      </div></div>
+
+
+
+      </div>
+      <div class="row">
+        <div class="col-md-6 flex-container" >
+          <div class="page_sub_head"><p>Personal Information</p></div>
+          <div class="round_brdr_box">
+                  <div class="w-100" *ngFor="let profile of getProfileInformationData; let i=index" >
+
+
+                        <h6>Profile Picture <span class="edit_links"><a (click) ="clickTab(2)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a>
+                          <!-- <a href="#" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a> -->
+                        </span></h6>
+
+                        <div class="row">
+                           <div class="col-md-3">
+                              <div class="user_image">
+                           <!-- <a (click)="removeFile()" class="delete-image" style="right:18px;"><i class="far fa-trash-alt" title="Delete"></i></a> -->
+                                 <img alt="profile image" width="120" height="120" [src]="getProfileImage()">
+                                </div>
+                              </div>
+                              <div class="col-md-9">
+                                <div class="row">
+                                  <label class="col-md-5 label_title">First Name</label>
+                                  <p class="col-md-7 readonly-txt">{{profile.firstName}}</p>
+                                </div>
+                                <div class="row">
+                                  <label class="col-md-5 label_title">Last Name</label>
+                                  <p class="col-md-7 readonly-txt">{{profile.lastName}}</p>
+                                </div>
+                                <div class="row">
+                                <label class="col-md-5 label_title">Date of Birth</label>
+                                <p class="col-md-7 readonly-txt">{{profile.birthDate | date: 'dd-MMM-yyyy'}}</p>
+                                </div>
+                                <div class="row">
+                                <label class="col-md-5 label_title">Current Nationality</label>
+                                <p class="col-md-7 readonly-txt">{{profile.nationalityName}}</p>
+                                </div>
+                                <div class="row">
+                                <label class="col-md-5 label_title">Other Nationality </label>
+                                <p class="col-md-7 readonly-txt">{{profile.otherNationalityName}}</p>
+                                </div>
+                                <div class="row">
+                                <label class="col-md-5 label_title">Current Visa Status </label>
+                                <p class="col-md-7 readonly-txt">{{profile.visaStatus}}</p>
+                                </div>
+                                <div class="row">
+                                <label class="col-md-5 label_title">Gender</label>
+                                <p class="col-md-7 readonly-txt">{{profile.gender}}</p>
+                                </div>
+                                <div class="row">
+                                  <label class="col-md-5 label_title">Disability </label>
+                                  <p class="col-md-7 readonly-txt">{{profile.disability}}</p>
+                               </div>
+                              </div>
+                            </div>
+
+
+
+                       </div> </div>
+                    </div>
+                      <div class="col-md-6 flex-container" >
+                      <div class="page_sub_head"><p>Contact Information</p></div>
+                      <div class="round_brdr_box">
+                      <div class="w-100"  *ngFor="let profile of getProfileInformationData; let i=index">
+                           <h6><span class="edit_links">
+                             <a (click) ="clickTab(2)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a>
+                             <!-- <a href="#" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a> -->
+                            </span></h6>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="row">
+                                  <label class="col-md-5 label_title">Primary Email Address</label>
+                                  <p class="col-md-7 readonly-txt">{{profile.primaryEmailId}}</p>
+                               </div>
+                               <div class="row">
+                                <label class="col-md-5 label_title">Secondary Email Address</label>
+                                <p class="col-md-7 readonly-txt">{{profile.secondaryEmailId}}</p>
+                             </div>
+                             <div class="row">
+                              <label class="col-md-5 label_title">Primary Phone Number</label>
+                              <p class="col-md-7 readonly-txt">{{profile.primaryPhoneNumber}}</p>
+                           </div>
+                           <div class="row">
+                            <label class="col-md-5 label_title">Alternate Phone Number</label>
+                            <p class="col-md-7 readonly-txt">{{profile.secondaryPhoneNumber}}</p>
+                           </div>
+                           <div class="row">
+                            <label class="col-md-5 label_title">Current Address</label>
+                            <p class="col-md-7 readonly-txt"> {{profile.address}}</p>
+                           </div>
+                           <div class="row">
+                            <label class="col-md-5 label_title">Country</label>
+                            <p class="col-md-7 readonly-txt">{{profile.country}}</p>
+                            </div>
+                            <div class="row">
+                              <label class="col-md-5 label_title">City</label>
+                              <p class="col-md-7 readonly-txt">{{profile.city}}</p>
+                            </div>
+                            <div class="row">
+                              <label class="col-md-5 label_title">Zip Code/Postal Code </label>
+                              <p class="col-md-7 readonly-txt">{{profile.postalCode}}</p>
+                            </div>
+                          </div>
+                        </div>
+
+
+                     </div>
+                  </div>
+                  </div>
+                  <!-- <div class="col-md-12">
+                    <div class="page_sub_head mt-3"><p>Your Uploaded Resume</p></div>
+                    <div class="round_brdr_box">
+                       <div class="inner_box">
+                          <i class="fas fa-file-pdf red-color large-font"></i> Uploaded_Resume.pdf
+                          <span class="edit_links"><a href="#" class="blue-color"><i class="far fa-edit" title="Edit"></i></a><a href="#" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a></span>
+                       </div>
+                    </div>
+                 </div> -->
+                 <div class="col-md-12 flex-container" >
+                 <div class="page_sub_head mt-3 "><p>Your Uploaded Resume</p></div>
+   <div class="round_brdr_box_resume ">
+    <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(7)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a></span></h6>
+    <div class="w-100"  *ngFor="let OtheAttachment of getResumeAttachmentData; let i=index;">
+      <div class="inner_box mb-2" *ngIf="OtheAttachment.documentType=='Resume'">
+        <i class="{{getFileExtension(OtheAttachment .documentPath)}}" style="color:Red;" aria-hidden="true"></i> <a [href]="OtheAttachment.downloadLink"> {{getFileName(OtheAttachment.documentPath)}}</a>
+        <span class="edit_links"><a [href]="OtheAttachment.downloadLink" class="green-color"><i class="fas fa-download"></i></a></span>
+        </div>
+        </div>
+
+  <div *ngIf="getResumeAttachmentData?.length == 0">
+    <p class="readonly-txt text-center">Not Available</p>
+  </div>
+  </div>
+  </div>
+
+  <div class="col-md-12 flex-container" >
+    <div class="page_sub_head mt-3 "><p>Summary</p></div>
+<div class="round_brdr_box_resume ">
+<h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(3)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a></span></h6>
+
+<div class="w-100" *ngFor="let SummaryItem of getSummaryData; let i=index;">
+<!-- <span class="edit_links"><a [href]="OtheAttachment.downloadLink" class="green-color"><i class="fas fa-download"></i></a></span> -->
+<p> {{ SummaryItem.summery }}</p>
+</div>
+<div *ngIf="getSummaryData?.length == 0">
+  <p class="readonly-txt text-center">Not Available</p>
+</div>
+</div>
+</div>
+
+                 <div class="col-md-6 flex-container" >
+                  <div class="page_sub_head mt-3  "><p>Job Experience</p></div>
+                  <div class="round_brdr_box">
+                    <div class="w-100" *ngFor="let experience of getExperienceData; let i=index">
+                      <h5><span class="blue-color">{{ experience.jobTitle }}</span>
+                      <span class="edit_links"><a (click) ="clickTab(3)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a>
+                      <!-- <a href="#" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a> -->
+                    </span></h5>
+                    <div class="d-flex justify-content-between   small-font"><span> {{ experience.countryName }}, {{ experience.city}}</span> <span><i class="fas fa-square-full small-icon"></i>  {{ experience.companyName }}</span> <span><i class="fas fa-square-full small-icon"></i> <span class="gray-color">From</span>  {{ experience.fromDate | date: 'dd-MMM-yyyy' }} to {{ experience.toDate | date: 'dd-MMM-yyyy' }}</span></div>
+
+                    <p ul class="bullet">
+                      <span [innerHTML]="experience?.description"></span>
+                      <!-- {{experience.description}} -->
+                     </p>
+                    <hr>
+                 </div>
+                  <div *ngIf="getExperienceData?.length == 0">
+                    <p>I am fresher</p>
+                  </div>
+              </div>
+              </div>
+              <div class="col-md-6 flex-container">
+                <div class="page_sub_head mt-3"><p>Certificates</p></div>
+                <div class="round_brdr_box" >
+                  <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(3)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a></span></h6>
+                  <div class="w-100" *ngFor="let certificates of getCertificatesData; let i=index">
+                    <h5><span class="blue-color">{{ certificates.certificateName }}</span>
+                    <!-- <span class="edit_links"><a (click) ="clickTab(3)"  class="blue-color"><i class="far fa-edit" title="Edit"></i></a> -->
+                      <!-- <a href="#" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a> -->
+
+                    <!-- </span>--></h5>
+                   <div class="d-flex justify-content-between  small-font">  <span> <span class="gray-color">Certificates Issued On:</span>{{ certificates.issuedOn | date: 'dd-MMM-yyyy' }}</span></div>
+                   <p>  {{ certificates.description }}</p>
+<hr>
+                </div>
+                <div *ngIf="getCertificatesData?.length == 0">
+                  <p class="readonly-txt text-center">Not Available</p>
+                </div>
+                </div>
+                <div class="page_sub_head mt-3 "><p>Portfolio</p></div>
+                <div class="round_brdr_box" >
+                  <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(3)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a></span></h6>
+                  <div class="w-100" *ngFor="let portfolio of getPortfolioData; let i=index">
+                    <div class="d-flex justify-content-between portfolio-cont">
+                   <p class="mb-0"><a href="#" class=" portfolio-link"><i class="fas fa-globe"></i> <span class="small-font"> {{ portfolio.url }}</span></a>
+                   </p>
+                   <!-- <span class="edit_links">
+                     <a (click) ="clickTab(3)"  class="blue-color"><i class="far fa-edit" title="Edit"></i></a> -->
+                     <!-- <a href="#" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a> -->
+                    <!-- </span> -->
+                </div>
+                <hr>
+             </div>
+              <div *ngIf="getPortfolioData?.length == 0">
+                <p class="readonly-txt text-center">Not Available</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 flex-container" >
+            <div class="page_sub_head mt-3 "><p>Achievements</p></div>
+            <div class="round_brdr_box ">
+              <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(3)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a></span></h6>
+              <div class="w-100" *ngFor="let achievements of getAchievementsData; let i=index">
+                <h5><span class="blue-color">{{ achievements.achievementsTitle }}</span>
+                <!-- <span class="edit_links"><a (click) ="clickTab(3)"  class="blue-color"><i class="far fa-edit" title="Edit"></i></a> -->
+                <!-- <a href="#" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a> -->
+              <!-- </span> -->
+            </h5>
+                <div class="d-flex justify-content-between ">
+                 <span><span class="gray-color">Achievements Date:</span>{{ achievements.achievementsDate | date: 'dd-MMM-yyyy' }}</span></div>
+                 <p> {{ achievements.achievementsDescription }}</p>
+<hr>
+                </div>
+                <div *ngIf="getAchievementsData?.length == 0">
+                  <p class="readonly-txt text-center">Not Available</p>
+                </div>
+              </div>
+           </div>
+           <div class="col-md-6 flex-container">
+            <div class="page_sub_head mt-3 "><p>Social Profiles</p></div>
+            <div class="round_brdr_box">
+              <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(3)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a></span></h6>
+              <div class="w-100"  *ngFor="let socialProfile of getSocialProfileData; let i=index">
+                <div class="d-flex justify-content-between portfolio-cont">
+               <p class="mb-0"><a href="#" class=" portfolio-link"><i class="fas fa-globe"></i> <span class="small-font"> {{ socialProfile.name }} : {{ socialProfile.url }}</span></a>
+               </p>
+               <!-- <span class="edit_links"><a (click) ="clickTab(3)"  class="blue-color"><i class="far fa-edit" title="Edit"></i></a> -->
+                <!-- <a href="#" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a> -->
+              <!-- </span> -->
+              </div>
+              <hr>
+            </div>
+            <div *ngIf="getSocialProfileData?.length == 0">
+              <p class="readonly-txt text-center">Not Available</p>
+            </div>
+         </div>
+
+      </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6 flex-container">
+      <div class="page_sub_head mt-3 "><p>Education</p></div>
+      <div class="round_brdr_box ">
+        <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(4)" class="blue-color"><i class="far fa-edit" title="Edit" title="Edit"></i></a></span></h6>
+        <div class="w-100" *ngFor="let education of getEducationData; let i=index">
+
+        <h5><span class="blue-color">{{ education.educationLevel }}</span>
+          <!-- <span class="edit_links">
+          <a (click) ="clickTab(4)" class="blue-color"><i class="far fa-edit" title="Edit" title="Edit"></i></a> -->
+          <!-- </span> -->
+        </h5>
+        <h5><span class="blue-color">{{ education.universityName }}</span> </h5>
+        <h5><span class="blue-color">{{ education.educationName }}</span> </h5>
+
+        <div class="d-flex justify-content-between  small-font"><span> {{ education.countryName }}, {{ education.city}}</span> <span><i class="fas fa-square-full small-icon"></i>  {{ education.fieldOfStudy }}</span> <span><i class="fas fa-square-full small-icon"></i> <span class="gray-color">From</span> {{ education.fromDate | date: 'dd-MMM-yyyy' }} to {{ education.toDate | date: 'dd-MMM-yyyy' }}</span></div>
+        <hr>
+     </div>
+     <div *ngIf="getEducationData?.length == 0">
+      <p class="readonly-txt text-center">Not Available</p>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="col-md-6 flex-container">
+    <div class="page_sub_head mt-3 "><p>Project Details</p></div>
+    <div class="round_brdr_box ">
+      <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(5)" class="blue-color"><i class="far fa-edit" title="Edit" title="Edit"></i></a></span></h6>
+      <div class="w-100" *ngFor="let project of getProjectDetailsData; let i=index">
+      <h5 class="mb-1"><span class="blue-color">{{ project.projectTitle }}</span>
+        <!-- <span class="edit_links">
+        <a (click) ="clickTab(5)" class="blue-color"><i class="far fa-edit" title="Edit" title="Edit"></i></a> -->
+        <!-- <a href="#" class="red-color"><i class="far fa-trash-alt" title="Delete"></i></a> -->
+      <!-- </span> -->
+    </h5>
+
+       <p class="mb-0"><a href="#" class=" portfolio-link"><i class="fas fa-globe"></i> <span class="small-font">  {{ project.projectUrl }}</span></a>
+       </p>
+
+    <p  > {{ project.projectDescription }}</p>
+    <hr>
+    <!-- <div class="d-flex justify-content-between mt-3 mb-2 small-font"> <span><i class="fas fa-square-full small-icon"></i> <span class="gray-color">From</span> Feb 2021 to Present</span></div> -->
+ </div>
+<div *ngIf="getProjectDetailsData?.length == 0">
+  <p class="readonly-txt text-center">Not Available</p>
+</div>
+</div>
+
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 flex-container">
+    <div class="page_sub_head mt-3 "><p>Patent Details</p></div>
+    <div class="round_brdr_box ">
+      <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(5)" class="blue-color"><i class="far fa-edit" title="Edit" title="Edit"></i></a></span></h6>
+      <div class="w-100"  *ngFor="let patent of getPatentsData; let i=index">
+      <h5 class="mb-1"><span class="blue-color">{{ patent.patentName }}</span> </h5>
+        <!-- <span class="edit_links"><a (click) ="clickTab(5)" class="blue-color"><i class="far fa-edit" title="Edit" title="Edit"></i></a> </span> -->
+
+       <p class="mb-0"><a href="#" class=" portfolio-link"><i class="fas fa-globe"></i> <span class="small-font"> {{ patent.patentUrl }}</span></a>
+       </p>
+
+    <p class="blue-color  mb-0">Patent Number: {{ patent.patentNumber }}</p>
+    <div class="d-flex justify-content-between  mb-2 small-font"> <span><i class="fas fa-square-full small-icon"></i> <span class="gray-color">Date Awarded:</span> {{ patent.dateAwarded | date: 'dd-MMM-yyyy' }}</span></div>
+<hr>
+  </div>
+  <div *ngIf="getPatentsData?.length == 0">
+    <p class="readonly-txt text-center">Not Available</p>
+  </div>
+</div>
+
+</div>
+<div class="col-md-6 flex-container">
+
+  <div class="page_sub_head mt-3 "><p>Languages</p></div>
+  <div class="round_brdr_box ">
+    <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(5)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a></span></h6>
+    <div class="w-100"  *ngFor="let language of getLanguageData; let i=index">
+
+      <div class="d-flex justify-content-between portfolio-cont">
+     <p class="mb-0 mt-0">{{ language.language }} - {{ language.proficiency }}</p>
+     <!-- <span class="edit_links"><a (click) ="clickTab(5)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a> </span> -->
+     </div>
+  <hr>
+</div>
+<div *ngIf="getLanguageData?.length == 0">
+  <p class="readonly-txt text-center">Not Available</p>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 flex-container">
+    <div class="page_sub_head mt-3 "><p>Job Preferences</p></div>
+    <div class="round_brdr_box ">
+
+      <h5 class="mb-3"><span class="edit_links"><a (click) ="clickTab(6)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a> </span></h5>
+      <br>
+
+      <div class="row">
+        <!-- <div class="col-sm-6">
+          <label class="col-md-5 label_title">Preferred Job Title</label> -->
+          <!-- <strong>Preferred Job Title</strong> -->
+        <!-- </div>
+        <div class="col-sm-6">
+          <label class="col-md-5 label_title">Your Skills</label> -->
+          <!-- <strong>Your Skills</strong> -->
+        <!-- </div> -->
+        <!-- <div class="col-sm-4">
+          <button type="button" class="btn float-right">Click Here to Edit <i class="fa fa-edit" style="color: blue; "></i></button>
+        </div> -->
+
+
+        <!-- <div class="row" *ngFor="let preferredJob of getPreferredJobData; let i=index; let preferredSkills of getPreferredSkillsData;">
+         <label class="col-md-5 label_title"> {{preferredJob.jobTitle}} </label>
+         <p class="col-md-7 readonly-txt"> {{preferredSkills.skillName}} </p>
+      </div> -->
+      <div class="row">
+        <div class="col-md-5">
+          <label class="label_title">Preferred Job Title</label>
+         </div>
+         <div class="col-md-7">
+            <span class=" readonly-txt"  *ngFor="let preferredJob of getPreferredJobData; let i=index;"> {{preferredJob.jobTitle}}, </span>
+            <!-- {{preferredJob.jobTitle}} -->
+          </div>
+        </div>
+        <!-- <div *ngFor="let selectedJobCountry of getJobCountryData; let i=index;">
+          <div class="col-sm-6">
+            {{selectedJobCountry.jobCountry}}
+          </div>
+        </div> -->
+
+ <div class="row">
+        <div class="col-md-5">
+          <label class="label_title">Preferred Skills</label>
+        </div>
+        <div class="col-md-7">
+          <span class=" readonly-txt"  *ngFor="let preferredSkills of getPreferredSkillsData; let i=index;">
+          {{preferredSkills.skillName}},
+
+          </span>
+         </div>
+        </div>
+        <!-- <div *ngFor="let selectedJobCountry of getJobCountryData; let i=index;">
+          <div class="col-sm-6">
+            {{selectedJobCountry.jobCountry}}
+          </div>
+        </div> -->
+ <div class="row">
+  <div class="col-md-5">
+    <label class="label_title">Selected Countries</label>
+  </div>
+  <div class="col-md-7">
+    <span class=" readonly-txt"  *ngFor="let selectedJobCountry of getJobCountryData; let i=index;">
+      {{selectedJobCountry.jobCountry}},
+
+      </span>
+   </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-5">
+  <label class="label_title">Are You Authorized To Work In Selected Countries</label>
+</div>
+<div class="col-md-7">
+  <span class=" readonly-txt">
+    {{getJobCountryData[0]?.authorizedCountry}}
+  </span>
+  </div>
+
+
+      </div><br>
+
+      <div class="row mt-5" *ngFor="let JobCateory of getJobCateoryData; let i=index;">
+      <label class="col-md-5 label_title">Category</label>
+         <p class="col-md-7 readonly-txt"> {{JobCateory.jobCategory}}</p>
+
+         <label class="col-md-5 label_title">Job Type</label>
+         <p class="col-md-7 readonly-txt"> {{JobCateory.jobType}}</p>
+
+         <label class="col-md-5 label_title">Industry</label>
+         <p class="col-md-7 readonly-txt"> {{JobCateory.jobIndustry}}</p>
+      </div>
+
+      <div class="row" *ngFor="let ExpectedSalaryData of getExpectedSalaryData; let i=index;">
+
+         <label class="col-md-5 label_title">Expected Monthly Salary</label>
+         <p class="col-md-7 readonly-txt"> {{ExpectedSalaryData.currency}} {{ExpectedSalaryData.salaryFrom}} to {{ExpectedSalaryData.salaryTo}}</p>
+      </div>
+
+      <!-- <div class="row" *ngFor="let item of CustomerSalary; let i=index">
+         <label class="col-md-5 label_title">Expected Monthly Salary</label>
+         <p class="col-md-7 readonly-txt">  {{ getCurrencyName(item.CurrencyId) }} {{ item.SalaryFrom }} to {{ item.SalaryTo }}</p>
+      </div> -->
+
+      </div>
+   </div>
+  </div>
+  <div class="col-md-6 flex-container">
+    <div class="page_sub_head mt-3  "><p>Additional Information</p></div>
+    <div class="round_brdr_box ">
+      <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(5)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a></span></h6>
+      <div class="w-100"  *ngFor="let additionalInformation of getAdditionalInformationData; let i=index">
+
+      <!-- <h5 class="mb-3"><span class="edit_links"><a (click) ="clickTab(6)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a>
+         </span></h5> -->
+      <p> {{ additionalInformation.additionalInfo }}</p>
+
+   </div>
+    <div *ngIf="getAdditionalInformationData?.length == 0">
+      <p class="readonly-txt text-center">Not Available</p>
+    </div>
+   </div>
+
+
+
+  <div class="page_sub_head mt-3 "><p>Other Attachments</p></div>
+   <div class="round_brdr_box ">
+    <h6 class="mb-3"><span class="edit_links"><a (click) ="clickTab(7)" class="blue-color"><i class="far fa-edit" title="Edit"></i></a></span></h6>
+
+    <div class="w-100"   *ngFor="let OtheAttachment of getOtherAttachmentsData; let i=index;">
+      <div class="inner_box mb-2" *ngIf="OtheAttachment.documentType=='Attachment'">
+        <i class="{{getFileExtension(OtheAttachment.documentPath)}}" style="color:red;" aria-hidden="true"></i>  <a [href]="OtheAttachment.downloadLink"> {{getFileName(OtheAttachment.documentPath)}}</a>
+        <span class="edit_links"><a [href]="OtheAttachment.downloadLink" class="green-color"><i class="fas fa-download"></i></a></span>
+       </div>
+  </div>
+  <div *ngIf="getOtherAttachmentsData?.length == 0">
+    <p class="readonly-txt text-center">Not Available</p>
+  </div>
+  </div>
+
+  </div>
+
+
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-12 mt-4">
+<button type="button" class="btn btn-success pull-left back" (click)="onBack()"><i class="fa fa-backward"></i>&nbsp;
+    Back
+</button>
+<button type="submit" class="btn btn-primary pull-right ml-2 continue" (click)="onNext(ReviewActionLabel)"><i class="fa fa-forward"></i>&nbsp;
+    {{ReviewActionLabel}}
+</button>
+<!-- <button type="button" class="btn btn-default pull-right" (click)="onCancel()"><i class="fa fa-close"></i>&nbsp;
+    Cancel
+</button> -->
+  <!-- </section> -->
+  </div></div>
+
+
+  <!--Review Code End-->

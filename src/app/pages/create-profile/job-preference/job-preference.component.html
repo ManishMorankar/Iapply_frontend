@@ -1,0 +1,570 @@
+<div class="page_head">
+  <h2>MY PROFILE</h2>
+</div>
+<app-wizard></app-wizard>
+<div class="dasboard-cont">
+<div class="row">
+
+  <div class="d-flex justify-content-between col-md-12"><p class="mb-0">Select/Update job preferences, as our AI will apply to the Jobs based on this criteria.</p>    <span class="red-txt small-font text-end">Supports only English content</span></div>
+  <div class="col-md-12">
+  <div class="bg-gray-lighter progress progress-xs mt-3 mb-4 ">
+    <div id="bar" class="progress-bar progress-xs progress-bar-gray-light" style="width: 60%;"></div>
+    </div></div>
+
+
+
+    </div>
+
+    <div class="row profile">
+      <!-- Job Preferences Widget Start -->
+        <div class="col-md-6" [class.highlightDiv]="editJobTitle==true">
+
+          <div class="page_sub_head"><p>Job Preferences</p></div>
+          <p class="mb-4 gray-color">(You can add multiple Job Titles)</p>
+          <div class="w-100 float-left" >
+        <form [formGroup]="preferredJobTitleForm" #jobTitleForm>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="multi-select-cont w-100 p-0 mb-4">
+                <label for="JobId">Select your Preferred Job Title <span class="small-font">(Multiselect - Select up to {{SubscriberMasterDetails.jobTitle_Allow}})</span><b class="red-color">*</b></label>
+
+                  <angular2-multiselect class="multi-select" [data]="preferredJobTitleAllList" formControlName="JobId"
+                  [(ngModel)]="selectedItems" [settings]="PreferredJobTitleSettings" (onSelect)="onItemSelect($event)"
+                  (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)"  (onDeSelectAll)="onDeSelectAll($event)"  (keyup)="searchFilter($event)"
+                  required="required" required="required" #dropdownRef >
+                  <!-- (keyup)="getPreferredJobTitle()" -->
+                    <c-search>
+                      <ng-template>
+                        <input #otherJtFocus type="text" placeholder="Search Preferred Job Title"  style="border: none;width: 100%; height: 100%;outline: none;"/>
+                      </ng-template>
+                    </c-search>
+                    <!-- <c-item>
+                      <ng-template let-item="item">
+                        <label>{{item.jobTitle}}</label>
+                      </ng-template>
+                    </c-item> -->
+
+                  </angular2-multiselect>
+
+                  <!-- <angular2-multiselect  class="multi-select"  [data]="countryList" formControlName="JobCountryId"
+                  [(ngModel)]="selectedItemsCountry"
+                  [settings]="countrySettings"
+                  (onSelect)="onItemSelect($event)"
+                  (onDeSelect)="OnItemDeSelect($event)"
+                  (onSelectAll)="onSelectAll($event)"
+                  (onDeSelectAll)="onDeSelectAll($event)" required="required">
+                </angular2-multiselect> -->
+                  <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['jobTitle'].hasError('required')">Preferred Job Title is required</span> -->
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="isPreferredJobTitleOtherYes">
+            <div class="w-100">
+              <div class="form-holder w-100 p-0 mb-4">
+
+                  <label for="OtherJobTitle">Other Job Title<b class="red-color">*</b></label>
+                <div class="input-group"> <input type="text" formControlName="OtherJobTitle" name="OtherJobTitle" id="OtherJobTitle" placeholder="Other Job Title" class="form-control" data-parsley-trigger="change" required="required">
+                  <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['OtherJobTitle'].hasError('required')">Other Job Title is required</span> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row"> -->
+
+            <div class="row">
+              <div class="col-md-12 text-right">
+                <button _ngcontent-dth-c304="" *ngIf="editJobTitle" type="button" class="btn btn-success btn-small   draft " (click)="resetJobTitle()">Cancel</button>
+            <button type="submit" (click)="addPreferredJobTitleDetails()"  *ngIf="!editJobTitle" class="btn btn-success ml-3 btn-small float-right" >
+              Add
+            </button>
+            <button type="submit" (click)="addPreferredJobTitleDetails()"  *ngIf="editJobTitle" class="btn btn-success ml-3 btn-small float-right" >
+              Update
+            </button>
+          </div></div>
+          <!-- </div> -->
+        </form>
+      </div>
+    </div>
+
+  <!-- Job Preferences Widget End -->
+
+  <!-- Job Preferences Details Widget Start -->
+  <div class="col-lg-6 col-md-6 flex-container max_height_200">
+    <div class="page_sub_head"><p>Job Preferences Details</p></div>
+    <p class="mb-4">You can edit and delete from here</p>
+<section class="round_brdr_box">
+
+            <div class="row">
+              <div class="col-sm-12">
+
+                <h6><span class="blue-color">Selected Preferred Job Title</span>
+                  <span class="edit_links">
+                    <button type="button" title="Edit" class="blue-color"  (click)="editJobPreferenceData()"><i class="far fa-edit"></i></button>
+                    <button type="button" class="red-color"  (click)="deleteModal(0,0,'jobtitle')"><i class="far fa-trash-alt" title="Delete"></i></button>
+                  </span>
+                </h6>
+
+
+
+                  </div>
+            </div>
+
+            <p class="mb-0" *ngFor="let item of preferredJobTitleArray; let i=index">
+
+                <!-- {{ findJobTitle(preferredJobTitle.JobId) }} -->
+                <i class="fas fa-circle small-icon" style="font-size: 8px;"></i>
+                    {{ item }}
+                  </p>
+
+                </section>
+            </div>
+            <br>
+
+          </div>
+
+
+
+
+  <!-- Job Preferences Details Widget End -->
+
+  <div class="row profile pt-4">
+    <!-- Job Category Widget Start -->
+      <div class="col-lg-6 col-12" [class.highlightDiv]="editJobCategory==true">
+        <p class="mb-4">(Add job category and type)</p>
+
+        <!-- <div class="row">
+              <div class="col-sm-6">
+                <h4><strong>Add your Patent Details</strong></h4>
+              </div>
+              <div class="col-sm-6">
+                <h6><strong class="pull-right" style="color: green;">Optional</strong></h6>
+              </div>
+        </div> -->
+        <section class="w-100 float-left" >
+
+        <form [formGroup]="jobCategoryForm">
+           <div class="row">
+
+            <div class="col-lg-6">
+
+              <div class="form-holder w-100 p-0 mb-4">
+
+                  <label for="JobCategoryId">Job Category<b class="red-color">*</b></label>
+                  <div class="input-group">
+                  <select formControlName="JobCategoryId" name="JobCategoryId" id="JobCategoryId" placeholder="Select Job Category" class="custom-select" data-parsley-trigger="change" required="required">
+                    <option value="">--Select--</option>
+                    <option *ngFor="let p of categoryList" value="{{p.id}}">
+                      {{p.name}}
+                    </option>
+                  </select>
+                  <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['JobCategoryId'].hasError('required')">Job Category is required</span> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-holder w-100 p-0 mb-4">
+
+                    <label for="JobTypeId">Job Type<b class="red-color">*</b></label>
+                    <div class="input-group">
+                    <select formControlName="JobTypeId" name="JobTypeId" id="JobTypeId" placeholder="Select Job Type" class="custom-select" data-parsley-trigger="change" required="required">
+                      <option value="">--Select--</option>
+                      <option *ngFor="let p of jobSubCateggoryList" value="{{p.id}}">
+                        {{p.name}}
+                      </option>
+                    </select>
+                    <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['JobTypeId'].hasError('required')">Job Sub-Category is required</span> -->
+                  </div>
+                </div>
+              </div>
+              <p class="mb-4">(You can add multiple countries, multiselect upto  {{SubscriberMasterDetails.jobLocation_Allow}}) </p>
+              <div class="col-lg-6">
+                <div class="form-holder w-100 p-0 mb-4">
+                  <label for="JobIndustryId">Select Industry<b class="red-color">*</b></label>
+                  <div class="input-group">
+                  <select formControlName="JobIndustryId" name="JobIndustryId" id="JobIndustryId" placeholder="Select Industry" class="custom-select" data-parsley-trigger="change" required="required">
+                    <option value="">--Select--</option>
+                    <option *ngFor="let p of industryList" value="{{p.id}}">
+                      {{p.name}}
+                    </option>
+                  </select>
+                  <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['JobIndustryId'].hasError('required')">Industry is required</span> -->
+                </div>
+              </div>
+            </div>
+              <div class="col-lg-6">
+                <!-- <p class="mb-4">(You can add multiple Country select Up To 3)</p> -->
+
+                <div class="multi-select-cont  w-100 p-0 mb-4">
+                      <label for="JobCountryId">Select Country<b class="red-color">*</b></label>
+
+                      <angular2-multiselect  class="multi-select"  [data]="countryList" formControlName="JobCountryId"
+                        [(ngModel)]="selectedItemsCountry"
+                        [settings]="countrySettings"
+                        (onSelect)="onItemSelect($event)"
+                        (onDeSelect)="OnItemDeSelect($event)"
+                        (onSelectAll)="onSelectAll($event)"
+                        (onDeSelectAll)="onDeSelectAll($event)" required="required">
+                      </angular2-multiselect>
+                      <!-- <select formControlName="JobCountry" name="JobCountry" id="JobCountry" placeholder="Select Country" class="form-control" data-parsley-trigger="change">
+                        <option value="">--Select--</option>
+                        <option value="United States">United States</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="France">France</option>
+                      </select> -->
+
+                  </div>
+                </div>
+
+
+            </div>
+
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-holder w-100 p-0 mb-4">
+                  <label for="AuthorizedCountry">Are You Authorized to work in Selected Country</label>
+                  <div class="input-group">
+                  <input type="text" formControlName="AuthorizedCountry" name="AuthorizedCountry" id="AuthorizedCountry" placeholder="Authorized In Selected Country" class="form-control" data-parsley-trigger="change">
+                  <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['AuthorizedCountry'].hasError('required')">Authorized In Selected Country is required</span> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row"> -->
+            <div class="row">
+              <div class="col-md-12 text-right">
+                <button _ngcontent-dth-c304="" *ngIf="editJobCategory" type="button" class="btn btn-success btn-small   draft " (click)="resetJobCategory()">Cancel</button>
+            <button type="submit" (click)="addJobCategoryDetails()" *ngIf="!editJobCategory"  class="btn ml-3 btn-success btn-small float-right" [disabled]="!jobCategoryForm.valid || jobCategoryList.length==1"  >
+              Add
+            </button>
+            <button type="submit" (click)="addJobCategoryDetails()" *ngIf="editJobCategory"  class="btn ml-3 btn-success btn-small float-right" [disabled]="!jobCategoryForm.valid || jobCategoryList.length==1"  >
+              Update
+            </button>
+          </div></div>
+          <!-- </div> -->
+        </form>
+      </section>
+    </div>
+  <!-- Job Category Widget End -->
+
+  <!-- Job Category Details Widget Start -->
+  <div class="col-lg-6 col-12 flex-container">
+    <!-- <h4><strong>Your Patent Details</strong></h4> -->
+    <p class="mb-4">You can edit and delete from here</p>
+      <section class="round_brdr_box">
+
+        <div *ngFor="let jobCategory of jobCategoryList; let i=index;">
+
+          <div class="row">
+
+            <div class="col-sm-12">
+
+
+              <span class="edit_links">
+                <button type="button" title="Edit" class="blue-color"  (click)="editJobCategoryData(jobCategory,i)"><i class="far fa-edit"></i></button>
+                <button type="button" class="red-color"  (click)="deleteModal(jobCategory,i, 'jobCategory')"><i class="far fa-trash-alt" title="Delete"></i></button>
+              </span>
+
+              </div>
+          </div>
+
+          <div class="row">
+            <label class="col-md-5 label_title mb-0">Job Category </label>
+            <p class="col-md-7 readonly-txt mb-0">{{getJobCategory(jobCategory.JobCategoryId)}}</p>
+
+          </div>
+
+
+          <div class="row">
+            <label class="col-md-5 label_title mb-0">Job Type </label>
+            <p class="col-md-7 readonly-txt mb-0">{{getJobType(jobCategory.JobTypeId)}}</p>
+          </div>
+
+
+          <div class="row">
+            <label class="col-md-5 label_title mb-0">Industry: </label>
+            <p class="col-md-7 readonly-txt mb-0"> {{getJobIndustry(jobCategory.JobIndustryId)}}</p>
+            </div>
+
+
+            <div class="row">
+              <label class="col-md-5 label_title mb-0">Selected Countries: </label>
+              <p class="col-md-7 readonly-txt mb-0">
+                <span *ngFor="let item of jobCategory.CustomerJobCountry; let i=index;">
+                  {{getJobCountry(item.JobCountryId)}}
+                  <br>
+                </span></p>
+                </div>
+                <div class="row">
+                  <label class="col-md-5 label_title mb-0">Are You Authorized to work in Selected Countries </label>
+                  <p class="col-md-7 readonly-txt mb-0" >
+               {{jobCategory.CustomerJobCountry[0].AuthorizedCountry}}
+
+                 </p>
+                    </div>
+                <hr>
+          </div>
+
+
+
+      </section>
+  </div>
+  <!-- Job Category Details Widget End -->
+  </div>
+
+
+  <div class="row profile pt-4">
+    <!-- Preferred Skills Widget Start -->
+      <div class="col-lg-6 col-12" [class.highlightDiv]="editSkills==true">
+        <!-- <div class="row">
+          <div class="col-sm-6">
+            <h4><strong>Add Languages you know</strong></h4>
+          </div>
+          <div class="col-sm-6">
+            <h6><strong class="pull-right" style="color: green;">Optional</strong></h6>
+          </div>
+        </div> -->
+
+        <h6 class="mb-4">Select Your Preferred Skills (Multiselect)</h6>
+        <section class="w-100 float-left" >
+        <form [formGroup]="preferredSkillsForm">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="multi-select-cont  w-100 p-0 mb-4">
+
+                  <label for="SkillId">Select your Preferred Skills<b class="red-color">*</b></label>
+
+                  <angular2-multiselect  class="multi-select"  [data]="preferredSkillAllList" formControlName="SkillId" [settings]="PreferredSkillSettings" (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" (keyup)="searchFilterSkills($event)" required="required" #dropdownRef2 >
+                    <c-search>
+                      <ng-template>
+                        <input type="text"  placeholder="Search Preferred Skills" style="border: none;width: 100%; height: 100%;outline: none;"/>
+                      </ng-template>
+                    </c-search>
+                    <c-item>
+                      <ng-template let-item="item">
+                        <label>{{item.skillName}}</label>
+                      </ng-template>
+                    </c-item>
+                  </angular2-multiselect>
+
+                </div>
+              </div>
+            </div>
+
+
+          <div class="row" *ngIf="isPreferredSkillOtherYes">
+            <div class="col-lg-12">
+              <div class="form-holder w-100 p-0 mb-4">
+                  <label for="OtherSkillName">Other Skills<b class="red-color">*</b></label>
+                  <div class="input-group">
+                  <input type="text" formControlName="OtherSkillName" name="OtherSkillName" id="OtherSkillName" placeholder="Other Skills" class="form-control" data-parsley-trigger="change" required="required">
+                  <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['OtherSkillName'].hasError('required')">Other Skills is required</span> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row"> -->
+            <div class="row">
+              <div class="col-md-12 text-right">
+                <button _ngcontent-dth-c304="" *ngIf="editSkills" type="button" class="btn btn-success btn-small   draft " (click)="resetPreferredSkills()">Cancel</button>
+                <button type="submit" *ngIf="!editSkills" (click)="addPreferredSkillsDetails()"  class="btn btn-success ml-3 btn-small float-right"   >
+                  Add
+                </button>
+                <button type="submit" *ngIf="editSkills" (click)="addPreferredSkillsDetails()"  class="btn btn-success ml-3 btn-small float-right" >
+                  Update
+                </button>
+          </div></div>
+          <!-- </div> -->
+        </form>
+      </section>
+    </div>
+  <!-- Preferred Skills Widget Start -->
+
+  <!-- Preferred Skills Details Widget Start -->
+  <div class="col-lg-6 col-12 flex-container max_height_150">
+    <!-- <h4><strong>Your Languages</strong></h4> -->
+    <p class="mb-3">You can edit and delete from here</p>
+      <section class="round_brdr_box">
+
+        <div class="w-100">
+
+          <div class="row">
+            <div class="col-sm-12">
+
+              <h6>
+                <span class="blue-color">Preferred Skills</span>
+                <span class="edit_links">
+                <button  class="blue-color" title="Edit" (click)="editPreferredSkillsData()"><i class="far fa-edit"></i></button>
+                <button   class="red-color" (click)="deleteModal(0,0,'preferredSkills')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h6>
+
+
+
+              </div>
+            </div>
+
+            <p class="mb-0"  *ngFor="let item of preferredSkillsArray; let i=index">
+              <i class="fas fa-circle small-icon" style="font-size: 8px;"></i>
+                    {{ item }}
+                  </p>
+
+              </div>
+
+        </section>
+    </div>
+  <!-- Preferred Skills Details Widget End -->
+</div>
+
+<div class="row profile pt-4">
+  <!-- Expected Salary Widget Start -->
+    <div class="col-lg-6 col-12" [class.highlightDiv]="editsalary==true">
+      <!-- <div class="row">
+        <div class="col-sm-6">
+          <h4><strong>Add Additional Information</strong></h4>
+        </div>
+        <div class="col-sm-6">
+          <h6><strong class="pull-right" style="color: green;">Optional</strong></h6>
+        </div>
+      </div> -->
+
+      <section class="w-100 float-left">
+        <!-- <div class="d-flex justify-content-between w-100 mb-3"><h6></h6></div> -->
+
+        <div class="row">
+          <div class="page_sub_head col-md-12"><p></p></div>
+
+          <div class="d-flex justify-content-between col-md-12 "> <h6>Expected Monthly Salary</h6> <span class="pull-right" style="color: green;">Optional</span></div>
+
+          <!-- <h6>(You can Add Multiple Experience Details)</h6> -->
+        </div>
+        <div class="SpaceSalary">
+
+        </div>
+<div class="float-left w-100">
+        <form [formGroup]="expectedSalaryForm">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-holder w-100 p-0 mb-4">
+                  <label for="SalaryFrom">Salary From</label>
+                  <div class="input-group">
+                  <input type="text" formControlName="SalaryFrom" name="SalaryFrom" id="SalaryFrom" placeholder="Salary From"  class="form-control" data-parsley-trigger="change" required="required">
+                  <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['SalaryFrom'].hasError('required')">Salary From is required</span> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-holder w-100 p-0 mb-4">
+
+
+                    <label for="SalaryTo">Salary To</label>
+                    <div class="input-group">
+                    <input type="text" formControlName="SalaryTo" name="SalaryTo" id="SalaryTo" placeholder="Salary To" (change)="setStatus()" class="form-control" data-parsley-trigger="change" required="required">
+                    <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['SalaryTo'].hasError('required')">Salary To is required</span> -->
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-holder w-100 p-0 mb-4">
+                  <label for="CurrencyId">Select Currency</label>
+                  <div class="input-group">
+                  <select formControlName="CurrencyId" name="CurrencyId" id="CurrencyId" placeholder="Select Currency From" class="custom-select" data-parsley-trigger="change" required="required">
+                    <option value="">--Select--</option>
+                    <option *ngFor="let p of currencyList" value="{{p.id}}">
+                      {{p.name}}
+                    </option>
+                  </select>
+                  <!-- <span class="text-danger" *ngIf="pSubmitted && profileForm.controls['CurrencyId'].hasError('required')">Currency From is required</span> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row"> -->
+            <div class="row">
+              <div class="col-md-12 text-right">
+                <button _ngcontent-dth-c304="" *ngIf="editsalary" type="button" class="btn btn-success btn-small   draft " (click)="resetExpectedSalary()">Cancel</button>
+            <button type="submit" *ngIf="!editsalary" (click)="addExpectedSalaryDetails()"  class="btn ml-3 btn-success btn-small float-right" (change)="setStatus()"  [disabled]="!expectedSalaryForm.valid || CustomerSalary.length==1" >
+              Add
+            </button>
+            <button type="submit" *ngIf="editsalary" (click)="addExpectedSalaryDetails()"  class="btn ml-3 btn-success btn-small float-right" (change)="setStatus()"  [disabled]="!expectedSalaryForm.valid  || CustomerSalary.length==1" >
+              Update
+            </button>
+          </div></div>
+          <!-- </div> -->
+        </form>
+      </div>
+      </section>
+    </div>
+  <!-- Expected Salary Widget End -->
+
+
+   <!-- Expected Salary Details Widget Start -->
+   <div class="col-lg-6 col-12 flex-container max_height_220">
+    <p class="mb-3">You can edit and delete from here</p>
+    <!-- <h4><strong>Your Additional Information</strong></h4> -->
+      <section class="round_brdr_box">
+        <div class="w-100">
+          <div class="row">
+          <div class="col-sm-12">
+
+
+
+            <h6><span class="blue-color">Expected Monthly Salary</span> <span class="edit_links">
+              <button  class="blue-color" title="Edit" (click)="editExpectedSalaryData()"><i class="far fa-edit"></i></button>
+              <button   class="red-color" (click)="deleteModal(0,0,'expectedSalary')"><i class="far fa-trash-alt" title="Delete"></i></button></span></h6>
+
+
+
+
+              </div>
+            </div>
+
+            <p *ngFor="let item of CustomerSalary; let i=index">
+                    {{ getCurrencyName(item.CurrencyId) }} {{ item.SalaryFrom }} to {{ item.SalaryTo }}
+            </p>
+            </div>
+
+
+        </section>
+    </div>
+  <!-- Expected Salary Details Widget End -->
+</div>
+</div>
+<div class="row mt-3"><div class="col-md-12">
+<button type="button" class="btn btn-success pull-left back" (click)="onBack()"><i class="fa fa-backward"></i>&nbsp;
+  Back
+</button>
+
+<button type="submit" class="btn btn-primary pull-right ml-2 continue" (click)="onNext('Continue')" *ngIf="!SubscriptionCancel"><i class="fa fa-forward"></i>&nbsp;
+  Continue
+</button>
+<button type="button" class="btn btn-success pull-right ml-3 draft" (click)="onNext('Draft')" *ngIf="!SubscriptionCancel"><i class="fas fa-save"></i>&nbsp;
+  Save as Draft
+</button>
+<!-- <button type="button" class="btn btn-default pull-right" (click)="onCancel()"><i class="fa fa-close"></i>&nbsp;
+  Cancel
+</button> -->
+<!-- </section> -->
+</div></div>
+
+
+<div class="modal modal_subscription" id="deleteJobPreference">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="text-center">
+          <h3>Are you sure want to delete ?</h3>
+          <button class="yes btn-sm btn-success m-1" (click)="deleteItemFunc()">Yes</button>
+          <button class="no btn-sm btn-danger m-1" data-bs-dismiss="modal">No</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

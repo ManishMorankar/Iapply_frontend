@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>iApply Job Portal</title>
+
+  <link rel="canonical"href=="https://www.iapply.ai/"/>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MKXKMD6');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="facebook-domain-verification" content="qo6hdpxbfesa1dunqxb92ne628enr6" />
+  <base href="/">
+
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- new design -->
+  <!-- Yandex.Metrika counter -->
+  <!-- <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(48020168, "init", { id:48020168, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true, ecommerce:"dataLayer" }); </script>  -->
+  <!-- /Yandex.Metrika counter -->
+  <link rel="icon" href="./assets/images/favicon.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="./assets/images/favicon.png">
+  <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+  <link rel="icon" type="image/vnd.microsoft.icon" href="./assets/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+  <link rel="icon" href="./assets/images/favicon.ico" />
+
+  <!-- End Code-->
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/slick.min.css">
+  <meta name="description" content="iApply is an AI powered platform helping you find your perfect job opportunities globally by applying on your behalf. Make your job search easier by signing up today!">
+  <link rel="stylesheet" href="assets/css/choices.min.css">
+  <!-- awesome fontfamily -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- <link rel="stylesheet" href="./assets/css/all.min.css"> -->
+  <!-- style css -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/LoginStyle.css">
+  <link rel="stylesheet" href="assets/css/intlTelInput.css">
+
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script> -->
+  <script src="./assets/js/d3.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script> -->
+  <script src="./assets/js/topojson.min.js"></script>
+  <script src="./assets/js/datamaps.world.min.js"></script>
+  <script src="node_modules/moment/moment.js" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-213615565-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-213615565-1');
+</script>
+
+  <!-- /new design  -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKXKMD6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <app-root>
+    <style>
+      /*
+       * Inline css to add simple styles for loader.
+       * Is going to be replaced by angular after bootstrap.
+       */
+      app-root {
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        padding-top: 45vh;
+        text-align: center;
+        background-color:#fafbff;
+        font: 14px sans-serif;
+      }
+      .loading {
+   text-transform:uppercase;
+
+  width:150px;
+  text-align:center;
+  line-height:50px;
+
+  position:absolute;
+  left:0;right:0;top:50%;
+  margin:auto;
+  transform:translateY(-50%);
+}
+      .loading span {
+  position:relative;
+  z-index:999; line-height: 36px;
+  color:#fff; font-size: 14px;
+}
+.loading:before {
+  content:'';
+  background:#304893;
+  width:128px;
+  height:36px;
+  display:block;
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  margin:auto;
+
+  animation:2s loadingBefore infinite ease-in-out;
+}
+
+@keyframes loadingBefore {
+  0%   {transform:translateX(-14px);}
+  50%  {transform:translateX(14px);}
+  100% {transform:translateX(-14px);}
+}
+
+
+.loading:after {
+  content:'';
+  background:#2CBF8C;
+  width:14px;
+  height:60px;
+  display:block;
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  margin:auto;
+  opacity:.5;
+
+  animation:2s loadingAfter infinite ease-in-out;
+}
+
+@keyframes loadingAfter {
+  0%   {transform:translateX(-50px);}
+  50%  {transform:translateX(50px);}
+  100% {transform:translateX(-50px);}
+}
+    </style>
+  <!-- <div class="loading">
+    <span>Loading</span>
+  </div> -->
+  <!-- <div class="loader_new" style="position: absolute; left: 50%; top:50%; width:150px; height: 150px;  transform:translate(-50%, -50%); ">
+<img src="./assets/images/iapply_loader.gif"/>
+
+  </div> --><div class="preloader-area">
+<div class="spinner">
+<div class="inner">
+<div class="disc"></div>
+<div class="disc"></div>
+<div class="disc"></div>
+</div>
+</div>
+</div>
+  </app-root>
+  <div class="cookies cookies_cont">
+    <div><img src="https://i.imgur.com/Tl8ZBUe.png" width="50"></div>
+    <div class="mt-2">
+      We use third party cookies to personalize content, ads and analyze site traffic. <a class="" href="https://iapplyapp.azurewebsites.net/visitor/privacy-policy">Learn more<i class="fa fa-angle-right ml-2"></i></a>
+    </div>
+
+    <button class="btn btn-success mt-3 px-4 cookies_btn" type="button"  onclick="document.cookie = 'cookies-consent=yes;'">Accept</button>
+  </div>
+  <!-- Javascript files new design-->
+
+  <script src="./assets/js/jquery.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/slick.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" charset="utf-8"></script> -->
+  <script src="./assets/js/raphael.min.js" charset="utf-8"></script>
+  <script src="./assets/js/jquery.mapael.js" charset="utf-8"></script>
+  <script src="./assets/js/world_countries.js" charset="utf-8"></script>
+  <script src="./assets/js/particles.js"></script>
+  <script src="./assets/js/intlTelInput.js"></script>
+  <script src="./assets/js/custom.js"></script>
+  <script src="./assets/js/map_custom.js"></script>
+  <!-- <script src="./assets/js/donut-script.js"></script> -->
+  <script src="./assets/js/dashboard.js"></script>
+  <script src="./assets/js/datamaps.world.min.js"></script>
+  <script src="./assets/js/jquery.simple-calendar.js"></script>
+  <script src="./assets/js/circle-progress.js"></script>
+
+
+
+<script>
+$('.cookies_cont').hide();
+if (localStorage.getItem('cookieSeen') != 'shown') {
+  $('.cookies_cont').delay(500).fadeIn();
+
+};$('.cookies_btn').click(function() {
+  $('.cookies_cont').fadeOut();
+  localStorage.setItem('cookieSeen','shown');
+})
+
+</script>
+
+<div class="modal fade" id="lang_select" tabindex="-1" role="dialog" aria-labelledby="lang_selectLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0 pt-3">
+        <!-- <h5 class="modal-title">Language Select</h5> -->
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="p-4">
+            <div class="mt-3">
+              <h5 class="uk-card-title mt-3">Language Select</h5>
+              <p class="uk-text-details mb-3">You can select any language of your choice to translate the current content.</p>
+              <div id="google_translate_element"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+
+
+
+    // function setCookie(cname, cvalue, exdays) {
+    //     const d = new Date();
+    //     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    //     let expires = "expires=" + d.toUTCString();
+    //     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    //   }
+
+    //   function getCookie(cname) {
+    //     let name = cname + "=";
+    //     let ca = document.cookie.split(';');
+    //     for (let i = 0; i < ca.length; i++) {
+    //       let c = ca[i];
+    //       while (c.charAt(0) == ' ') {
+    //         c = c.substring(1);
+    //       }
+    //       if (c.indexOf(name) == 0) {
+    //         return c.substring(name.length, c.length);
+    //       }
+    //     }
+    //     return "";
+    //   }
+
+    //   function checkCookie() {
+    //     let user = getCookie("username");
+    //     if (user != "") {
+    //       alert("Welcome again " + user);
+    //     } else {
+    //       user = prompt("Please enter your name:", "");
+    //       if (user != "" && user != null) {
+    //         setCookie("username", user, 365);
+    //       }
+    //     }
+    //   }
+
+    </script>
+
+
+
+    <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
+
+   <!-- /Javascript files new design-->
+  <!-- <script src="//code.tidio.co/4fb35iagzmdsiyp4gpv4z35pvyivrmfz.js" async></script> -->
+
+  <script src="//code.tidio.co/ewigmje1zrvwsuvlgmliewvxk97l9xdb.js" async></script>
+  <!-- <script>
+    (function() {
+     function onTidioChatApiReady() {
+       (function() {
+           window.tidioChatApi.open();
+       })();
+     }
+     if (window.tidioChatApi) {
+       window.tidioChatApi.on("ready", onTidioChatApiReady);
+     } else {
+       document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+     }
+   })();
+ </script> -->
+
+
+<script type="text/javascript">
+$( function() {
+
+
+
+} );
+</script>
+
+
+</body>
+</html>

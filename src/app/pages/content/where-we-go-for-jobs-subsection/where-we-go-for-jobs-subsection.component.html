@@ -1,0 +1,136 @@
+<div class="edit_page">
+    <div class="page_head">
+      <h2>CONTENT UPDATE</h2>
+   </div>
+  
+   <div class="row ">
+    <div class="col-md-12">
+      <div class="subhead mt-3 mb-3">
+        <h4 class="d-md-flex align-items-center justify-content-between">Where We Go for Jobs Sub Section</h4>
+      </div>
+  
+    <div class="round_brdr_box bg-white no_radius">
+        <form [formGroup]="whereWeGoForJobsSubSectionForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-holder1 w-100 p-0 mb-2">
+                        <div class="input-group">
+                        <!-- <label for="IconImage">Icon</label> -->
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail" data-trigger="fileinput"
+                                style="width: 100%; height: 150px;">
+                            <img alt="icon image" [src]="getIconImage()">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                style="max-width: 100%; max-height: 150px;"></div>
+                            <div>
+                            <span class="btn btn-default btn-file">
+                                <span class="fileinput-new">Select Icon Image</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input type="file" name="..." accept="image/jpeg,image/x-png,image/png,image/svg"
+                                    (change)="onFileChangeIconImage($event)">
+                            </span>
+                            <a (click)="removeIconImageFile()" class="btn btn-default fileinput-exists"
+                                data-dismiss="fileinput">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="subhead mb-2">
+                        <h4>Icon Count:</h4>
+                     </div>
+                     <div class="form-holder1 w-100 p-0 mb-2">
+                        <div class="input-group">
+                        <input type="text" formControlName="Count" class="form-control" placeholder="Enter Icon Count" autocomplete="off">
+                        <div *ngIf="submitted && cuf.Count.errors" class="invalid-feedback">
+                            <div *ngIf="cuf.Count.errors.required">Icon Count is required</div>
+                            <div *ngIf="cuf.Count.errors.pattern">Please enter valid Icon Count</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="subhead mb-2">
+                        <h4>Icon Heading:</h4>
+                     </div>
+                     <div class="form-holder1 w-100 p-0 mb-2">
+                        <div class="input-group">
+                        <input type="text" formControlName="Heading" class="form-control" placeholder="Enter Icon Heading" autocomplete="off">
+                        <div *ngIf="submitted && cuf.Heading.errors" class="invalid-feedback">
+                            <div *ngIf="cuf.Heading.errors.required">Icon Heading is required</div>
+                            <div *ngIf="cuf.Heading.errors.pattern">Please enter valid Icon Heading</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="subhead mb-2">
+                              <h4>User Comment:</h4>
+                           </div>
+                           <div class="form-holder1 w-100 p-0 mb-2">
+                              <div class="input-group">
+                        <textarea rows="4" formControlName="Comment" class="form-control" placeholder="Enter Comment" autocomplete="off"></textarea>
+                        <div *ngIf="submitted && cuf.Comment.errors" class="invalid-feedback">
+                            <div *ngIf="cuf.Comment.errors.required">Comment is required</div>
+                            <div *ngIf="cuf.Comment.errors.pattern">Please enter valid Comment</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-success">Add</button>
+                </div>
+            </div> -->
+
+            <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Standard'" >
+                <div class="d-flex justify-content-end">
+                   <div>
+                      <!-- <a href="" class="back  me-3">CANCEL</a> -->
+                      <button (click)="onCancel()" class="back btn  me-3">CANCEL</button>
+                   </div>
+                   <div class="d-flex justify-content-end">
+                      <!-- <a href="" class="draft">SUBMIT FOR APPROVAL</a> -->
+                      <button (click)="updateJobIconCounter()" class="draft">SUBMIT FOR APPROVAL</button>
+                   </div>
+                </div>
+             </div>
+        
+             <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Admin'">
+              <div class="d-flex justify-content-end">
+                 <div>
+                    <!-- <a href="" class="back  me-3">CANCEL</a> -->
+                    <button (click)="onCancel()" class="back btn  me-3">CANCEL</button>
+                 </div>
+                 <div class="d-flex justify-content-end">
+                    <!-- <a href="" class="draft me-3">SAVE</a>
+                    <a href="" class="continue">PUBLISH</a> -->
+                    <button (click)="saveJobIconCounter()" class="btn btn-success float-right mb-3 mr-2">SAVE</button>
+                    <button value="Approved" (click)="approveJobIconCounter('Approved')" class="continue me-3">PUBLISH</button>
+                    <button value="Rejected" (click)="approveJobIconCounter('Rejected')" class="continue">REJECT</button>
+                 </div>
+              </div>
+           </div>
+
+        <!-- <button *ngIf=" currentUserType == 'Standard'" (click)="updateJobIconCounter()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+        <button *ngIf=" currentUserType == 'Standard'" (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button>
+
+        <button *ngIf=" currentUserType == 'Admin'" (click)="onCancel()" class="btn btn-success float-right mb-3">Cancel</button>
+        <button *ngIf=" currentUserType == 'Admin'" (click)="approveJobIconCounter('Rejected')" class="btn btn-success float-right mb-3 mr-2"><i class="fi flaticon-multiply" value="Rejected"></i>&nbsp;Reject</button>
+        <button *ngIf=" currentUserType == 'Admin'" (click)="approveJobIconCounter('Approved')" class="btn btn-success float-right mb-3 mr-2"> <i class="fi flaticon-plus" value="Approved"></i>&nbsp; Approve & Publish</button> -->
+        </form>
+        </div>
+    </div>
+    </div>
+</div>
+

@@ -1,0 +1,136 @@
+
+<div class="page-top-line">
+  <h1 class="page-title"> <span class="fw-semi-bold">Testimonials Details</span></h1>
+</div>
+
+
+<widget [title]="'List of Testimonials'">
+  <button (click)="largeModal.show()" class="btn btn-success mb-3">Add</button>
+  <!--<button (click)="exportToExcel()" class="btn btn-success float-right mb-3">Export To Excel</button>
+  
+  <input type="text" class="form-control" style="padding:8px;margin:15px auto;width:30%;" placeholder="Type to filter..."
+         (keyup)="searchFilter($event)" />-->
+  <ngx-datatable class="table table-striped table-hover"
+                 [rows]="testimonialsList"
+                 [columnMode]="'force'"
+                 [headerHeight]="70"
+                 [footerHeight]="50"
+                 [rowHeight]="'auto'"
+                 [scrollbarH]="true"
+                 [limit]="10">
+    <ngx-datatable-column name="Operation" [width]="10">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <div class="btn-toolbar">
+        <button class="btn btn-xs btn-info">
+          <span class="d-none d-md-inline-block" (click)="largeModal.show();update(row)">Edit</span>
+          <span class="d-md-none"><i class='la la-edit'></i></span>
+        </button>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+
+    <ngx-datatable-column name="Image" prop="imageResult" [width]="50">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <img width="100" height="100" alt="..." [src]="imageResult(value)" class="image" title="image"/>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Name" prop="name">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Description" prop="description">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+
+  </ngx-datatable>
+</widget>
+
+
+<div class="modal fade" bsModal #largeModal="bs-modal" [config]="{backdrop: 'static'}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Testimonial</h4>
+        <button type="button" class="close pull-right" (click)="largeModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="testimonialForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Company Name</label>
+                <input type="text" formControlName="Name" class="form-control"
+                       autocomplete="off">
+                <div *ngIf="submitted && cuf.Name.errors" class="invalid-feedback">
+                  <div *ngIf="cuf.Name.errors.required">Company Name is required</div>
+                  <div *ngIf="cuf.Name.errors.pattern">Please enter valid first Company name</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Priority</label>
+                <input type="number" formControlName="Priority" class="form-control"
+                       autocomplete="off" min="1" oninput="this.value = !!this.value && Math.abs(this.value) >= 1 ? Math.abs(this.value) : null">
+                <div *ngIf="submitted && cuf.Priority.errors" class="invalid-feedback">
+                  <div *ngIf="cuf.Priority.errors.required">Priority is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                  <div class="fileinput-new thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                    <img alt="..." [src]="getImage()">
+                  </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                  <div>
+                    <span class="btn btn-default btn-file">
+                      <span class="fileinput-new">Select image</span>
+                      <span class="fileinput-exists">Change</span>
+                      <input type="file" name="..." accept="image/jpeg,image/x-png" (change)="onFileChange($event)">
+                    </span>
+                    <a (click)="removeFile()" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="bmd-label-floating">Description</label>
+                <textarea formControlName="Description" class="form-control" rows="5"></textarea>
+                <div *ngIf="submitted && cuf.Description.errors" class="invalid-feedback">
+                  <div *ngIf="cuf.Description.errors.required">Description is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-toolbar">
+            <button [disabled]="!testimonialForm.valid" *ngIf="!testimonialId" type="submit" class="btn btn-success" (click)="largeModal.hide()">
+              Submit
+            </button>
+            <button [disabled]="!testimonialForm.valid" *ngIf="testimonialId" type="submit" class="btn btn-success" (click)="largeModal.hide()">
+              Update
+            </button>
+            <button type="button" class="btn btn-success" (click)="largeModal.hide();cancel()">
+              Cancel
+            </button>
+          </div>
+          <br>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

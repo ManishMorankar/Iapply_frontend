@@ -1,0 +1,72 @@
+<div class="nav-static ">
+<app-navbar
+  (toggleSidebarEvent)="toggleSidebarListener($event)"
+  (toggleChatEvent)="toggleChatListener()"
+  class="page-controls navbar navbar-dashboard"
+></app-navbar>
+<app-sidebar id="sidebar" role="navigation" class="sidebar profile_menu_tp"></app-sidebar>
+<div class="content-wrap" id="content-wrap">
+  <ngx-loading-bar></ngx-loading-bar>
+  <main id="content" class="content" role="main">
+    <div class="loading-overlay" #spinnerElement>
+      <div class="sk-fading-circle">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+    </div>
+    <div class="router-component" #routerComponent>
+      <!-- <div class="alert alert-danger" role="alert" *ngIf="(paymentMethod=='Online' && paymentStatus=='Pending' && subscriptionStatus=='In-Active') && paymentResponseStatus != 'Success' ">
+        Your payment has been unsuccessful ,<a (click)="onStart()" class="alert-link">Please Try to Make Payment Again</a>
+      </div> -->
+      <div class="alert alert-danger" role="alert"
+        *ngIf="paymentResponseStatus == 'Success'">
+        Your payment has been unsuccessful, <a (click)="onStart()" class="alert-link">Please Try to Make Payment Again</a>
+      </div>
+
+<!-- 
+      <div  >
+        <div class="col-md-12 mt-4 mb-4 ">
+             <div class="row">
+               <div class="col-md-12  ">
+                 <p class="MakePaymentAgain">Your Payment has been unSuccessful ,<a (click)="onStart()">Please Try to Make Payment Again</a></p>
+             </div>
+         </div>
+          </div>
+         </div> -->
+      <router-outlet></router-outlet>
+      <div class="modal fade" id="SelectPlanCont" >
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+      
+        <div class="modal-dialog  modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <!-- <div class="modal-body">
+   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,</p>
+    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,</p>
+    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </div> -->
+            <!-- <div class="modal-body"><app-selectplan></app-selectplan></div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <footer class="content-footer">
+      iApply Job Portal
+    </footer> -->
+  </main>
+</div>
+</div>
+

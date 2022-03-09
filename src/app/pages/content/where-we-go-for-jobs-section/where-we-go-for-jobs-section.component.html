@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+        <div class="heading">
+            <h4><strong>Where We Go for Jobs Section</strong></h4>
+        </div>
+    </div>
+    <section class="widget" widget>
+        <form [formGroup]="whereWeGoForJobsSectionForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="bmd-label-floating">Title</label>
+                        <input type="text" formControlName="Title" class="form-control" placeholder="Enter Title" 
+                            autocomplete="off">
+                        <div *ngIf="submitted && cuf.Title.errors" class="invalid-feedback">
+                            <div *ngIf="cuf.Title.errors.required">Title is required</div>
+                            <div *ngIf="cuf.Title.errors.pattern">Please enter valid Title</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Comment</label>
+                    <textarea formControlName="Comment" class="form-control" rows="5"></textarea>
+                    <div *ngIf="submitted && cuf.Comment.errors" class="invalid-feedback">
+                      <div *ngIf="cuf.Comment.errors.required">Comment is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="bmd-label-floating">Country</label>
+                        <select class="form-control" >
+                            <option value="" selected>Select Country</option>
+                            <option [value]="country" *ngFor="let country of countryList">{{country}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="bmd-label-floating">Available Jobs for Selected Country</label>
+                        <input type="number" formControlName="AvailableJobs" class="form-control" placeholder="Enter Available Jobs for Selected Country" 
+                            autocomplete="off">
+                        <div *ngIf="submitted && cuf.AvailableJobs.errors" class="invalid-feedback">
+                            <div *ngIf="cuf.AvailableJobs.errors.required">AvailableJobs is required</div>
+                            <div *ngIf="cuf.AvailableJobs.errors.pattern">Please enter valid AvailableJobs</div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <button *ngIf=" currentUserType == 'Standard'" (click)="updateWhereWeGoForJobsSection()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+            <button *ngIf=" currentUserType == 'Standard'" (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button>
+
+            <button *ngIf=" currentUserType == 'Admin'" (click)="onCancel()" class="btn btn-success float-right mb-3">Cancel</button>
+            <button *ngIf=" currentUserType == 'Admin'" (click)="approveWhereWeGoForJobsSection('Rejected')" class="btn btn-success float-right mb-3 mr-2"><i class="fi flaticon-multiply" value="Rejected"></i>&nbsp;Reject</button>
+            <button *ngIf=" currentUserType == 'Admin'" (click)="approveWhereWeGoForJobsSection('Approved')" class="btn btn-success float-right mb-3 mr-2"> <i class="fi flaticon-plus" value="Approved"></i>&nbsp; Approve & Publish</button>
+
+        </form>
+    </section>
+</div>

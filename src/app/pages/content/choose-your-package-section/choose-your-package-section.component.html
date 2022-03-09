@@ -1,0 +1,168 @@
+<div class="edit_page">
+  <div class="page_head">
+    <h2>CONTENT UPDATE</h2>
+ </div>
+
+ <div class="row">
+  <div class="col-md-12">
+    <div class="subhead mt-3 mb-3">
+      <h4 class="d-md-flex align-items-center justify-content-between">Package Section</h4>
+    </div>
+
+  <div class="round_brdr_box bg-white no_radius">
+  <form [formGroup]="ChooseYourPackageSectionForm">
+      <div class="row">
+          <div class="col-md-12">
+            <div class="subhead mb-2">
+              <h4>Title:</h4>
+            </div>
+            <div class="form-holder1 w-100 p-0 mb-2">
+              <div class="input-group">
+                  <input type="text" formControlName="Title" class="form-control" placeholder="Enter Title" autocomplete="off">
+                  <div *ngIf="submitted && cuf.Title.errors" class="invalid-feedback">
+                      <div *ngIf="cuf.Title.errors.required">Title is required</div>
+                      <div *ngIf="cuf.Title.errors.pattern">Please enter valid Title</div>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+              <div class="subhead mb-2">
+              <h4>Sub-Title:</h4>
+            </div>
+            <div class="form-holder1 w-100 p-0 mb-8">
+              <div class="input-group">
+                  <!-- <input type="text" formControlName="SubTitle" class="form-control" placeholder="Enter Sub-Title" autocomplete="off"> -->
+                  <ckeditor formControlName="SubTitle" [editor]="Editor" (change)="onChange($event)" (ready)="onReady($event)"></ckeditor>
+                  <div *ngIf="submitted && cuf.SubTitle.errors" class="invalid-feedback">
+                      <div *ngIf="cuf.SubTitle.errors.required">Sub-Title is required</div>
+                      <div *ngIf="cuf.SubTitle.errors.pattern">Please enter valid Sub-Title</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+      <div class="row" formArrayName="PackageContent">
+        <div class="col-md-12" *ngFor="let Package of PackageContent.controls; let i=index">
+          <div [formGroupName]="i">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="subhead mb-2">
+                  <h4>Package Name:</h4>
+                </div>
+                <div class="form-holder1 w-100 p-0 mb-2">
+                  <div class="input-group">
+              <input type="text" formControlName="PackageName" class="form-control" placeholder="Enter Package Name" autocomplete="off">
+              <div *ngIf="submitted && PackageContent.controls[i].get('PackageName') .errors" class="invalid-feedback">
+                <div *ngIf="PackageContent.controls[i].get('PackageName').errors?.required">Package Name is required</div>
+
+              </div>
+              </div>
+              </div>
+              </div>
+            
+
+             
+                <div class="col-md-6">
+                  <div class="subhead mb-2">
+                    <h4>Package Price:</h4>
+                  </div>
+                  <div class="form-holder1 w-100 p-0 mb-2">
+                    <div class="input-group">
+                <input type="text" formControlName="PackagePrice" class="form-control" placeholder="Enter Package Price" autocomplete="off">
+                <div *ngIf="submitted && PackageContent.controls[i].get('PackagePrice') .errors" class="invalid-feedback">
+                  <div *ngIf="PackageContent.controls[i].get('PackagePrice').errors?.required">Package Price is required</div>
+
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="subhead mb-2">
+                      <h4>Package Period:</h4>
+                    </div>
+                    <div class="form-holder1 w-100 p-0 mb-2">
+                      <div class="input-group">
+                  <input type="text" formControlName="PackagePeriod" class="form-control" placeholder="Enter Package Period" autocomplete="off">
+                  <div *ngIf="submitted && PackageContent.controls[i].get('PackagePeriod') .errors" class="invalid-feedback">
+                    <div *ngIf="PackageContent.controls[i].get('PackagePeriod').errors?.required">Package Period is required</div>
+
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+
+            <ckeditor formControlName="HtmlContent" [editor]="Editor" (change)="onChange($event)" (ready)="onReady($event)"></ckeditor>
+            <div *ngIf="submitted && PackageContent.controls[i].get('HtmlContent').errors" class="invalid-feedback">
+              <div *ngIf="PackageContent.controls[i].get('HtmlContent').errors?.required">Data is required</div>
+            </div>
+            <button class="btn btn-danger float-right" (click)="removePackageContent(i)">Remove</button>
+          </div>
+        </div>
+        <button class="btn btn-success add-btn mb-4" (click)="addPackageContent('','','','')">Add More</button>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="subhead mb-2">
+            <h4>User Comment:</h4>
+          </div>
+          <div class="form-holder1 w-100 p-0 mb-2">
+            <div class="input-group">
+            <textarea formControlName="Comment" class="form-control" rows="5"></textarea>
+            <div *ngIf="submitted && cuf.Comment.errors" class="invalid-feedback">
+              <div *ngIf="fsf.Comment.errors.required">Comment is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Standard'" >
+        <div class="d-flex justify-content-end">
+           <div>
+              <!-- <a href="" class="back  me-3">CANCEL</a> -->
+              <button (click)="onCancel()" class="back btn   me-3">CANCEL</button>
+           </div>
+           <div class="d-flex justify-content-end">
+              <!-- <a href="" class="draft">SUBMIT FOR APPROVAL</a> -->
+              <button (click)="updatePackageSection()" class="draft">SUBMIT FOR APPROVAL</button>
+           </div>
+        </div>
+     </div>
+
+     <div class="btm_btn mt-4 mb-4 col-md-12 " *ngIf=" currentUserType == 'Admin'">
+      <div class="d-flex justify-content-end">
+         <div>
+            <!-- <a href="" class="back  me-3">CANCEL</a> -->
+            <button (click)="onCancel()" class="back btn   me-3">CANCEL</button>
+         </div>
+         <div class="d-flex justify-content-end">
+            <!-- <a href="" class="draft me-3">SAVE</a>
+            <a href="" class="continue">PUBLISH</a> -->
+            <button (click)="savePackageSection()" class="btn btn-success float-right mb-3 mr-2" value="Rejected">SAVE</button>
+            <button value="Approved" (click)="approvePackageSection('Approved')" class="continue me-3">PUBLISH</button>
+            <button value="Rejected" (click)="approvePackageSection('Rejected')" class="continue">REJECT</button>
+         </div>
+      </div>
+   </div>
+
+      <!-- <button *ngIf=" currentUserType == 'Standard'" (click)="updatePackageSection()" class="btn btn-success float-right mb-3"> <i class="fi flaticon-multiply"></i>&nbsp; Submit for Approval</button>
+      <button *ngIf=" currentUserType == 'Standard'" (click)="onCancel()" class="btn btn-success float-right mb-3 mr-2">Cancel</button>
+
+      <button *ngIf=" currentUserType == 'Admin'" (click)="onCancel()" class="btn btn-success float-right mb-3">Cancel</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approvePackageSection('Rejected')" class="btn btn-success float-right mb-3 mr-2"><i class="fi flaticon-multiply" value="Rejected"></i>&nbsp;Reject</button>
+      <button *ngIf=" currentUserType == 'Admin'" (click)="approvePackageSection('Approved')" class="btn btn-success float-right mb-3 mr-2"> <i class="fi flaticon-plus" value="Approved"></i>&nbsp; Approve & Publish</button> -->
+
+    </form>
+  </div>
+</div>
+</div>
+</div>
